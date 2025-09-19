@@ -64,6 +64,48 @@ An $\mathcal{L}$-structure $\mathcal{M}$ is given by the following data:
     \end{enumerate}
 \end{definition}
 
+\begin{definition}
+    Suppose that $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$-structures with universes $M$ and $N$, respectively.
+    An \emph{$\mathcal{L}$-embedding} is a one-to-one (injective) map $\eta: M \to N$ that preserves the interpretation of all of the symbols of $\mathcal{L}$.
+    \begin{enumerate}[label = {(\roman*)}]
+        \item $\eta(f^{\mathcal{M}}(a_1,\dots,a_{n_f})) = f^{\mathcal{N}}(\eta(a_1),\dots,\eta(a_{n_f}))$ for all $f\in \mathcal{F}$ and $a_1,\dots,a_{n_f} \in M$;
+        \item $(a_1,\dots,a_{n_R}) \in R^{\mathcal{M}}$ if and only if $(\eta(a_1),\dots,\eta(a_{n_R})) \in R^{\mathcal{N}}$ for all $R \in \mathcal{R}$ and $a_1,\dots,a_{n_R} \in M$;
+        \item $\eta(c^{\mathcal{M}}) = c^{\mathcal{N}}$ for all $c \in \mathcal{C}$.
+    \end{enumerate}
+    A bijective $\mathcal{L}$-embedding is called an \emph{$\mathcal{L}$-isomorphism}.
+    If $M \subseteq N$ and the inclusion map is an $\mathcal{L}$-embedding,
+    $\mathcal{M}$ is a \emph{substructure} of $\mathcal{N}$ or that
+    $\mathcal{N}$ is an \emph{extension} of $\mathcal{M}$.
+\end{definition}
+
+The \emph{cardinality} of $\mathcal{M}$ is $|M|$,
+the cardinality of the universe of $\mathcal{M}$.
+If $\eta: \mathcal{M} \to \mathcal{N}$ is an embedding then 
+the cardinality of $\mathcal{N}$ is at least the cardinality of $\mathcal{M}$.
+
+\begin{definition}
+    The set of \emph{$\mathcal{L}$-terms} is the smallest set $\mathcal{T}$ such that
+    \begin{enumerate}[label = {(\roman*)}]
+        \item $c\in \mathcal{T}$ for each constant symbol $c \in \mathcal{C}$,
+        \item each variable symbol $v_i \in \mathcal{T}$ for $i = 1,2,\dots$, and
+        \item if $t_1,\dots,t_{n_f} \in \mathcal{T}$ and $f \in \mathcal{F}$, then $f(t_1,\dots,t_{n_f}) \in \mathcal{T}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    $\phi$ is an \emph{atomic $\mathcal{L}$-formula} if $\phi$ is either
+    \begin{enumerate}[label= {\roman*)}]
+        \item $t_1 = t_2$, where $t_1$ and $t_2$ are terms, or
+        \item $R(t_1,\dots,t_{n_R})$, where $R \in \mathcal{R}$ and $t_1,\dots,t_{n_R}$ are terms.
+    \end{enumerate}
+    The set of \emph{$\mathcal{L}$-formulas} is the smallest set $\mathcal{W}$ containing the atomic formulas such that 
+    \begin{enumerate}[label= {\roman*)}]
+        \item if $\phi$ is in $\mathcal{W}$, then $\neg\phi$ is in $\mathcal{W}$,
+        \item if $\phi$ and $\psi$ are in $\mathcal{W}$, then $(\phi \land \psi)$ and $(\phi \lor \psi)$ are in $\mathcal{W}$, and 
+        \item if $\psi$ is in $\mathcal{W}$, then $\exists v_i\, \phi$ and $\forall v_i\, \phi$ are in $\mathcal{W}$.
+    \end{enumerate}
+\end{definition}
+
 \subsection{Basic Techniques and Important Results}
 
 \begin{theorem}[G\"odel's Completeness Theorem]
@@ -80,14 +122,17 @@ An $\mathcal{L}$-structure $\mathcal{M}$ is given by the following data:
     Then $T$ is complete.
 \end{theorem}
 
+Some abbreviation for common theories:
+\begin{enumerate}[label = {}]
+    \item \textbf{DLO}: dense linear order;
+    \item \textbf{ACF}: algebraic closed field;
+    \item \textbf{RCF}: real closed field.
+\end{enumerate}
+
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
     then $f$ is a sum of squares of rational functions.
 \end{theorem}
-
-\textbf{DLO} is dense linear order
-\textbf{ACF} is algebraic closed field;
-\textbf{RCF} is real closed field.
 
 \begin{corollary}
     $\mathbf{ACF}$ is a strongly minimal theory.
@@ -143,16 +188,17 @@ in other words, if $S$ is a union of cells in $\mathcal{D}$.
 \end{theorem}
 
 \section{O-minimal GAGA Results}
-O-minimal GAGA theorems from \cite{zbMATH07662555},
-which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}.
+O-minimal GAGA theorems are from \cite{zbMATH07662555},
+which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
+to adapt to the non-algebraic period domains from moduli spaces of abelian varieties.
 
-\begin{theorem}[Definable GAGA]
+\begin{theorem}[{Definable GAGA, \cite[Theorem 2.1]{arXiv:2508.19215},\cite[Theorem 1.4]{zbMATH07662555}}]
     Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
     The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and 
     its essential image if closed under subobjects and quotients.
 \end{theorem}
 
-\begin{theorem}[Definable images]
+\begin{theorem}[{Definable images, \cite[Theorem 2.2]{arXiv:2508.19215},\cite[Theorem 1.3]{zbMATH07662555}}]
     Let $X$ be an algebraic space and 
     $\phi: X^{\definable} \to \mathcal{Z}$ a proper morphism of definable analytic spaces.
     Then there is a factorization
@@ -165,7 +211,13 @@ which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
 
-\begin{proposition}
+\begin{proposition}[{\cite[Proposition 2.45]{zbMATH07662555}}]
+    Let $X$ be a definable complex analytic space and 
+    $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
+    Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
+\end{proposition}
+
+\begin{proposition}[{\cite[Proposition 2.55]{zbMATH07662555}}]
     Let $X$, $Y$, $Z$ be definable complex analytic spaces and
     suppose we have (solid) diagrams
     \[
@@ -182,32 +234,26 @@ which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2
     Then a unique $f$ exists such that $f^{\analytic} = \varphi$.
 \end{proposition}
 
-\begin{proposition}
-    Let $X$ be a definable complex analytic space and 
-    $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
-    Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
-\end{proposition}
-
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 2.38]{zbMATH07662555}}]
     Let $X$ be a definable complex analytic space.
     Then $\mathcal{O}_X$ is a coherent $\mathcal{O}_X$-module.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 2.39]{zbMATH07662555}}]
     Let $X$ be a definable complex analytic space.
     Then the analytification functor 
     $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}[{\cite[Corollary 2.40]{zbMATH07662555}}]
     For $X$ a definable complex analytic space,
     a sequence $M' \to M \to M''$ of coherent $\mathcal{O}_X$-modules
     is exact if and only if it is exact on stalks (or even analytic stalks).
 \end{corollary}
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem 3.1]{zbMATH07662555}}]
     Let $X$ be an algebraic space and 
-    $(-)^{\definable}; \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
+    $(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
     Then 
     \begin{enumerate}[label = {(\arabic*)}]
         \item $(-)^{\definable}$ is fully faithful and exact.
@@ -215,23 +261,23 @@ which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2
     \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[Peterzil--Strarchenko, definable Chow theorem]
+\begin{theorem}[{Definable Chow theorem, \cite[Theorem 2.23]{zbMATH07662555}, Peterzil--Strarchenko \cite[Theorem 2.14]{zbMATH05364146}}]
     Let $Y$ be a reduced algebraic space and 
     $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subset.
     Then $\mathcal{X}$ is algebraic.
 \end{theorem}
 
-\begin{corollary}
+\begin{corollary}[{\cite[Corollary 3.10]{zbMATH07662555}}]
     Let $Y$ be an algebraic space and $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subspace.
     Then $\mathcal{X}$ is (uniquely) the definabilization of an algebraic subspace.
 \end{corollary}
 
-\begin{corollary}
+\begin{corollary}[{\cite[Corollary 3.11]{zbMATH07662555}}]
     Let $X$, $Y$ be algebraic spaces.
     Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely) the definabilization of an algebraic morphism.
 \end{corollary}
 
-\begin{proposition}
+\begin{proposition}[{\cite[Proposition 4.5]{zbMATH07662555}}]
     Let $f: W \to Z$ be a proper dominant morphism of algebraic spaces.
     Suppose we have an algebraic square-zero thickening
     $W \to W'$, a definable closed immersion $Z^{\definable} \to \mathcal{Z}'$,
@@ -260,7 +306,7 @@ which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2
     \]
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}[{\cite[Proposition 4.6]{zbMATH07662555}}]
     Let $X$ be a smooth algebraic space,
     $\mathcal{U}$ a smooth definable complex analytic space,
     and $\varphi: X^{\definable} \to \mathcal{U}$ a smooth proper definable analytic morphism.
@@ -268,7 +314,7 @@ which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2
     the associated morphism $U \to \mathrm{Hilb}(X)$ is a closed embedding.
 \end{proposition}
 
-\begin{lemma}
+\begin{lemma}[{\cite[Lemma 4.11]{zbMATH07662555}}]
     Suppose $Z$ is an algebraic space,
     and $J$ is a coherent sheaf on $Z$.
     Let $R$ be a sheaf of rings on the {\'e}tale site $Z^{\text{\' et}}$ of $Z$ such that 
