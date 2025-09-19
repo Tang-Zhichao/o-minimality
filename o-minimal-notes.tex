@@ -40,6 +40,7 @@
 Materials follow from \cite{zbMATH01821671,zbMATH01160037},
 mainly \cite{zbMATH01821671}.
 \subsection{Languages and Structures}
+\subsubsection{Basic definitions}
 In mathematical logic, 
 we use first-order languages to describe mathematical structures. 
 Intuitively, a structure is a set that we wish to study equipped with a collection of distinguished functions, relations, and elements. 
@@ -128,6 +129,122 @@ A formula is a \emph{sentence} if it has no free variables.
     If $\mathcal{M} \models \phi(\overline{a})$ we say that
     $\mathcal{M}$ \emph{satisfies} $\phi(\overline{a})$ or $\phi(\overline{a})$ is \emph{true} in $\mathcal{M}$.
 \end{definition}
+
+\begin{proposition}
+    Suppose that $\mathcal{M}$ is a substructure of $\mathcal{N}$,
+    $\overline{a} \in M$, and $\phi(\overline{v})$ is a quantifier-free formula.
+    Then, $\mathcal{M} \models \phi(\overline{a})$ if and only if $\mathcal{N} \models \phi(\overline{a})$.
+\end{proposition}
+
+\begin{definition}
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent and denote $\mathcal{M} \equiv \mathcal{N}$ if
+    \[
+    \mathcal{M} \models \phi \text{ if and only if }\mathcal{N} \models \phi
+    \]
+    for all $\mathcal{L}$-sentences $\phi$.
+\end{definition}
+
+\subsubsection{Theories and logical consequence}
+Let $\mathrm{Th}(\mathcal{M})$, the \emph{full theory} of $\mathcal{M}$,
+be the set of $\mathcal{M}$-sentences $\phi$ such that $\mathcal{M} \models \phi$.
+
+$\mathcal{M} \equiv \mathcal{N}$ if and only if $\mathrm{Th}(\mathcal{M}) = \mathrm{Th}(\mathcal{N})$.
+
+\begin{theorem}
+    Suppose that $j; \mathcal{M} \to \mathcal{N}$ is an isomorphism.
+    Then, $\mathcal{M} \equiv \mathcal{N}$.
+\end{theorem}
+
+Let $\mathcal{L}$ be a language.
+An $\mathcal{L}$-theory $T$ is a set of $\mathcal{L}$-sentences.
+
+$\mathcal{M}$ is a \emph{model} of $T$ and denote $\mathcal{M} \models T$ if $\mathcal{M} \models \phi$ for all sentences $\phi \in T$.
+
+A theory is \emph{satisfiable} if it has a model.
+
+A class of $\mathcal{L}$-structures $\mathcal{K}$ is an \emph{elementary class} if there is an $\mathcal{L}$-theory $T$ such that $\mathcal{K} = \{ \mathcal{M}:\mathcal{M} \models T \}$.
+The sentences in $T$ are called \emph{axioms} for the elementary class.
+
+\begin{definition}
+    Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence.
+    $\phi$ is a \emph{logical consequence} of $T$ and denote $T \models \phi$ if $\mathcal{M} \models \phi$ whenever $\mathcal{M} \models T$.
+\end{definition}
+
+\subsubsection{Definability and Interpretability}
+\begin{definition}
+    Let $\mathcal{M} = (M,\dots)$ be an $\mathcal{L}$-structure.
+    $X \subseteq M^n$ is \emph{definable} if and only if there is an $\mathcal{L}$-formula $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$ and $\overline{b} \in M^m$ such that 
+    $X = \{ \overline{a} \in M^n : \mathcal{M} \models \phi(\overline{a},\overline{b}) \}$.
+    $\phi(\overline{v},\overline{b})$ \emph{defines} $X$.
+    $X$ is \emph{$A$-definable }or \emph{definable over $A$} 
+    if there is a formula $\psi(\overline{v},w_1,\dots,w_l)$ and $\overline{b} \in A^l$ such that $\psi(\overline{v},\overline{b})$ defines $X$.
+\end{definition}
+
+\begin{lemma}
+    Let $\mathcal{L}_r$ be the language of ordered rings and 
+    $(\mathbb{R}, +, -, \dot, <, 0, 1)$ be the ordered field of real numbers.
+    Suppose that $X \subset \mathbb{R}^n$ is $A$-definable.
+    Then, the topological closure of $X$ is also $A$-definable.
+\end{lemma}
+
+\begin{proposition}[conrete characterization of definable sets]
+    Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
+    Suppose that $D_n$ is a collection of subsets of $M^n$ for all $n \ge 1$ and 
+    $\mathcal{D} = (D_n : n \ge 1)$ is the smallest collection such that:
+    \begin{enumerate}[label = {\roman*)}]
+        \item $M^n \in D_n$;
+        \item for all $n$-ary function symbols $f$ of $\mathcal{L}$, the graph of $f^{\mathcal{M}}$ is in $D_{n+1}$;
+        \item for all $n$-ary relation symbols $R$ of $\mathcal{L}$, $R^{\mathcal{M}} \in D_n$;
+        \item for all $i$, $j\le n$, $\{(x_1,\dots,x_n)\in M^n : x_i = x_j\} \in D_n$;
+        \item if $X \in D_n$, then $M \times X \in D_{n+1}$;
+        \item each $D_n$ is closed under complement, union, and intersection;
+        \item if $X \in D_{n+1}$ and $\pi: M^{n+1} \to M^n$ is the projection map $(x_1,\dots,x_{n+1}) \mapsto (x_1,\dots,x_n)$, then $\pi(X) \in D_n$;
+        \item if $X \in D_{n+m}$ and $b \in M^m$, then $\{a\in M^n: (a,b) \in X \} \in D_n$.
+    \end{enumerate}
+    Then, $X \subseteq M^n$ is definable if and only if $X \in D_n$.
+\end{proposition}
+
+\begin{proposition}
+    Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
+    If $X \subset M^n$ is $A$-definable,
+    then every $\mathcal{L}$-automorphism of $\mathcal{M}$ that fixes $A$ point-wise fixes $X$ set-wise.
+\end{proposition}
+
+An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$ 
+if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$ as definable subsets and functions on $X$ (definable using $\mathcal{L}$) so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
+
+\begin{definition}
+    An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{interpretable} in an $\mathcal{L}$-structure $\mathcal{M}$ if there is a definable $X \subseteq M^n$, a definable equivalence relation $E$ on $X$,
+    and for each symbol of $\mathcal{L}_0$, one can find definable $E$-invariant sets on $X$ such that $X / E$ with the induced structure is isomorphic to $\mathcal{N}$.
+if and only if 
+\end{definition}
+
+Let $S$ be a set.
+The universe of a \emph{many-sorted structure} $\mathcal{N}$ with sorts $S$ is 
+a set $N$ that is partitioned into disjoint sets $\{N_i : i \in S\}$.
+For each $n$-ary relation symbol $R$,
+there are $s_1,\dots,s_n \in S$ such that $R^{\mathcal{N}} \subset N^{s_1} \times \dots \times N^{s_n}$.
+For each $n$-ary function symbol $f$,
+there are $s_0,\dots,s_n \in S$ such that $f^{\mathcal{N}} : N^{s_1} \times \dots \times N^{s_n} \to N^{s_0}$.
+
+Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
+The set of sorts $S = \{S_E : E$ an $\emptyset$-definable equivalence relation on $M^n$ for some $n$ $\}$.
+In the many-sorted structure $\mathcal{M}^{\mathrm{eq}}$,
+one interpret the sort $S_E$ as $M^n / E$ for $E$ an $\emptyset$-definable equivalence relation on $M^n$.
+Because $=$ is a definable equivalence relation on $M$,
+$M$ can be identified with the sort $S_{=}$.
+All relations and functions of $\mathcal{L}$ are relations and functions on $M^k$.
+For each $\emptyset$-definable equivalence relation $E$ on $M^n$,
+we have in $\mathcal{M}^{\mathrm{eq}}$ an $n$-ary function $f_E: M^n \to S_E$ given by $f_E(\overline{x}) = \overline{x} / E$.
+
+\begin{lemma}
+    \begin{enumerate}[label = {\roman*)}]
+        \item If $X \subseteq M^n$ is definable in $\mathcal{M}^{\mathrm{eq}}$, then $X$ is definable in $\mathcal{M}$.
+        \item If $\mathcal{M} \equiv \mathcal{N}$, then $\mathcal{M}^{\mathrm{eq}} \equiv \mathcal{N}^{\mathrm{eq}}$.
+        \item If $\sigma$ is an automorphism of $\mathcal{M}^{\mathrm{eq}}$, then $\sigma|M$ is an automorphism of $\mathcal{M}$.
+        \item If $\sigma$ is an automorphism of $\mathcal{M}$, there is $\widehat{\sigma}$ an automorphism of $\mathcal{M}^{\mathrm{eq}}$ such that $\sigma = \widehat{\sigma}|M$.
+    \end{enumerate}
+\end{lemma}
 
 \subsection{Basic Techniques and Important Results}
 
