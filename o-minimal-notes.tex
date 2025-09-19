@@ -106,6 +106,29 @@ the cardinality of $\mathcal{N}$ is at least the cardinality of $\mathcal{M}$.
     \end{enumerate}
 \end{definition}
 
+A variable $v$ \emph{occurs freely} in a formula $\phi$
+if it is not inside a $\exists v$ or $\forall v$ quantifier;
+otherwise, we say that it is \emph{bound}.
+A formula is a \emph{sentence} if it has no free variables.
+
+\begin{definition}
+    Let $\phi$ be a formula with free variables from 
+    $\overline{v} = (v_{i_1},\dots,v_{i_m})$, and let
+    $\overline{a} = (a_{i_1},\dots,a_{i_m})\in M^m$.
+    Inductively define $\mathcal{M} \models \phi(\overline{a})$ as follows.
+    \begin{enumerate}[label = {\roman*)}]
+        \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$ if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
+        \item If $\phi$ is $R(t_1,\dots,t_{n_R})$, then $\mathcal{M} \models \phi(\overline{a})$ if $(t^{\mathcal{M}}_1(\overline{a}),\dots,t^{\mathcal{M}}_{n_R}(\overline{a})) \in R^{\mathcal{M}}$.
+        \item If $\phi$ is $\neg \psi$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \not\models \psi(\overline{a})$.
+        \item If $\phi$ is $(\psi \land \theta)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a})$ and $\mathcal{M} \models \theta(\overline{a})$.
+        \item If $\phi$ is $(\psi \lor \theta)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a})$ or $\mathcal{M} \models \theta(\overline{a})$.
+        \item If $\phi$ is $\exists v_j \psi(\overline{v},v_j)$, then $\mathcal{M} \models \phi(\overline{a})$ if there is $b \in M$ such that $\mathcal{M} \models \psi(\overline{a},b)$.
+        \item If $\phi$ is $\forall v_j \psi(\overline{v},v_j)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a},b)$ for all $b \in M$.
+    \end{enumerate}
+    If $\mathcal{M} \models \phi(\overline{a})$ we say that
+    $\mathcal{M}$ \emph{satisfies} $\phi(\overline{a})$ or $\phi(\overline{a})$ is \emph{true} in $\mathcal{M}$.
+\end{definition}
+
 \subsection{Basic Techniques and Important Results}
 
 \begin{theorem}[G\"odel's Completeness Theorem]
