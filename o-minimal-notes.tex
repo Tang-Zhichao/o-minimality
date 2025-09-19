@@ -1,0 +1,285 @@
+\documentclass{amsart}
+
+\usepackage[style=alphabetic,backref, giveninits, maxbibnames=10]{biblatex}
+\addbibresource{o-minimal.bib}
+
+\usepackage{graphicx} 
+\usepackage{xcolor}
+\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{construction}[theorem]{Construction}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\numberwithin{equation}{section}
+
+\newcommand{\definable}{\mathrm{def}}
+\newcommand{\analytic}{\mathrm{an}}
+
+\title{Notes on o-minimality}
+\author{Tang Zhichao}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic model theory}
+Materials from \cite{zbMATH01821671,zbMATH01160037},
+mainly follow \cite{zbMATH01821671}.
+\subsection{Languages and Structures}
+In mathematical logic, 
+we use first-order languages to describe mathematical structures. 
+Intuitively, a structure is a set that we wish to study equipped with a collection of distinguished functions, relations, and elements. 
+We then choose a language where we can talk about the distinguished functions, relations, and elements and nothing more.
+
+\begin{definition}
+A language $\mathcal{L}$ is given by specifying the following data:
+\begin{enumerate}[label = {(\roman*)}]
+    \item a set of function symbols $\mathcal{F}$ and positive integers $n_f$ for each $f \in \mathcal{F}$;
+    \item a set of relation symbols $\mathcal{R}$ and positive integers $n_R$ for each $R \in \mathcal{R}$;
+    \item a set of constant symbols $\mathcal{C}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+An $\mathcal{L}$-structure $\mathcal{M}$ is given by the following data:
+    \begin{enumerate}[label = {(\roman*)}]
+    \item a nonempty set $M$ called the universe, domain, or underlying set of $\mathcal{M}$;
+    \item a function $f^{\mathcal{M}} : M^{n_f} \to M$ for each $f \in \mathcal{F}$;
+    \item a set $R^{\mathcal{M}} \subseteq M^{n_R}$ for each $R \in \mathcal{R}$;
+    \item an element $c^{\mathcal{M}} \in M$ for each $c \in \mathcal{C}$.
+    \end{enumerate}
+\end{definition}
+
+\subsection{Important Results and Techniques}
+
+\begin{theorem}[G\"odel's Completeness Theorem]
+    Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence, then $T \models \phi$ if and only if $T\vdash \phi$.
+\end{theorem}
+
+\begin{theorem}[Compactness Theorem]
+    $T$ is satisfiable if and only if every finite subset of $T$ is satisfiable.
+\end{theorem}
+
+\begin{theorem}[Vaught's Test]
+    Let $T$ be a satisfiable theory with no finite models that is 
+    $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
+    Then $T$ is complete.
+\end{theorem}
+
+\begin{theorem}[Hilbert's 17th Problem]
+    If $f$ is a positive semi-definite rational function over a real closed field $F$,
+    then $f$ is a sum of squares of rational functions.
+\end{theorem}
+
+\textbf{DLO} is dense linear order
+\textbf{ACF} is algebraic closed field;
+\textbf{RCF} is real closed field.
+
+\begin{corollary}
+    $\mathbf{ACF}$ is a strongly minimal theory.
+\end{corollary}
+
+\begin{corollary}
+    $\mathbf{RCF}$ is an o-minimal theory.
+\end{corollary}
+
+We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
+
+\begin{theorem}[Monotonicity Theorem]
+    Let $f: (a,b)\to R$ be a definable function on the interval $(a,b)$.
+    Then there are points $a_1 < \cdot < a_k$ in $(a,b)$ such that on each subinterval $(a_j,a_{j+1})$,
+    with $a_0 = a$, $a_{k+1} = b$,
+    the function is either constant, or strictly monotone and continuous.
+\end{theorem}
+
+\begin{corollary}
+    Let $f: (a,b) \to R$ be definable.
+    Then for each $c\in (a,b)$ the limit $\lim_{x\uparrow c}f(x)$
+    and $\lim_{x\downarrow c}f(x)$ exist in $R_{\infty}$.
+    Also the limits $\lim_{x\uparrow b}f(x)$ and $\lim_{x\downarrow a}f(x)$ exist in $R_{\infty}$.
+\end{corollary}
+
+\begin{corollary}
+    Let $f: [a,b]\to R$ be continuous and definable.
+    Then $f$ takes a maximum and a minimum value on $[a,b]$.
+\end{corollary}
+
+\begin{lemma}[Finiteness Lemma]
+    Let $A \subset R^2$ be definable and suppose that for each $x\in R$
+    the fiber $A_x \coloneq \{y\in R\colon (x,y)\in A\}$ is finite.
+    Then there is $N \in \mathbb{N}$ such that $A_x \le N$ for all $x\in R$.
+\end{lemma}
+
+A decomposition $\mathcal{D}$ of $R^m$ is said to \textbf{partition}
+a set $S \subseteq R^m$ if each cell in $\mathcal{D}$ is
+either part of $S$ or disjoint from $S$,
+in other words, if $S$ is a union of cells in $\mathcal{D}$.
+\begin{theorem}[Cell Decomposition]
+    \hfill
+    \begin{enumerate}[label = {$\mathrm{(\Roman*_{m})}$}]
+        \item Given any definable sets $A_1,dots,A_k \subset R^m$ there is a decomposition of $R^m$ partitioning each of $A_1,\dots,A_k$.
+        \item For each definable function $f: A \to R$, $A \subseteq R^m$,
+        there is a decomposition $\mathcal{D}$ of $R^m$ partitioning $A$ such that 
+        the restriction $f|B: B \to R$ to each cell $B \in \mathcal{D}$ with $B \subseteq A$ is continuous.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
+\end{theorem}
+
+\section{O-minimal GAGA Results}
+O-minimal GAGA theorems from \cite{zbMATH07662555},
+which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}.
+
+\begin{theorem}[Definable GAGA]
+    Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
+    The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and 
+    its essential image if closed under subobjects and quotients.
+\end{theorem}
+
+\begin{theorem}[Definable images]
+    Let $X$ be an algebraic space and 
+    $\phi: X^{\definable} \to \mathcal{Z}$ a proper morphism of definable analytic spaces.
+    Then there is a factorization
+    \[\begin{tikzcd}
+    X^{\definable}\ar[rr,"\phi"]\ar[dr,"f^{\definable}"'] & & \mathcal{Z} \\
+    & Y^{\definable}\ar[ur,"\iota"'] &
+    \end{tikzcd}\]
+    where $f: X\to Y$ is a proper dominant morphism of algebraic spaces and 
+    $\iota: Y^{\definable} \to \mathcal{Z}$ is a closed embedding of definable analytic spaces.
+    Moreover, $f$ is uniquely determined as a morphism with fixed source.
+\end{theorem}
+
+\begin{proposition}
+    Let $X$, $Y$, $Z$ be definable complex analytic spaces and
+    suppose we have (solid) diagrams
+    \[
+    \begin{tikzcd}
+        X \ar[r,"h"] \ar[d,"g"] & Y\ar[dl,"f",dotted] \\ Z 
+    \end{tikzcd}
+    \hspace*{30pt}
+    \begin{tikzcd}
+        X^{\analytic} \ar[r,"h^{\analytic}"] \ar[d,"g^{\analytic}"] & Y^{\analytic}\ar[dl,"\varphi"] \\ Z^{\analytic} 
+    \end{tikzcd}
+    \]
+    such that $h$ is proper, surjective on points,
+    and $\mathcal{O}_Y \to h_*\mathcal{O}_X$ is injective.
+    Then a unique $f$ exists such that $f^{\analytic} = \varphi$.
+\end{proposition}
+
+\begin{proposition}
+    Let $X$ be a definable complex analytic space and 
+    $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
+    Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
+\end{proposition}
+
+\begin{theorem}
+    Let $X$ be a definable complex analytic space.
+    Then $\mathcal{O}_X$ is a coherent $\mathcal{O}_X$-module.
+\end{theorem}
+
+\begin{theorem}
+    Let $X$ be a definable complex analytic space.
+    Then the analytification functor 
+    $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
+\end{theorem}
+
+\begin{corollary}
+    For $X$ a definable complex analytic space,
+    a sequence $M' \to M \to M''$ of coherent $\mathcal{O}_X$-modules
+    is exact if and only if it is exact on stalks (or even analytic stalks).
+\end{corollary}
+
+\begin{theorem}
+    Let $X$ be an algebraic space and 
+    $(-)^{\definable}; \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
+    Then 
+    \begin{enumerate}[label = {(\arabic*)}]
+        \item $(-)^{\definable}$ is fully faithful and exact.
+        \item The essential image of $(-)^{\definable}$ is closed under taking subobjects and quotients.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Peterzil--Strarchenko, definable Chow theorem]
+    Let $Y$ be a reduced algebraic space and 
+    $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subset.
+    Then $\mathcal{X}$ is algebraic.
+\end{theorem}
+
+\begin{corollary}
+    Let $Y$ be an algebraic space and $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subspace.
+    Then $\mathcal{X}$ is (uniquely) the definabilization of an algebraic subspace.
+\end{corollary}
+
+\begin{corollary}
+    Let $X$, $Y$ be algebraic spaces.
+    Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely) the definabilization of an algebraic morphism.
+\end{corollary}
+
+\begin{proposition}
+    Let $f: W \to Z$ be a proper dominant morphism of algebraic spaces.
+    Suppose we have an algebraic square-zero thickening
+    $W \to W'$, a definable closed immersion $Z^{\definable} \to \mathcal{Z}'$,
+    and a morphism $\varphi': W^{\definable}\to \mathcal{Z}'$ which fits into a commutative diagram
+    \[\begin{tikzcd}
+        W^{\definable} \ar[r]\ar[d,"f^{\definable}"'] & W^{'\definable}\ar[d,"\varphi'"] \\
+        Z^{\definable} \ar[r] & \mathcal{Z}'
+    \end{tikzcd}\]
+    Then the following are uniquely defined:
+    an algebraic square-zero thickening
+    $Z \to Z''$,
+    a definable closed immersion $Z^{''\definable} \to \mathcal{Z}'$,
+    and a (proper) dominant morphism $f': W' \to Z''$ of algebraic spaces,
+    such that we have commutative diagrams
+    \[
+    \begin{tikzcd}
+        W\ar[r]\ar[d,"f"] & W'\ar[d,"f'"] \\
+        Z \ar[r] & Z''
+    \end{tikzcd}
+    \hspace{40pt}
+    \begin{tikzcd}
+        W^{'\definable}\ar[dd,"f^{'\definable}"]\ar[rd,"\varphi'"] & \\
+        & \mathcal{Z}' \\
+        Z^{''\definable}\ar[ur] &
+    \end{tikzcd}
+    \]
+\end{proposition}
+
+\begin{proposition}
+    Let $X$ be a smooth algebraic space,
+    $\mathcal{U}$ a smooth definable complex analytic space,
+    and $\varphi: X^{\definable} \to \mathcal{U}$ a smooth proper definable analytic morphism.
+    Then $\varphi: X^{\definable} \to \mathcal{U}$ is the definabilization of an algebraic morphism $f: X \to U$ and 
+    the associated morphism $U \to \mathrm{Hilb}(X)$ is a closed embedding.
+\end{proposition}
+
+\begin{lemma}
+    Suppose $Z$ is an algebraic space,
+    and $J$ is a coherent sheaf on $Z$.
+    Let $R$ be a sheaf of rings on the {\'e}tale site $Z^{\text{\' et}}$ of $Z$ such that 
+    \[
+    0 \to J \to R \to \mathcal{O}_Z \to 0
+    \]
+    is a first order thickening.
+    Then $(Z^{\text{\'et}},R)$ is an algebraic space.
+\end{lemma}
+
+\emergencystretch = 1em
+\printbibliography
+
+\end{document}
