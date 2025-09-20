@@ -661,7 +661,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
 \end{corollary}
 
 \begin{definition}
-    Let $\mathbb{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields and the axioms for ordered fields.
+    Let $\mathbf{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields and the axioms for ordered fields.
 
     If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
 \end{definition}
@@ -696,7 +696,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
 \end{corollary}
 
 \begin{corollary}
-    If $F \models \mathbb{RCF}$ and $A \subseteq F^n$ is semialgebraic,
+    If $F \models \mathbf{RCF}$ and $A \subseteq F^n$ is semialgebraic,
     then the closure (topological) of $F$ is semialgebraic.
 \end{corollary}
 
@@ -742,7 +742,7 @@ A function is semialgebraic if its graph is semialgebraic.
     There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
 \end{theorem}
 
-\subsubsection{van den Dries's statements}
+\subsubsection{van den Dries's original statements}
 
 We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
 
@@ -787,6 +787,73 @@ in other words, if $S$ is a union of cells in $\mathcal{D}$.
 
 \begin{theorem}
     The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
+\end{theorem}
+
+\begin{theorem}[Triangulation Theorem]
+    Let $S \subset R^m$ be a definable set,
+    with definable subsets $S_1,\dots,S_k$.
+    Then $S$ has a triangulation in $R^m$ that is compatible with these subsets.
+\end{theorem}
+
+\subsubsection{Definable Spaces and Quotients}
+\paragraph{\bfseries Definable spaces}
+Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
+and for each index $i \in I$ a set-theoretic bijection $g_i: U_i \to U'_i$ a topological space,
+such that the transition maps are continuous.
+
+Suppose that the index set $I$ is finite,
+that each $U'_i \subseteq R^{m(i)}$ is a definable set,
+and for each pair $i$, $j$ the set $g_i(U_i\cap U_j) \subseteq U'_i$
+is definable and $g_{ij}: g_i(U_i\cap U_j) \to g_j(U_j\cap U_i)$ is definable.
+(Such a family is called a \emph{definable atlas of $S$}.)
+
+Let $X \subseteq S$ and $f : X \to R$;
+call $X$ \emph{definable} if $g_i(X\cup U_i) \subseteq I'_i$ is definable for each $i$,
+and call $f$ \emph{definable} if $X$ is definable and 
+$f_i : g_i(X \cap U_i) \to R$ given by $f_i(x) = f(g_i^{-1}(x))$ is definable for each $i$.
+If $X = X_1\cup \cdots \cup X_n$,
+where all $X_k$ are definable,
+then a function $f: X \to R$ is definable if and only if each restriction $f|X_k: X_k \to R$ is definable.
+
+Note that $U_i$ is definable,
+and for $g_i = (g_{i1},\dots,g_{im(i)}) : U_i \to R^{m(i)}$,
+each $g_{ik}$ is definable.
+Let $\mathbf{DO}(S)$ be the collection of definable open subsets of $S$,
+and for each $U \in \mathbf{DO}(S)$,
+let $\mathbf{DC}(U)$ be the $R$-algebra of definable continuous functions $f: U \to R$.
+Then we call the set $S$ equipped with the sheaf $(\mathbf{DC}(U))_{U \in \mathbf{DO}(S)}$ a \emph{definable space}.
+
+\begin{definition}
+    Let $S$ and $T$ be definable spaces.
+    Then a map $F: S \to T$ is said to be \emph{definable} if its graph $\Gamma(F)$ is a definable subset of the product space $S \times T$.
+\end{definition}
+
+\begin{definition}
+    Recall that a topological space $S$ is said to be regular if for each $a \in  S$ and open $U \subseteq S$ with $a \in U$ there is an open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$. 
+    A definable space $S$ is regular if and only if for each $a \in S$ and definable open $U \subseteq S$ with $a \in U$ there is a definable open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$, 
+    and also if and only if for each $a \in S$ and definable closed $X \subseteq S$ with $a \notin X$ there are disjoint definable open neighborhoods of $a$ and $X$ in $S$.
+\end{definition}
+
+\paragraph{\bfseries Definable quotient spaces}
+
+Let $E \subseteq X\times X$ be a definable equivalence relation on a definable set $X \subseteq R^m$.
+
+\begin{definition}
+    A \emph{definable quotient of $X$ be $E$} is a pair $(p,Y)$ consisting of a definable set $Y \subseteq R^n$ and definable continuous surjective map $p: X\to Y$ such that 
+    \begin{enumerate}[label = {(\roman*)}]
+        \item $E = E_p$, i.e., $(x_1,x_2) \in E \iff p(x_1) = p(x_2)$ for all $x_1$, $x_2 \in X$;
+        \item $p$ is definably identifying, i.e., for all definable $K \subseteq Y$, if $p^{-1}(K)$ is closed in $X$, then $K$ is closed in $Y$.
+    \end{enumerate}
+\end{definition}
+
+Let $E$ be a definable equivalence relation on a definable set $X$.
+Let $pr_1 : E \to X$ and $pr_2 : E \to X$ be the restrictions of the two projection maps $X\times X \to X$.
+
+$E$ is called \emph{definably proper over $X$} if $pr_1$ is a definably proper map.
+
+\begin{theorem}
+    Suppose the definable equivalence relation $E$ on the definable set $X$ is definably proper over $X$.
+    Then $X/E$ exists as a definably proper quotient of $X$.
 \end{theorem}
 
 \section{O-minimal GAGA Results}
