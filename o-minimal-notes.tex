@@ -557,6 +557,22 @@ The study of definable sets is often made quite complicated by quantifiers.
 \end{definition}
 
 \begin{definition}
+    If $T$ is a theory then $T_{\forall}$ is the set of all universal consequences of $T$.
+    $\mathcal{A} \models T_{\forall}$ if and only if there is $\mathcal{M} \models T$ with $\mathcal{A} \subseteq \mathcal{M}$.
+
+    A theory $T$ has \emph{algebraically prime models}
+    if for any $\mathcal{A} \models T_{\forall}$ there is 
+    $\mathcal{M} \models T$ and an embedding $i:\mathcal{A} \to \mathcal{M}$ such that for all $\mathcal{N} \models T$ and embedding $j: \mathcal{A} \to \mathcal{N}$ there is $h: \mathcal{M} \to \mathcal{N}$ such that $j = h \circ i$.
+
+    If $\mathcal{M}$, $\mathcal{N} \models T$ and $\mathcal{M} \subseteq \mathcal{N}$,
+    $\mathcal{M}$ is \emph{simply closed} in $\mathcal{N}$ and denote
+    $\mathcal{M} \prec_s \mathcal{N}$ if for any quantifier free formula
+    $\phi(\overline{v},w)$ and any $\overline{a} \in M$,
+    if $\mathcal{N} \models \exists w\, \phi(\overline{a},w)$,
+    then so does $\mathcal{M}$.
+\end{definition}
+
+\begin{definition}
     An $\mathcal{L}$-theory $T$ is \emph{model-complete} if, 
     $\mathcal{M} \prec \mathcal{N}$ whenever
     $\mathcal{M} \subseteq \mathcal{N}$  and $\mathcal{M}$, $\mathcal{N} \models T$.
@@ -579,7 +595,118 @@ The study of definable sets is often made quite complicated by quantifiers.
     there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$ and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
 \end{definition}
 
-\paragraph{Algebraic closed field}
+\paragraph{\bfseries Algebraic Closed Fields}
+
+\begin{lemma}
+    $\mathbf{ACF}_{\forall}$ is the theory of integral domains.
+\end{lemma}
+
+\begin{theorem}
+    $\mathbf{ACF}$ has quantifier elimination.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{ACF}$ is model-complete and $\mathbf{ACF}_p$ is complete where $p = 0$ or $p$ is prime.
+\end{corollary}
+
+Let $K$ be a field.
+$X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
+
+\begin{lemma}
+    Let $K$ be a field.
+    The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
+    A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
+\end{lemma}
+
+\begin{corollary}
+    Let $K$ be an algebraically closed field.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $X \subset K^n$ is constructable if and only if it is definable.
+        \item (Chevalley's Theorem) The image of a constructable set under a polynomial map is constructable.
+    \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+    $\mathbf{ACF}$ is a strongly minimal theory.
+\end{corollary}
+
+\paragraph{\bfseries Real Closed Fields}
+
+\begin{definition}
+    A field $F$ is \emph{orderable} if there is a linear order $<$ of $F$ making $(F,<)$ an ordered field.
+
+    F is \emph{formally real} if $-1$ is not a sum of squares.
+\end{definition}
+
+\begin{theorem}
+    If $F$ is a formally real field, then $F$ is orderable.
+\end{theorem}
+
+\begin{definition}
+    A field $F$ is \emph{real closed} if it is formally real with no proper formally real algebraic extensions.
+\end{definition}
+
+\begin{theorem}
+    Let $F$ be a formally real field. The following are equivalent.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $F$ is real closed.
+        \item $F(i)$ is algebraically closed.
+        \item For any $a\in F$, either $a$ or $-a$ is a square and every polynomial of odd degree has a root.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    The class of real closed field is an elementary class of 
+    $\mathcal{L}_r$-structures.
+\end{corollary}
+
+\begin{definition}
+    Let $\mathbb{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields and the axioms for ordered fields.
+
+    If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
+\end{definition}
+
+\begin{theorem}
+    If $(F,<)$ is an ordered field,
+    and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
+    then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{RCF}$ has algebraically prime models.
+\end{corollary}
+
+\begin{theorem}
+    The theory $\mathbf{RCF}$ admits elimination of quantifiers in $\mathcal{L}_{or}$.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{RCF}$ is complete, model complete, and decidable.
+\end{corollary}
+
+\subsubsection{Semialgebraic Sets}
+\begin{definition}
+    Let $F$ be an ordered field.
+    $X \subset F^n$ is \emph{semialgebraic} if it is a Boolean combination of sets of the form $\{\overline{x}:p(\overline{x})>0\}$,
+    where $p(\overline{X}) \in F[X_1,\dots,X_n]$.
+\end{definition}
+
+\begin{corollary}[Tarski--Seidenberg Theorem]
+    The semialgebraic sets are closed under projection.
+\end{corollary}
+
+\begin{corollary}
+    If $F \models \mathbb{RCF}$ and $A \subseteq F^n$ is semialgebraic,
+    then the closure (topological) of $F$ is semialgebraic.
+\end{corollary}
+
+A function is semialgebraic if its graph is semialgebraic.
+
+\begin{definition}
+    Let $F$ be a real closed field and 
+    $f(\overline{X}) \in F(X_1,\dots,X_n)$ be a rational function.
+    $f$ is \emph{positive semi-definite} if $f(\overline{a}) \ge 0$ for all $\overline{a} \in F^n$.
+\end{definition}
 
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
@@ -587,14 +714,35 @@ The study of definable sets is often made quite complicated by quantifiers.
 \end{theorem}
 
 \begin{corollary}
-    $\mathbf{ACF}$ is a strongly minimal theory.
-\end{corollary}
-
-\paragraph{Real closed field}
-
-\begin{corollary}
     $\mathbf{RCF}$ is an o-minimal theory.
 \end{corollary}
+
+\begin{corollary}
+    Let $F$ be a real closed field and $f: F \to F$ is a semialgebraic function.
+    Then, one can partition $F$ into $I_1\cup \dots \cup I_m\cup X$,
+    where $X$ is finite and the $I_j$ are pairwise disjoint open intervals with endpoints in $F\cup \{\pm\infty\}$ such that $f$ is continuous on each $I_j$.
+\end{corollary}
+
+\begin{definition}[Cell]
+    Inductive definition of the collection of \emph{cells}.
+    \begin{enumerate}[label = {$\bullet$}]
+        \item $X \subseteq F^n$ is a $0$-cell if it is a single point.
+        \item $X \subset F$ is a $1$-cell if it is an interval $(a,b)$, where $a \in F \cup \{-\infty\}$, $b\in F\cup \{+\infty\}$, and $a < b$.
+        \item If $X \subset F^n$ is an $n$-cell and $f: X\to F$ is a continuous definable function, then $Y = \{(\overline{x},f(\overline{x})): \overline{x} \in X\}$ is an $n$-cell.
+        \item Let $X \subseteq F^n$ be an $n$-cell. Suppose that $f$ is either a continuous definable function from $X$ to $F$ or identically $-\infty$ and $g$ is either a continuous definable function from $X$ to $F$ such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then 
+        \[
+        Y = \{(\overline{x},y): \overline{x} \in X \land f(\overline{x}) < y < g(\overline{x})\}
+        \]
+        is an $n+1$-cell.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem} [Cell Decomposition]
+    Let $X \subseteq F^m$ be semialgebraic.
+    There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
+\end{theorem}
+
+\subsubsection{van den Dries's statements}
 
 We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
 
