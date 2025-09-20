@@ -542,7 +542,44 @@ In other words, there are enough function symbols in the language to witness all
     Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
 \end{theorem}
 
-\subsubsection{Algebraic Examples}
+\subsubsection{Algebraic Examples and Quantifiers}
+The study of definable sets is often made quite complicated by quantifiers.
+
+\begin{definition}
+    A theory $T$ has \emph{quantifier elimination} if for every formula $\phi$ there is a quantifier-free formula $\psi$ such that 
+    \[
+    T \models \phi \leftrightarrow \psi.
+    \]
+\end{definition}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{strongly minimal} if for any $\mathcal{M} \models T$ every definable subset of $M$ is either finite or cofinite.
+\end{definition}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{model-complete} if, 
+    $\mathcal{M} \prec \mathcal{N}$ whenever
+    $\mathcal{M} \subseteq \mathcal{N}$  and $\mathcal{M}$, $\mathcal{N} \models T$.
+\end{definition}
+
+\begin{proposition}
+    If $T$ has quantifier eliminations,
+    then $T$ is model-complete.
+\end{proposition}
+
+\begin{proposition}
+    Let $T$ be a model-complete theory. 
+    Suppose that there is $\mathcal{M}_0 \models T$ such that $\mathcal{M}_0$ embeds into every model of $T$. 
+    Then, $T$ is complete.
+\end{proposition}
+
+\begin{definition}
+    An ordered structure $(M,<,\dots)$ is \emph{o-minimal} if
+    for any definable $X \subset M$,
+    there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$ and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
+\end{definition}
+
+\paragraph{Algebraic closed field}
 
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
@@ -552,6 +589,8 @@ In other words, there are enough function symbols in the language to witness all
 \begin{corollary}
     $\mathbf{ACF}$ is a strongly minimal theory.
 \end{corollary}
+
+\paragraph{Real closed field}
 
 \begin{corollary}
     $\mathbf{RCF}$ is an o-minimal theory.
