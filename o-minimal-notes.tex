@@ -247,20 +247,94 @@ we have in $\mathcal{M}^{\mathrm{eq}}$ an $n$-ary function $f_E: M^n \to S_E$ gi
 \end{lemma}
 
 \subsection{Basic Techniques and Important Results}
+\subsubsection{Completeness and Compactness}
+Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence.
+A proof of $\phi$ from $T$ is a finite sequence of $\mathcal{L}$-formulas
+$\psi_1,\dots,\psi_m$ such that $\psi_m = \phi$ and $\psi_i \in T$ or 
+$\psi_i$ follows from $\psi_1,\dots,\psi_{i-1}$ by a simple logical rule for each $i$.
+
+Denote $T \vdash \phi$ if there is a proof of $\phi$ from $T$.
+
+Some properties of the proof system:
+\begin{enumerate}[label = {$\bullet$}]
+    \item Proofs are finite.
+    \item (Soundness) If $T \vdash \phi$, then $T \models \phi$.
+    \item If $T$ is a finite set of sentences, then there is an algorithm that, when given a sequence of $\mathcal{L}$-formulas $\sigma$ and an $\mathcal{L}$-sentence $\phi$, will decide whether $\sigma$ is a proof of $\phi$ from $T$.
+\end{enumerate}
+
+A language $\mathcal{L}$ is \emph{recursive} if there is an algorithm that decides whether a sequence of symbols is an $\mathcal{L}$-formula.
+An $\mathcal{L}$-theory $T$ is recursive if there is a algorithm that,
+when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in T$.
 
 \begin{theorem}[G\"odel's Completeness Theorem]
     Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence, then $T \models \phi$ if and only if $T\vdash \phi$.
 \end{theorem}
 
+An $\mathcal{L}$-theory $T$ is \emph{inconsistent} 
+if $T \vdash (\phi \land\neg\phi)$ for some sentence $\phi$;
+otherwise $T$ is \emph{consistent}.
+
 \begin{theorem}[Compactness Theorem]
     $T$ is satisfiable if and only if every finite subset of $T$ is satisfiable.
 \end{theorem}
 
-\begin{theorem}[Vaught's Test]
-    Let $T$ be a satisfiable theory with no finite models that is 
-    $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
-    Then $T$ is complete.
+A theory $T$ is \emph{finitely satisfiable} if every finite subset of $T$ is satisfiable.
+
+% \begin{definition}
+%     An $\mathcal{L}$-theory $T$ has the \emph{witness property} if 
+%     whenever $\phi(v)$ is an $\mathcal{L}$-formula with one free variable $v$,
+%     then there is a constant symbol $c \in \mathcal{L}$ such that 
+%     $T \models (\exists v\, \phi(v) \to \phi(c))$.
+% \end{definition}
+
+An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$. 
+
+% \begin{lemma}
+%     Suppose that $T$ is a maximal and finitely satisfiable $\mathcal{L}$-theory with witness property.
+%     Then, $T$ has a model.
+%     In fact, if $\kappa$ is a cardinal and $\mathcal{L}$ has at most $\kappa$ constant symbols, then there exists $\mathcal{M} \models T$ with $|\mathcal{M}| \le \kappa$.
+% \end{lemma}
+
+% \begin{lemma}
+%     Let $T$ be a finitely satisfiable $\mathcal{L}$-theory.
+%     There is a language $\mathcal{L}^* \supseteq \mathcal{L}$ and $T^* \supseteq T$ a finitely satisfiable $\mathcal{L}^*$-theory such that any $\mathcal{L}^*$-theory extending $T^*$ has the witness property.
+%     $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*| = |\mathcal{L}| + \aleph_0$.
+% \end{lemma}
+
+\begin{lemma}
+    Suppose that $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\phi$ is an $\mathcal{L}$-sentence, then,
+    either $T \cup \{\phi\}$ or $T \cup \{\neg\phi\}$ is satisfiable.
+\end{lemma}
+
+\begin{corollary}
+    If $T$ is a finitely satisfiable $\mathcal{L}$-theory,
+    then there is a maximal finitely satisfiable $\mathcal{L}$-theory $T' \supseteq T$.
+\end{corollary}
+
+\begin{theorem}
+    If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
+    then there is a model of $T$ of cardinality at most $\kappa$. 
 \end{theorem}
+
+\begin{lemma}
+    If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
+\end{lemma}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is called \emph{complete} if for any $\mathcal{L}$-sentence $\phi$,
+    either $T \models \phi$ or $T \models \neg\phi$.
+\end{definition}
+
+\begin{proposition}
+    Let $T$ be an $\mathcal{L}$-theory with infinite models.
+    If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
+    then there is a model of $T$ of cardinality $\kappa$.
+\end{proposition}
+
+\begin{definition}
+    Let $\kappa$ be an infinite cardinal and let $T$ be a theory with models of size $\kappa$.
+    $T$ is \emph{$\kappa$-categorical} if any two models of $T$ of cardinal $\kappa$ are isomorphic.
+\end{definition}
 
 Some abbreviation for common theories:
 \begin{enumerate}[label = {}]
@@ -268,6 +342,73 @@ Some abbreviation for common theories:
     \item \textbf{ACF}: algebraic closed field;
     \item \textbf{RCF}: real closed field.
 \end{enumerate}
+
+Let $\mathbf{ACF_p}$ be the theory of algebraically closed fields of characteristic $p$,
+where $p$ is either $0$ or a prime number.
+
+\begin{proposition} is $\kappa$-categorical for all uncountable cardinals $\kappa$.
+    $\mathbf{ACF}_p$
+\end{proposition}
+
+\begin{theorem}[Vaught's Test]
+    Let $T$ be a satisfiable theory with no finite models that is 
+    $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
+    Then $T$ is complete.
+\end{theorem}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
+\end{definition}
+
+\begin{lemma}
+    Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$. 
+    Then $T$ is decidable.
+\end{lemma}
+
+\begin{corollary}
+    For $p = 0$ or $p$ prime, $\mathbf{ACF}_p$ is decidable.
+\end{corollary}
+
+\begin{corollary}
+    Let $\phi$ be a sentence in the language of rings.
+    The following are equivalent.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $\phi$ is true in the complex numbers.
+        \item $\phi$ is true in every algebraically closed field of characteristic zero.
+        \item $\phi$ is true in some algebraically closed field of characteristic zero.
+        \item There are arbitrarily large primes $p$ such that $\phi$ is true in some algebraically closed field of characteristic $p$.
+        \item There is an $m$ such that for all $p > m$, $\phi$ is true in all algebraically closed fields of characteristic $p$.
+    \end{enumerate}
+\end{corollary}
+
+\subsubsection{Between structures}
+\begin{definition}
+    If $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$-structures,
+    then an $\mathcal{L}$-embedding $j: \mathcal{M} \to \mathcal{N}$ is called an \emph{elementary embedding} if 
+    \[
+    \mathcal{M} \models \phi(a_1,\dots,a_n) \iff \mathcal{N} \models \phi(j(a_1),\dots,j(a_n))
+    \] 
+    for all $\mathcal{L}$-formulas $\phi(v_1,\dots,v_n)$ and all $a_1,\dots,a_n \in M$.
+
+    If $\mathcal{M}$ is a substructure of $\mathcal{N}$, 
+    it is called an \emph{elementary substructure} and 
+    denote $\mathcal{M} \prec \mathcal{N}$ if the inclusion map is elementary,
+    equivalently, $\mathcal{N}$ is an \emph{elementary extension} of $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}[Upward L\"owenheim--Skolem Theorem]
+    Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and 
+    $\kappa$ be an infinite cardinal $\kappa \ge |\mathcal{M}| + |\mathcal{L}|$.
+    Then, there is $\mathcal{N}$ an $\mathcal{L}$-structure of cardinality $\kappa$ and $j; \mathcal{M} \to \mathcal{N}$ is elementary.
+\end{theorem}
+
+\begin{proposition}[Tarski--Vaught Test]
+    Suppose that $\mathcal{M}$ is a substructure of $\mathcal{N}$.
+    Then, $\mathcal{M}$ is an elementary substructure if and only if,
+    for any formula $\phi(v,\overline{w})$ and $\overline{a} \in M$,
+    if there is $b \in N$ such that $\mathcal{N} \models \phi(b,\overline{a})$,
+    there is $c \in M$ such that $\mathcal{N} \models \phi(c,\overline{a})$.
+\end{proposition}
 
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
