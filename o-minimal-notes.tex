@@ -861,6 +861,8 @@ O-minimal GAGA theorems are from \cite{zbMATH07662555},
 which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
 to adapt to the non-algebraic period domains from moduli spaces of abelian varieties.
 
+Main results:
+
 \begin{theorem}[{Definable GAGA, \cite[Theorem 2.1]{arXiv:2508.19215},\cite[Theorem 1.4]{zbMATH07662555}}]
     Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
     The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and 
@@ -868,6 +870,7 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
 \end{theorem}
 
 \begin{theorem}[{Definable images, \cite[Theorem 2.2]{arXiv:2508.19215},\cite[Theorem 1.3]{zbMATH07662555}}]
+    \label{def image}
     Let $X$ be an algebraic space and 
     $\phi: X^{\definable} \to \mathcal{Z}$ a proper morphism of definable analytic spaces.
     Then there is a factorization
@@ -879,6 +882,32 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     $\iota: Y^{\definable} \to \mathcal{Z}$ is a closed embedding of definable analytic spaces.
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
+
+\subsection{Analytification}
+
+Given a basic definable complex analytic space $X \subset U \subset \mathbb{C}^n$,
+we may naturally consider $X$ as an analytic space,
+which is denoted $X^{\analytic}$.
+For simplicity, denote $\mathbf{Coh}(X) := \mathbf{Coh}(\mathcal{O}_X)$ and $\mathbf{Coh}(X^{\analytic}) := \mathbf{Coh}(\mathcal{O}_{X^{\analytic}})$.
+There is a natural morphism $g: (X^{\analytic},\mathcal{O}_{X^{\analytic}}) \to (\underline{X},\mathcal{O}_X)$ of locally $\mathbb{C}$-ringed sites,
+and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ given by $F^{\analytic} := \mathcal{O}_{X^{\analytic}} \otimes_{g^{-1}\mathcal{O}_X} g^{-1}F$ together with a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analytic}}$.
+
+\begin{theorem}[{\cite[Theorem 2.38]{zbMATH07662555}}]
+    Let $X$ be a definable complex analytic space.
+    Then $\mathcal{O}_X$ is a coherent $\mathcal{O}_X$-module.
+\end{theorem}
+
+\begin{theorem}[{\cite[Theorem 2.39]{zbMATH07662555}}]
+    Let $X$ be a definable complex analytic space.
+    Then the analytification functor 
+    $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
+\end{theorem}
+
+\begin{corollary}[{\cite[Corollary 2.40]{zbMATH07662555}}]
+    For $X$ a definable complex analytic space,
+    a sequence $M' \to M \to M''$ of coherent $\mathcal{O}_X$-modules
+    is exact if and only if it is exact on stalks (or even analytic stalks).
+\end{corollary}
 
 \begin{proposition}[{\cite[Proposition 2.45]{zbMATH07662555}}]
     Let $X$ be a definable complex analytic space and 
@@ -903,24 +932,10 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     Then a unique $f$ exists such that $f^{\analytic} = \varphi$.
 \end{proposition}
 
-\begin{theorem}[{\cite[Theorem 2.38]{zbMATH07662555}}]
-    Let $X$ be a definable complex analytic space.
-    Then $\mathcal{O}_X$ is a coherent $\mathcal{O}_X$-module.
-\end{theorem}
-
-\begin{theorem}[{\cite[Theorem 2.39]{zbMATH07662555}}]
-    Let $X$ be a definable complex analytic space.
-    Then the analytification functor 
-    $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
-\end{theorem}
-
-\begin{corollary}[{\cite[Corollary 2.40]{zbMATH07662555}}]
-    For $X$ a definable complex analytic space,
-    a sequence $M' \to M \to M''$ of coherent $\mathcal{O}_X$-modules
-    is exact if and only if it is exact on stalks (or even analytic stalks).
-\end{corollary}
+\subsection{Definable GAGA Theorem}
 
 \begin{theorem}[{\cite[Theorem 3.1]{zbMATH07662555}}]
+    \label{def GAGA}
     Let $X$ be an algebraic space and 
     $(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
     Then 
@@ -930,11 +945,85 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[{Definable Chow theorem, \cite[Theorem 2.23]{zbMATH07662555}, Peterzil--Strarchenko \cite[Theorem 2.14]{zbMATH05364146}}]
+\begin{theorem}[{Definable Chow theorem, \cite[Theorem 3.3]{zbMATH07662555}, Peterzil--Strarchenko \cite[Corollary 4.5]{zbMATH05364146}}]
     Let $Y$ be a reduced algebraic space and 
     $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subset.
     Then $\mathcal{X}$ is algebraic.
 \end{theorem}
+
+\begin{lemma}[{\cite[Lemma 3.4]{zbMATH07662555}}]
+    $(-)^{\definable}$ is faithful and exact.
+\end{lemma}
+
+\begin{lemma}[{\cite[Lemma 3.5]{zbMATH07662555}}]
+    \label{Lemma 3.5}
+    Let $X$ be an algebraic space.
+    Then Definable GAGA Theorem \ref{def GAGA} holds for $X$ if and only if 
+    for every algebraic coherent sheaf $F$ on $X$,
+    any definable coherent subsheaf $\mathcal{E} \subset F^{\definable}$ is the definabilization of an algebraic coherent subsheaf $E \subset F$.
+\end{lemma}
+
+The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only if it holds on the reduction $X^{\mathrm{red}}$:
+\begin{lemma}[{\cite[Lemma 3.6]{zbMATH07662555}}]
+    \label{Lemma 3.6}
+    Let $X$ be an algebraic space with a nilpotent sheaf of ideals $I$ cutting out a subspace $X_0$.
+    Then Theorem \ref{def GAGA} holds for $X_0$ if and only if it holds for $X$.
+\end{lemma}
+
+\begin{proof}[Proof of Theorem \ref{def GAGA}]
+    Proceed by Noetherian induction on $X$,
+    assuming that Theorem \ref{def GAGA} holds for every proper subspace of $X$.
+    By \ref{Lemma 3.6}, $X$ can be assumed reduced.
+    Let $F$ be an algebraic coherent sheaf on $X$ and $\mathcal{E} \subset F^{\definable}$ a definable coherent subsheaf.
+    By Lemma \ref{Lemma 3.5} we must show that $\mathcal{E}$ is the definabilization of an algebraic coherent subsheaf $E \subset F$.
+
+    \begin{enumerate}[label = {Step \arabic*.}]
+        \item 
+        \begin{lemma}[{\cite[Lemma 3.7]{zbMATH07662555}}]
+            Any exact sequence 
+            \[
+            0 \to \mathcal{E} \to F^{\definable} \to \mathcal{G} \to 0
+            \]
+            in $\mathbf{Coh}(X^{\definable})$ for which $\mathcal{E}$ and $\mathcal{G}$ are locally free in the definabilization of an exact sequence
+            \[
+            0 \to E \to F \to G \to 0
+            \]
+            in $\mathbf{Coh}(X)$ where $E$ and $G$ are locally free.
+        \end{lemma}
+
+        \item 
+        \begin{lemma}[{\cite[Lemma 3.8]{zbMATH07662555}}]
+            For some dense open $U \subset X$, $\mathcal{E}_{|U}$ is algebraic.
+        \end{lemma}
+
+        \item 
+        With the notation above, 
+        let $E_U$ be the algebraic sheaf on $U$ for which $(E_U)^{\definable} \cong \mathcal{E}_{|U}$.
+        Let $\widetilde{E}$ be the "closure" of $E_U$ in $F$, i.e.,
+        the pullback 
+        \[\begin{tikzcd}
+            F \ar[r] & j_*j^*F \\
+            \widetilde{E} \ar[u]\ar[r] & j_*E_U \ar[u]
+        \end{tikzcd}\]
+        where $j: U \hookrightarrow X$ denotes the inclusion.
+        The sheaf $\widetilde{E}$ is evidently quasi-coherent and so it is coherent since it is a subsheaf of $F$.
+        Thus, $\widetilde{E}^{\definable}$ and $\mathcal{E}$ are both definable coherent subsheaves of $F^{\definable}$,
+        and therefore so is their intersection $\mathcal{G}$.
+
+        Let $I_Z$ be the ideal sheaf of $Z = X \backslash U$ with the reduced algebraic space structure, and $\mathcal{I} = I_Z^{\definable}$.
+        \begin{lemma}[{\cite[Lemma 3.9]{zbMATH07662555}}]
+            Suppose we have definable coherent sheaves $\mathcal{G} \subset \mathcal{G}'$
+            for which $\mathcal{G}_{|U} = \mathcal{G}'_{|U}$.
+            Then for some positive integer $n$, $\mathcal{I}^n\mathcal{G}' \subset \mathcal{G}$.
+        \end{lemma}
+        Applying the lemma to $\mathcal{G} \subset \widetilde{E}^{\definable}$,
+        we have $(I^n_Z\widetilde{E})^{\definable} \subset \mathcal{E}$ for some positive integer $n$.
+        The quotient $\mathcal{E}'$ is then a subsheaf of $(F')^{\definable}$, where $F' = F/I^n_Z\widetilde{E}$ is supported on a subspace whose reduction is $Z$.
+        By the induction hypothesis, $\mathcal{E}'$ is algebraic,
+        and $\mathcal{E}$ is the preimage in $F$,
+        hence algebraic, so the proof is complete.
+    \end{enumerate}
+\end{proof}
 
 \begin{corollary}[{\cite[Corollary 3.10]{zbMATH07662555}}]
     Let $Y$ be an algebraic space and $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subspace.
