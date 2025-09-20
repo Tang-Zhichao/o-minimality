@@ -270,15 +270,19 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
     Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence, then $T \models \phi$ if and only if $T\vdash \phi$.
 \end{theorem}
 
-An $\mathcal{L}$-theory $T$ is \emph{inconsistent} 
-if $T \vdash (\phi \land\neg\phi)$ for some sentence $\phi$;
-otherwise $T$ is \emph{consistent}.
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{inconsistent} 
+    if $T \vdash (\phi \land\neg\phi)$ for some sentence $\phi$;
+    otherwise $T$ is \emph{consistent}.
+\end{definition}
 
 \begin{theorem}[Compactness Theorem]
     $T$ is satisfiable if and only if every finite subset of $T$ is satisfiable.
 \end{theorem}
 
-A theory $T$ is \emph{finitely satisfiable} if every finite subset of $T$ is satisfiable.
+\begin{definition}
+    A theory $T$ is \emph{finitely satisfiable} if every finite subset of $T$ is satisfiable.
+\end{definition}
 
 % \begin{definition}
 %     An $\mathcal{L}$-theory $T$ has the \emph{witness property} if 
@@ -287,7 +291,9 @@ A theory $T$ is \emph{finitely satisfiable} if every finite subset of $T$ is sat
 %     $T \models (\exists v\, \phi(v) \to \phi(c))$.
 % \end{definition}
 
-An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$. 
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$. 
+\end{definition}
 
 % \begin{lemma}
 %     Suppose that $T$ is a maximal and finitely satisfiable $\mathcal{L}$-theory with witness property.
@@ -346,8 +352,8 @@ Some abbreviation for common theories:
 Let $\mathbf{ACF_p}$ be the theory of algebraically closed fields of characteristic $p$,
 where $p$ is either $0$ or a prime number.
 
-\begin{proposition} is $\kappa$-categorical for all uncountable cardinals $\kappa$.
-    $\mathbf{ACF}_p$
+\begin{proposition} 
+    $\mathbf{ACF}_p$ is $\kappa$-categorical for all uncountable cardinals $\kappa$.
 \end{proposition}
 
 \begin{theorem}[Vaught's Test]
@@ -409,6 +415,134 @@ where $p$ is either $0$ or a prime number.
     if there is $b \in N$ such that $\mathcal{N} \models \phi(b,\overline{a})$,
     there is $c \in M$ such that $\mathcal{N} \models \phi(c,\overline{a})$.
 \end{proposition}
+
+An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
+if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$ such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
+In other words, there are enough function symbols in the language to witness all existential statements.
+
+\begin{lemma}
+    Let $T$ be an $\mathcal{L}$-theory. 
+    There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory such that $T^*$ has built-in Skolem functions, 
+    and if $\mathcal{M} \models T$, 
+    then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$. 
+    $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
+
+    We call $T^*$ a skolemization of $T$.
+\end{lemma}
+
+\begin{theorem}[L\"owenheim--Skolem Theorem]
+    Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure and 
+    $X \subseteq M$, there is an elementary submodel $\mathcal{N}$ of $\mathcal{M}$ such that $X \subseteq N$ and $|\mathcal{N}| \le |X| + |\mathcal{L}| + \aleph_0$.
+\end{theorem}
+
+\begin{definition}
+    A \emph{universal sentence} is one of the form 
+    $\forall \overline{v} \phi(\overline{v})$,
+    where $\phi$ is quantifier-free.
+    An $\mathcal{L}$-theory $T$ has a \emph{universal axiomatization} if there is a set of universal $\mathcal{L}$-sentences $\Gamma$
+    such that $\mathcal{M} \models \Gamma$ if and only if $\mathcal{M} \models T$ for all $\mathcal{L}$-structures $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}
+    An $\mathcal{L}$-theory $T$ has a universal axiomatization if and only if 
+    whenever $\mathcal{M} \models T$ and $\mathcal{N}$ is a substructure of $\mathcal{M}$,
+    then $\mathcal{N} \models T$.
+\end{theorem}
+
+\begin{definition}
+    Suppose that $(I,<)$ is a linear order.
+    Suppose that $\mathcal{M}_i$ is an $\mathcal{L}$-structure for $i \in I$.
+    $(\mathcal{M}_i: i \in I)$ is a \emph{chian} of $\mathcal{L}$-structures if $\mathcal{M}_i \subseteq \mathcal{M}_j$ for $i < j$.
+    If $\mathcal{M}_i \prec \mathcal{M}_j$ for $i < j$,
+    $(\mathcal{M}_i: i \in I)$ is an \emph{elementary chian}.
+\end{definition}
+
+\begin{proposition}
+    Suppose that $(I,<)$ is a linear order and 
+    $(\mathcal{M}_i: i \in I)$ is an elementary chian.
+    Then, $\mathcal{M} = \bigcup_{i\in I} M_i$ is an elementary extension of each $\mathcal{M}_i$.
+\end{proposition}
+
+\begin{definition}
+    A theory $T$ has a $\forall\exists$-axiomatization if it can be axiomatized by sentences of the form $\forall v_1\dots\forall v_n \exists w_1\dots \exists w_m \phi(\overline{v},\overline{w})$ 
+    where $\phi$ is a quantifier-free formula.
+\end{definition}
+
+\begin{definition}
+    $\mathcal{M} \models T$is existentially closed 
+    if whenever $\mathcal{N} \models T$, $\mathcal{N} supseteq \mathcal{M}$, 
+    and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$, 
+    where $\overline{a} \in M$ and $\phi$ is quantifier-free,
+    then $\mathcal{M} \models \exists \overline{v} \, \phi(\overline{v},\overline{a})$.
+\end{definition}
+
+\begin{definition}[Ultrafilters]
+    Let $I$ be a set and $\mathcal{P}(I) = \{ X : X \subset I\}$
+    denote the power set of $I$.
+    A \emph{filter} on $I$ is a collection $D \subset \mathcal{P}(I)$ such that:
+    \begin{enumerate}[label = {\roman*)}]
+        \item $I \in D$, $\emptyset \not\in D$;
+        \item if $A$, $B \in D$, then $A \cap B \in D$;
+        \item if $A\in D$ and $A \subseteq B \subseteq I$, then $B \in D$.
+    \end{enumerate}
+    Examples:
+    \begin{enumerate}
+        \item Let $\kappa$ be an infinite cardinal with $\kappa \le |I|$. 
+        $D = \{ X \subseteq I : |I \backslash X| < \kappa\}$ is a filter.
+        If $\kappa = \aleph_0$, $D$ is called the \emph{Fr\'echet filter}
+        \item For $x \in I$, $D = \{X\subseteq I: x\in X\}$ is a filter on $I$, called the \emph{principal filter}.
+    \end{enumerate}
+
+    A filter $D$ on $I$ is an \emph{ultrafilter} if $X \in D$ or $I\backslash X \in D$ for all $X \subseteq I$.
+\end{definition}
+
+\begin{definition}[Ultraproducts]
+    Let $\mathcal{L}$ be a language and suppose that $I$ is an infinite set.
+    Suppose that $\mathcal{M}_i$ is an $\mathcal{L}$-structure for each $i \in I$.
+    Let $D$ be an ultrafilter on $I$.
+    Define a new structure $\mathcal{M} = \prod \mathcal{M}_i / D$,
+    which is called the \emph{ultraproduct} of the $\mathcal{M}_i$ using $D$.
+    Define a relation $\sim$ on 
+    \[
+    X = \prod_{i\in I}M_i = \Bigl\{ f: I \to \bigcup_{i\in I}M_i : f(i)\in M_i \text{ for all $i$} \Bigr\}
+    \]
+    by $f\sim g$ if and only if $\{i \in I:f(i) = g(i)\} \in D$.
+
+    The universe of $\mathcal{M}$ will be $M = X / \sim$.
+    
+    If $c$ is a constant symbol of $\mathcal{L}$,
+    let $c^{\mathcal{M}}$ be the $\sim$ class of $f_c \in X$ where $f_c(i) = c^{\mathcal{M}_i}$ for all $i\in I$. 
+
+    If $f$ is an $n$-ary function symbol of $\mathcal{L}$.
+    Suppose that $g_1,\dots,g_n,h_1,\dots,h_n\in X$,
+    and $g_i \sim h_i$ for $i = 1, \dots,n$.
+    Define $g_{n+1}(i) = f^{\mathcal{M}_i}(g_1(i),\dots,g_n(i))$ and 
+    $h_{n+1}(i) = f^{\mathcal{M}_i}(h_1(i),\dots,h_n(i))$ for $i \in I$.
+    Then one can show $g_{n+1} \sim h_{n+1}$.
+    Thus $f^{\mathcal{M}}(g_1/\sim,\dots,g_n/\sim) = g_{n+1}/\sim$ determines a well-defined function on $\mathcal{M}$.
+
+    Suppose that $R$ is a relation symbol of $\mathcal{L}$ and
+    $g_1,\dots,g_n,h_1,\dots,h_n\in X$ as above.
+    Then $\{i\in I: (g_1(i),\dots,g_n(i)) \in R^{\mathcal{M}_i}\} \in D$ if and only if $\{i \in I: (h_1(i),\dots,h_n(i)) \in R^{\mathcal{M}_i}\} \in D$.
+    One can interpret
+    \[
+    R^{\mathcal{M}} = \{(g_1/\sim,\dots,g_m/\sim): \{ i\in I: (g_1(i),\dots,g_m(i)) \in R^{\mathcal{M}_i}\} \in D\}.
+    \]
+\end{definition}
+
+\begin{definition}
+    Let $\mathcal{M}$ be a fixed $\mathcal{L}$-structure,
+    and $\mathcal{M}_i = \mathcal{M}$ for every $i \in \omega$.
+    Let $D$ be a non-principal ultrafilter on $\omega$.
+    Let $\mathcal{M}^* = \prod \mathcal{M}_i / D$,
+    which is called an \emph{ultrapower} of $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}[Keisler--Shelah Theorem]
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
+\end{theorem}
+
+\subsubsection{Algebraic Examples}
 
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
