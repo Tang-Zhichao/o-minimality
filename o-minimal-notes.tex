@@ -287,20 +287,100 @@ we have in $\mathcal{M}^{\mathrm{eq}}$ an $n$-ary function $f_E: M^n \to S_E$ gi
 \end{lemma}
 
 \subsection{Basic Techniques and Important Results}
+\subsubsection{Completeness and Compactness}
+Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence.
+A proof of $\phi$ from $T$ is a finite sequence of $\mathcal{L}$-formulas
+$\psi_1,\dots,\psi_m$ such that $\psi_m = \phi$ and $\psi_i \in T$ or 
+$\psi_i$ follows from $\psi_1,\dots,\psi_{i-1}$ by a simple logical rule for each $i$.
+
+Denote $T \vdash \phi$ if there is a proof of $\phi$ from $T$.
+
+Some properties of the proof system:
+\begin{enumerate}[label = {$\bullet$}]
+    \item Proofs are finite.
+    \item (Soundness) If $T \vdash \phi$, then $T \models \phi$.
+    \item If $T$ is a finite set of sentences, then there is an algorithm that, when given a sequence of $\mathcal{L}$-formulas $\sigma$ and an $\mathcal{L}$-sentence $\phi$, will decide whether $\sigma$ is a proof of $\phi$ from $T$.
+\end{enumerate}
+
+A language $\mathcal{L}$ is \emph{recursive} if there is an algorithm that decides whether a sequence of symbols is an $\mathcal{L}$-formula.
+An $\mathcal{L}$-theory $T$ is recursive if there is a algorithm that,
+when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in T$.
 
 \begin{theorem}[G\"odel's Completeness Theorem]
     Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence, then $T \models \phi$ if and only if $T\vdash \phi$.
 \end{theorem}
 
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{inconsistent} 
+    if $T \vdash (\phi \land\neg\phi)$ for some sentence $\phi$;
+    otherwise $T$ is \emph{consistent}.
+\end{definition}
+
 \begin{theorem}[Compactness Theorem]
     $T$ is satisfiable if and only if every finite subset of $T$ is satisfiable.
 \end{theorem}
 
-\begin{theorem}[Vaught's Test]
-    Let $T$ be a satisfiable theory with no finite models that is 
-    $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
-    Then $T$ is complete.
+\begin{definition}
+    A theory $T$ is \emph{finitely satisfiable} if every finite subset of $T$ is satisfiable.
+\end{definition}
+
+% \begin{definition}
+%     An $\mathcal{L}$-theory $T$ has the \emph{witness property} if 
+%     whenever $\phi(v)$ is an $\mathcal{L}$-formula with one free variable $v$,
+%     then there is a constant symbol $c \in \mathcal{L}$ such that 
+%     $T \models (\exists v\, \phi(v) \to \phi(c))$.
+% \end{definition}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$. 
+\end{definition}
+
+% \begin{lemma}
+%     Suppose that $T$ is a maximal and finitely satisfiable $\mathcal{L}$-theory with witness property.
+%     Then, $T$ has a model.
+%     In fact, if $\kappa$ is a cardinal and $\mathcal{L}$ has at most $\kappa$ constant symbols, then there exists $\mathcal{M} \models T$ with $|\mathcal{M}| \le \kappa$.
+% \end{lemma}
+
+% \begin{lemma}
+%     Let $T$ be a finitely satisfiable $\mathcal{L}$-theory.
+%     There is a language $\mathcal{L}^* \supseteq \mathcal{L}$ and $T^* \supseteq T$ a finitely satisfiable $\mathcal{L}^*$-theory such that any $\mathcal{L}^*$-theory extending $T^*$ has the witness property.
+%     $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*| = |\mathcal{L}| + \aleph_0$.
+% \end{lemma}
+
+\begin{lemma}
+    Suppose that $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\phi$ is an $\mathcal{L}$-sentence, then,
+    either $T \cup \{\phi\}$ or $T \cup \{\neg\phi\}$ is satisfiable.
+\end{lemma}
+
+\begin{corollary}
+    If $T$ is a finitely satisfiable $\mathcal{L}$-theory,
+    then there is a maximal finitely satisfiable $\mathcal{L}$-theory $T' \supseteq T$.
+\end{corollary}
+
+\begin{theorem}
+    If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
+    then there is a model of $T$ of cardinality at most $\kappa$. 
 \end{theorem}
+
+\begin{lemma}
+    If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
+\end{lemma}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is called \emph{complete} if for any $\mathcal{L}$-sentence $\phi$,
+    either $T \models \phi$ or $T \models \neg\phi$.
+\end{definition}
+
+\begin{proposition}
+    Let $T$ be an $\mathcal{L}$-theory with infinite models.
+    If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
+    then there is a model of $T$ of cardinality $\kappa$.
+\end{proposition}
+
+\begin{definition}
+    Let $\kappa$ be an infinite cardinal and let $T$ be a theory with models of size $\kappa$.
+    $T$ is \emph{$\kappa$-categorical} if any two models of $T$ of cardinal $\kappa$ are isomorphic.
+\end{definition}
 
 Some abbreviation for common theories:
 \begin{enumerate}[label = {}]
@@ -309,18 +389,400 @@ Some abbreviation for common theories:
     \item \textbf{RCF}: real closed field.
 \end{enumerate}
 
+Let $\mathbf{ACF_p}$ be the theory of algebraically closed fields of characteristic $p$,
+where $p$ is either $0$ or a prime number.
+
+\begin{proposition} 
+    $\mathbf{ACF}_p$ is $\kappa$-categorical for all uncountable cardinals $\kappa$.
+\end{proposition}
+
+\begin{theorem}[Vaught's Test]
+    Let $T$ be a satisfiable theory with no finite models that is 
+    $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
+    Then $T$ is complete.
+\end{theorem}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
+\end{definition}
+
+\begin{lemma}
+    Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$. 
+    Then $T$ is decidable.
+\end{lemma}
+
+\begin{corollary}
+    For $p = 0$ or $p$ prime, $\mathbf{ACF}_p$ is decidable.
+\end{corollary}
+
+\begin{corollary}
+    Let $\phi$ be a sentence in the language of rings.
+    The following are equivalent.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $\phi$ is true in the complex numbers.
+        \item $\phi$ is true in every algebraically closed field of characteristic zero.
+        \item $\phi$ is true in some algebraically closed field of characteristic zero.
+        \item There are arbitrarily large primes $p$ such that $\phi$ is true in some algebraically closed field of characteristic $p$.
+        \item There is an $m$ such that for all $p > m$, $\phi$ is true in all algebraically closed fields of characteristic $p$.
+    \end{enumerate}
+\end{corollary}
+
+\subsubsection{Between structures}
+\begin{definition}
+    If $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$-structures,
+    then an $\mathcal{L}$-embedding $j: \mathcal{M} \to \mathcal{N}$ is called an \emph{elementary embedding} if 
+    \[
+    \mathcal{M} \models \phi(a_1,\dots,a_n) \iff \mathcal{N} \models \phi(j(a_1),\dots,j(a_n))
+    \] 
+    for all $\mathcal{L}$-formulas $\phi(v_1,\dots,v_n)$ and all $a_1,\dots,a_n \in M$.
+
+    If $\mathcal{M}$ is a substructure of $\mathcal{N}$, 
+    it is called an \emph{elementary substructure} and 
+    denote $\mathcal{M} \prec \mathcal{N}$ if the inclusion map is elementary,
+    equivalently, $\mathcal{N}$ is an \emph{elementary extension} of $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}[Upward L\"owenheim--Skolem Theorem]
+    Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and 
+    $\kappa$ be an infinite cardinal $\kappa \ge |\mathcal{M}| + |\mathcal{L}|$.
+    Then, there is $\mathcal{N}$ an $\mathcal{L}$-structure of cardinality $\kappa$ and $j; \mathcal{M} \to \mathcal{N}$ is elementary.
+\end{theorem}
+
+\begin{proposition}[Tarski--Vaught Test]
+    Suppose that $\mathcal{M}$ is a substructure of $\mathcal{N}$.
+    Then, $\mathcal{M}$ is an elementary substructure if and only if,
+    for any formula $\phi(v,\overline{w})$ and $\overline{a} \in M$,
+    if there is $b \in N$ such that $\mathcal{N} \models \phi(b,\overline{a})$,
+    there is $c \in M$ such that $\mathcal{N} \models \phi(c,\overline{a})$.
+\end{proposition}
+
+An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
+if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$ such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
+In other words, there are enough function symbols in the language to witness all existential statements.
+
+\begin{lemma}
+    Let $T$ be an $\mathcal{L}$-theory. 
+    There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory such that $T^*$ has built-in Skolem functions, 
+    and if $\mathcal{M} \models T$, 
+    then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$. 
+    $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
+
+    We call $T^*$ a skolemization of $T$.
+\end{lemma}
+
+\begin{theorem}[L\"owenheim--Skolem Theorem]
+    Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure and 
+    $X \subseteq M$, there is an elementary submodel $\mathcal{N}$ of $\mathcal{M}$ such that $X \subseteq N$ and $|\mathcal{N}| \le |X| + |\mathcal{L}| + \aleph_0$.
+\end{theorem}
+
+\begin{definition}
+    A \emph{universal sentence} is one of the form 
+    $\forall \overline{v} \phi(\overline{v})$,
+    where $\phi$ is quantifier-free.
+    An $\mathcal{L}$-theory $T$ has a \emph{universal axiomatization} if there is a set of universal $\mathcal{L}$-sentences $\Gamma$
+    such that $\mathcal{M} \models \Gamma$ if and only if $\mathcal{M} \models T$ for all $\mathcal{L}$-structures $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}
+    An $\mathcal{L}$-theory $T$ has a universal axiomatization if and only if 
+    whenever $\mathcal{M} \models T$ and $\mathcal{N}$ is a substructure of $\mathcal{M}$,
+    then $\mathcal{N} \models T$.
+\end{theorem}
+
+\begin{definition}
+    Suppose that $(I,<)$ is a linear order.
+    Suppose that $\mathcal{M}_i$ is an $\mathcal{L}$-structure for $i \in I$.
+    $(\mathcal{M}_i: i \in I)$ is a \emph{chian} of $\mathcal{L}$-structures if $\mathcal{M}_i \subseteq \mathcal{M}_j$ for $i < j$.
+    If $\mathcal{M}_i \prec \mathcal{M}_j$ for $i < j$,
+    $(\mathcal{M}_i: i \in I)$ is an \emph{elementary chian}.
+\end{definition}
+
+\begin{proposition}
+    Suppose that $(I,<)$ is a linear order and 
+    $(\mathcal{M}_i: i \in I)$ is an elementary chian.
+    Then, $\mathcal{M} = \bigcup_{i\in I} M_i$ is an elementary extension of each $\mathcal{M}_i$.
+\end{proposition}
+
+\begin{definition}
+    A theory $T$ has a $\forall\exists$-axiomatization if it can be axiomatized by sentences of the form $\forall v_1\dots\forall v_n \exists w_1\dots \exists w_m \phi(\overline{v},\overline{w})$ 
+    where $\phi$ is a quantifier-free formula.
+\end{definition}
+
+\begin{definition}
+    $\mathcal{M} \models T$is existentially closed 
+    if whenever $\mathcal{N} \models T$, $\mathcal{N} supseteq \mathcal{M}$, 
+    and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$, 
+    where $\overline{a} \in M$ and $\phi$ is quantifier-free,
+    then $\mathcal{M} \models \exists \overline{v} \, \phi(\overline{v},\overline{a})$.
+\end{definition}
+
+\begin{definition}[Ultrafilters]
+    Let $I$ be a set and $\mathcal{P}(I) = \{ X : X \subset I\}$
+    denote the power set of $I$.
+    A \emph{filter} on $I$ is a collection $D \subset \mathcal{P}(I)$ such that:
+    \begin{enumerate}[label = {\roman*)}]
+        \item $I \in D$, $\emptyset \not\in D$;
+        \item if $A$, $B \in D$, then $A \cap B \in D$;
+        \item if $A\in D$ and $A \subseteq B \subseteq I$, then $B \in D$.
+    \end{enumerate}
+    Examples:
+    \begin{enumerate}
+        \item Let $\kappa$ be an infinite cardinal with $\kappa \le |I|$. 
+        $D = \{ X \subseteq I : |I \backslash X| < \kappa\}$ is a filter.
+        If $\kappa = \aleph_0$, $D$ is called the \emph{Fr\'echet filter}
+        \item For $x \in I$, $D = \{X\subseteq I: x\in X\}$ is a filter on $I$, called the \emph{principal filter}.
+    \end{enumerate}
+
+    A filter $D$ on $I$ is an \emph{ultrafilter} if $X \in D$ or $I\backslash X \in D$ for all $X \subseteq I$.
+\end{definition}
+
+\begin{definition}[Ultraproducts]
+    Let $\mathcal{L}$ be a language and suppose that $I$ is an infinite set.
+    Suppose that $\mathcal{M}_i$ is an $\mathcal{L}$-structure for each $i \in I$.
+    Let $D$ be an ultrafilter on $I$.
+    Define a new structure $\mathcal{M} = \prod \mathcal{M}_i / D$,
+    which is called the \emph{ultraproduct} of the $\mathcal{M}_i$ using $D$.
+    Define a relation $\sim$ on 
+    \[
+    X = \prod_{i\in I}M_i = \Bigl\{ f: I \to \bigcup_{i\in I}M_i : f(i)\in M_i \text{ for all $i$} \Bigr\}
+    \]
+    by $f\sim g$ if and only if $\{i \in I:f(i) = g(i)\} \in D$.
+
+    The universe of $\mathcal{M}$ will be $M = X / \sim$.
+    
+    If $c$ is a constant symbol of $\mathcal{L}$,
+    let $c^{\mathcal{M}}$ be the $\sim$ class of $f_c \in X$ where $f_c(i) = c^{\mathcal{M}_i}$ for all $i\in I$. 
+
+    If $f$ is an $n$-ary function symbol of $\mathcal{L}$.
+    Suppose that $g_1,\dots,g_n,h_1,\dots,h_n\in X$,
+    and $g_i \sim h_i$ for $i = 1, \dots,n$.
+    Define $g_{n+1}(i) = f^{\mathcal{M}_i}(g_1(i),\dots,g_n(i))$ and 
+    $h_{n+1}(i) = f^{\mathcal{M}_i}(h_1(i),\dots,h_n(i))$ for $i \in I$.
+    Then one can show $g_{n+1} \sim h_{n+1}$.
+    Thus $f^{\mathcal{M}}(g_1/\sim,\dots,g_n/\sim) = g_{n+1}/\sim$ determines a well-defined function on $\mathcal{M}$.
+
+    Suppose that $R$ is a relation symbol of $\mathcal{L}$ and
+    $g_1,\dots,g_n,h_1,\dots,h_n\in X$ as above.
+    Then $\{i\in I: (g_1(i),\dots,g_n(i)) \in R^{\mathcal{M}_i}\} \in D$ if and only if $\{i \in I: (h_1(i),\dots,h_n(i)) \in R^{\mathcal{M}_i}\} \in D$.
+    One can interpret
+    \[
+    R^{\mathcal{M}} = \{(g_1/\sim,\dots,g_m/\sim): \{ i\in I: (g_1(i),\dots,g_m(i)) \in R^{\mathcal{M}_i}\} \in D\}.
+    \]
+\end{definition}
+
+\begin{definition}
+    Let $\mathcal{M}$ be a fixed $\mathcal{L}$-structure,
+    and $\mathcal{M}_i = \mathcal{M}$ for every $i \in \omega$.
+    Let $D$ be a non-principal ultrafilter on $\omega$.
+    Let $\mathcal{M}^* = \prod \mathcal{M}_i / D$,
+    which is called an \emph{ultrapower} of $\mathcal{M}$.
+\end{definition}
+
+\begin{theorem}[Keisler--Shelah Theorem]
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
+\end{theorem}
+
+\subsubsection{Algebraic Examples and Quantifiers}
+The study of definable sets is often made quite complicated by quantifiers.
+
+\begin{definition}
+    A theory $T$ has \emph{quantifier elimination} if for every formula $\phi$ there is a quantifier-free formula $\psi$ such that 
+    \[
+    T \models \phi \leftrightarrow \psi.
+    \]
+\end{definition}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{strongly minimal} if for any $\mathcal{M} \models T$ every definable subset of $M$ is either finite or cofinite.
+\end{definition}
+
+\begin{definition}
+    If $T$ is a theory then $T_{\forall}$ is the set of all universal consequences of $T$.
+    $\mathcal{A} \models T_{\forall}$ if and only if there is $\mathcal{M} \models T$ with $\mathcal{A} \subseteq \mathcal{M}$.
+
+    A theory $T$ has \emph{algebraically prime models}
+    if for any $\mathcal{A} \models T_{\forall}$ there is 
+    $\mathcal{M} \models T$ and an embedding $i:\mathcal{A} \to \mathcal{M}$ such that for all $\mathcal{N} \models T$ and embedding $j: \mathcal{A} \to \mathcal{N}$ there is $h: \mathcal{M} \to \mathcal{N}$ such that $j = h \circ i$.
+
+    If $\mathcal{M}$, $\mathcal{N} \models T$ and $\mathcal{M} \subseteq \mathcal{N}$,
+    $\mathcal{M}$ is \emph{simply closed} in $\mathcal{N}$ and denote
+    $\mathcal{M} \prec_s \mathcal{N}$ if for any quantifier free formula
+    $\phi(\overline{v},w)$ and any $\overline{a} \in M$,
+    if $\mathcal{N} \models \exists w\, \phi(\overline{a},w)$,
+    then so does $\mathcal{M}$.
+\end{definition}
+
+\begin{definition}
+    An $\mathcal{L}$-theory $T$ is \emph{model-complete} if, 
+    $\mathcal{M} \prec \mathcal{N}$ whenever
+    $\mathcal{M} \subseteq \mathcal{N}$  and $\mathcal{M}$, $\mathcal{N} \models T$.
+\end{definition}
+
+\begin{proposition}
+    If $T$ has quantifier eliminations,
+    then $T$ is model-complete.
+\end{proposition}
+
+\begin{proposition}
+    Let $T$ be a model-complete theory. 
+    Suppose that there is $\mathcal{M}_0 \models T$ such that $\mathcal{M}_0$ embeds into every model of $T$. 
+    Then, $T$ is complete.
+\end{proposition}
+
+\begin{definition}
+    An ordered structure $(M,<,\dots)$ is \emph{o-minimal} if
+    for any definable $X \subset M$,
+    there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$ and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
+\end{definition}
+
+\paragraph{\bfseries Algebraic Closed Fields}
+
+\begin{lemma}
+    $\mathbf{ACF}_{\forall}$ is the theory of integral domains.
+\end{lemma}
+
+\begin{theorem}
+    $\mathbf{ACF}$ has quantifier elimination.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{ACF}$ is model-complete and $\mathbf{ACF}_p$ is complete where $p = 0$ or $p$ is prime.
+\end{corollary}
+
+Let $K$ be a field.
+$X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
+
+\begin{lemma}
+    Let $K$ be a field.
+    The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
+    A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
+\end{lemma}
+
+\begin{corollary}
+    Let $K$ be an algebraically closed field.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $X \subset K^n$ is constructable if and only if it is definable.
+        \item (Chevalley's Theorem) The image of a constructable set under a polynomial map is constructable.
+    \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+    $\mathbf{ACF}$ is a strongly minimal theory.
+\end{corollary}
+
+\paragraph{\bfseries Real Closed Fields}
+
+\begin{definition}
+    A field $F$ is \emph{orderable} if there is a linear order $<$ of $F$ making $(F,<)$ an ordered field.
+
+    F is \emph{formally real} if $-1$ is not a sum of squares.
+\end{definition}
+
+\begin{theorem}
+    If $F$ is a formally real field, then $F$ is orderable.
+\end{theorem}
+
+\begin{definition}
+    A field $F$ is \emph{real closed} if it is formally real with no proper formally real algebraic extensions.
+\end{definition}
+
+\begin{theorem}
+    Let $F$ be a formally real field. The following are equivalent.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $F$ is real closed.
+        \item $F(i)$ is algebraically closed.
+        \item For any $a\in F$, either $a$ or $-a$ is a square and every polynomial of odd degree has a root.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    The class of real closed field is an elementary class of 
+    $\mathcal{L}_r$-structures.
+\end{corollary}
+
+\begin{definition}
+    Let $\mathbf{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields and the axioms for ordered fields.
+
+    If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
+\end{definition}
+
+\begin{theorem}
+    If $(F,<)$ is an ordered field,
+    and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
+    then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{RCF}$ has algebraically prime models.
+\end{corollary}
+
+\begin{theorem}
+    The theory $\mathbf{RCF}$ admits elimination of quantifiers in $\mathcal{L}_{or}$.
+\end{theorem}
+
+\begin{corollary}
+    $\mathbf{RCF}$ is complete, model complete, and decidable.
+\end{corollary}
+
+\subsubsection{Semialgebraic Sets}
+\begin{definition}
+    Let $F$ be an ordered field.
+    $X \subset F^n$ is \emph{semialgebraic} if it is a Boolean combination of sets of the form $\{\overline{x}:p(\overline{x})>0\}$,
+    where $p(\overline{X}) \in F[X_1,\dots,X_n]$.
+\end{definition}
+
+\begin{corollary}[Tarski--Seidenberg Theorem]
+    The semialgebraic sets are closed under projection.
+\end{corollary}
+
+\begin{corollary}
+    If $F \models \mathbf{RCF}$ and $A \subseteq F^n$ is semialgebraic,
+    then the closure (topological) of $F$ is semialgebraic.
+\end{corollary}
+
+A function is semialgebraic if its graph is semialgebraic.
+
+\begin{definition}
+    Let $F$ be a real closed field and 
+    $f(\overline{X}) \in F(X_1,\dots,X_n)$ be a rational function.
+    $f$ is \emph{positive semi-definite} if $f(\overline{a}) \ge 0$ for all $\overline{a} \in F^n$.
+\end{definition}
+
 \begin{theorem}[Hilbert's 17th Problem]
     If $f$ is a positive semi-definite rational function over a real closed field $F$,
     then $f$ is a sum of squares of rational functions.
 \end{theorem}
 
 \begin{corollary}
-    $\mathbf{ACF}$ is a strongly minimal theory.
+    $\mathbf{RCF}$ is an o-minimal theory.
 \end{corollary}
 
 \begin{corollary}
-    $\mathbf{RCF}$ is an o-minimal theory.
+    Let $F$ be a real closed field and $f: F \to F$ is a semialgebraic function.
+    Then, one can partition $F$ into $I_1\cup \dots \cup I_m\cup X$,
+    where $X$ is finite and the $I_j$ are pairwise disjoint open intervals with endpoints in $F\cup \{\pm\infty\}$ such that $f$ is continuous on each $I_j$.
 \end{corollary}
+
+\begin{definition}[Cell]
+    Inductive definition of the collection of \emph{cells}.
+    \begin{enumerate}[label = {$\bullet$}]
+        \item $X \subseteq F^n$ is a $0$-cell if it is a single point.
+        \item $X \subset F$ is a $1$-cell if it is an interval $(a,b)$, where $a \in F \cup \{-\infty\}$, $b\in F\cup \{+\infty\}$, and $a < b$.
+        \item If $X \subset F^n$ is an $n$-cell and $f: X\to F$ is a continuous definable function, then $Y = \{(\overline{x},f(\overline{x})): \overline{x} \in X\}$ is an $n$-cell.
+        \item Let $X \subseteq F^n$ be an $n$-cell. Suppose that $f$ is either a continuous definable function from $X$ to $F$ or identically $-\infty$ and $g$ is either a continuous definable function from $X$ to $F$ such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then 
+        \[
+        Y = \{(\overline{x},y): \overline{x} \in X \land f(\overline{x}) < y < g(\overline{x})\}
+        \]
+        is an $n+1$-cell.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem} [Cell Decomposition]
+    Let $X \subseteq F^m$ be semialgebraic.
+    There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
+\end{theorem}
+
+\subsubsection{van den Dries's original statements}
 
 We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
 
@@ -365,6 +827,73 @@ in other words, if $S$ is a union of cells in $\mathcal{D}$.
 
 \begin{theorem}
     The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
+\end{theorem}
+
+\begin{theorem}[Triangulation Theorem]
+    Let $S \subset R^m$ be a definable set,
+    with definable subsets $S_1,\dots,S_k$.
+    Then $S$ has a triangulation in $R^m$ that is compatible with these subsets.
+\end{theorem}
+
+\subsubsection{Definable Spaces and Quotients}
+\paragraph{\bfseries Definable spaces}
+Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
+and for each index $i \in I$ a set-theoretic bijection $g_i: U_i \to U'_i$ a topological space,
+such that the transition maps are continuous.
+
+Suppose that the index set $I$ is finite,
+that each $U'_i \subseteq R^{m(i)}$ is a definable set,
+and for each pair $i$, $j$ the set $g_i(U_i\cap U_j) \subseteq U'_i$
+is definable and $g_{ij}: g_i(U_i\cap U_j) \to g_j(U_j\cap U_i)$ is definable.
+(Such a family is called a \emph{definable atlas of $S$}.)
+
+Let $X \subseteq S$ and $f : X \to R$;
+call $X$ \emph{definable} if $g_i(X\cup U_i) \subseteq I'_i$ is definable for each $i$,
+and call $f$ \emph{definable} if $X$ is definable and 
+$f_i : g_i(X \cap U_i) \to R$ given by $f_i(x) = f(g_i^{-1}(x))$ is definable for each $i$.
+If $X = X_1\cup \cdots \cup X_n$,
+where all $X_k$ are definable,
+then a function $f: X \to R$ is definable if and only if each restriction $f|X_k: X_k \to R$ is definable.
+
+Note that $U_i$ is definable,
+and for $g_i = (g_{i1},\dots,g_{im(i)}) : U_i \to R^{m(i)}$,
+each $g_{ik}$ is definable.
+Let $\mathbf{DO}(S)$ be the collection of definable open subsets of $S$,
+and for each $U \in \mathbf{DO}(S)$,
+let $\mathbf{DC}(U)$ be the $R$-algebra of definable continuous functions $f: U \to R$.
+Then we call the set $S$ equipped with the sheaf $(\mathbf{DC}(U))_{U \in \mathbf{DO}(S)}$ a \emph{definable space}.
+
+\begin{definition}
+    Let $S$ and $T$ be definable spaces.
+    Then a map $F: S \to T$ is said to be \emph{definable} if its graph $\Gamma(F)$ is a definable subset of the product space $S \times T$.
+\end{definition}
+
+\begin{definition}
+    Recall that a topological space $S$ is said to be regular if for each $a \in  S$ and open $U \subseteq S$ with $a \in U$ there is an open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$. 
+    A definable space $S$ is regular if and only if for each $a \in S$ and definable open $U \subseteq S$ with $a \in U$ there is a definable open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$, 
+    and also if and only if for each $a \in S$ and definable closed $X \subseteq S$ with $a \notin X$ there are disjoint definable open neighborhoods of $a$ and $X$ in $S$.
+\end{definition}
+
+\paragraph{\bfseries Definable quotient spaces}
+
+Let $E \subseteq X\times X$ be a definable equivalence relation on a definable set $X \subseteq R^m$.
+
+\begin{definition}
+    A \emph{definable quotient of $X$ be $E$} is a pair $(p,Y)$ consisting of a definable set $Y \subseteq R^n$ and definable continuous surjective map $p: X\to Y$ such that 
+    \begin{enumerate}[label = {(\roman*)}]
+        \item $E = E_p$, i.e., $(x_1,x_2) \in E \iff p(x_1) = p(x_2)$ for all $x_1$, $x_2 \in X$;
+        \item $p$ is definably identifying, i.e., for all definable $K \subseteq Y$, if $p^{-1}(K)$ is closed in $X$, then $K$ is closed in $Y$.
+    \end{enumerate}
+\end{definition}
+
+Let $E$ be a definable equivalence relation on a definable set $X$.
+Let $pr_1 : E \to X$ and $pr_2 : E \to X$ be the restrictions of the two projection maps $X\times X \to X$.
+
+$E$ is called \emph{definably proper over $X$} if $pr_1$ is a definably proper map.
+
+\begin{theorem}
+    Suppose the definable equivalence relation $E$ on the definable set $X$ is definably proper over $X$.
+    Then $X/E$ exists as a definably proper quotient of $X$.
 \end{theorem}
 
 \section{O-minimal GAGA Results}
