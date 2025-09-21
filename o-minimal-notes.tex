@@ -883,7 +883,26 @@ Main results:
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
 
-\subsection{Analytification}
+\subsection{Definable Analytic Spaces}
+\subsubsection{Local case}
+Identify $\mathbb{C} = \mathbb{R}^2$ using the real and imaginary parts,
+and give $\mathbb{C}$ the definable structure coming from the identification $\mathbb{C}^n = \mathbb{R}^{2n}$.
+For a definable open $U \subset \mathbb{C}^n$,
+let $\mathcal{O}_{\mathbb{C}^n}(U)$ be the definable holomorphic functions on $U$,
+that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
+
+\begin{definition}[{\cite[Definition 2.19]{zbMATH07662555}}]
+    Given an open definable subset $U \subset \mathbb{C}^n$ and 
+    a finitely generated ideal $I$ of $\mathcal{O}_{\mathbb{C}^n}(U)$,
+    the vanishing locus $X = |V(I)|$ is naturally a definable topological space.
+    We call the data of $U \subset \mathbb{C}^n$ and $I$ a \emph{basic definable complex analytic space}.
+    We often refer to the basic definable complex analytic space via $X \subset U \subset \mathbb{C}^n$,
+    and denote by $I_X := I\mathcal{O}_U$.
+\end{definition}
+
+\begin{theorem}[{Definable Oka coherence, \cite[Theorem 2.21]{zbMATH07662555}}]
+    The definable structure sheaf $\mathcal{O}_{\mathbb{C}^n}$ of $\mathbb{C}^n$ is a coherent $\mathcal{O}_{\mathbb{C}^n}$-module.
+\end{theorem}
 
 Given a basic definable complex analytic space $X \subset U \subset \mathbb{C}^n$,
 we may naturally consider $X$ as an analytic space,
@@ -891,6 +910,21 @@ which is denoted $X^{\analytic}$.
 For simplicity, denote $\mathbf{Coh}(X) := \mathbf{Coh}(\mathcal{O}_X)$ and $\mathbf{Coh}(X^{\analytic}) := \mathbf{Coh}(\mathcal{O}_{X^{\analytic}})$.
 There is a natural morphism $g: (X^{\analytic},\mathcal{O}_{X^{\analytic}}) \to (\underline{X},\mathcal{O}_X)$ of locally $\mathbb{C}$-ringed sites,
 and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ given by $F^{\analytic} := \mathcal{O}_{X^{\analytic}} \otimes_{g^{-1}\mathcal{O}_X} g^{-1}F$ together with a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analytic}}$.
+
+\begin{theorem}[{\cite[Theorem 2.27]{zbMATH07662555}}]
+    Let $X$ be a basic definable complex analytic space and $(-)^{\analytic} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ the analytification functor. Then
+    \begin{enumerate}[label = {(\arabic*)}]
+        \item $(-)^{\analytic}$ is exact;
+        \item $(-)^{\analytic}$ is faithful.
+    \end{enumerate}
+\end{theorem}
+
+\subsubsection{Global case}
+\begin{definition}[{\cite[Definition 2.35]{zbMATH07662555}}]
+    A locally $\mathbb{C}$-ringed definable space $(X,\mathcal{O}_X)$ is \emph{locally a basic definable complex analytic space}
+    if on a definable cover it is isomorphic to the locally $\mathbb{C}$ definable space associated to a basic definable complex analytic space.
+    We define the category of \emph{definable complex analytic spaces} (DefAnSp/$\mathbb{C}$) to be the full subcategory of the category of locally $\mathbb{C}$-ringed definable spaces consisting of $(X,\mathcal{O}_X)$ which are locally a basic definable complex analytic space.
+\end{definition}
 
 \begin{theorem}[{\cite[Theorem 2.38]{zbMATH07662555}}]
     Let $X$ be a definable complex analytic space.
@@ -909,12 +943,20 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
     is exact if and only if it is exact on stalks (or even analytic stalks).
 \end{corollary}
 
+\subsubsection{Reduced case}
 \begin{proposition}[{\cite[Proposition 2.45]{zbMATH07662555}}]
     Let $X$ be a definable complex analytic space and 
     $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
     Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
 \end{proposition}
 
+\subsubsection{Indcution method}
+\begin{proposition}[Definable Noetherian induction, {\cite[Proposition 2.46]{zbMATH07662555}}]
+    Let $X$ be a definable complex analytic space and $F$ a coherent sheaf on $X$. 
+    Any increasing chain of coherent subsheaves of $F$ must stabilize.
+\end{proposition}
+
+\subsubsection{Analytic factorization}
 \begin{proposition}[{\cite[Proposition 2.55]{zbMATH07662555}}]
     Let $X$, $Y$, $Z$ be definable complex analytic spaces and
     suppose we have (solid) diagrams
