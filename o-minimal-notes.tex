@@ -861,7 +861,7 @@ O-minimal GAGA theorems are from \cite{zbMATH07662555},
 which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
 to adapt to the non-algebraic period domains from moduli spaces of abelian varieties.
 
-Main results:
+{\noindent\Large\bfseries Main results:}
 
 \begin{theorem}[{Definable GAGA, \cite[Theorem 2.1]{arXiv:2508.19215},\cite[Theorem 1.4]{zbMATH07662555}}]
     Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
@@ -1076,6 +1076,29 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
     Let $X$, $Y$ be algebraic spaces.
     Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely) the definabilization of an algebraic morphism.
 \end{corollary}
+
+\subsection{Definable Images}
+
+\begin{definition}
+    A morphism $f:X \to Y$ of algebraic spaces is dominant if $\mathcal{O}_Y \to f_*\mathcal{O}_X$ is injective.
+\end{definition}
+
+Goal:
+\begin{theorem}
+    Let $X$ be an algebraic space,
+    $\mathcal{S}$ a definable complex analytic space,
+    and $\varphi: X^{\definable} \to \mathcal{S}$ a proper definable complex analytic morphism.
+    Then there exists a (unique) factorization
+    \[\begin{tikzcd}
+        X^{\definable}\ar[dr,"f^{\definable}"']\ar[rr,"\varphi"] & & \mathcal{S} \\
+        & Y^{\definable} \ar[ur,"\iota",hook] & 
+    \end{tikzcd}\]
+    where $f: X \to Y$ is dominant algebraic and $\iota$ is a definable closed immersion.
+    Moreover, $\iota^{\analytic}(Y^{\analytic})$ coincides with the image $\varphi^{\analytic}(X^{\analytic})$.
+\end{theorem}
+
+The proof involves two main steps:
+the case that $X$ is reduced and the reduction to this case.
 
 \begin{proposition}[{\cite[Proposition 4.5]{zbMATH07662555}}]
     Let $f: W \to Z$ be a proper dominant morphism of algebraic spaces.
