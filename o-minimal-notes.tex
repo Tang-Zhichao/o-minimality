@@ -1069,7 +1069,7 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
     such that $X$ is relatively closed in $U$.
 
     Let $U$ be an open subset of $\mathbf{R}^n$.
-    For $X \subseteq U$, 
+    For $X \subseteq U$,
     the \emph{frontier of $X$ in $U$} is defined as $Fr_U(X) = Cl_U(X)\backslash X$,
     where $Cl_U(X)$ is the closure of $X$ in $U$.
     If $U = \mathbf{R}^n$ then we write $Fr(X)$ instead of $Fr_{\mathbf{R}^n}$.  
@@ -1085,7 +1085,60 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
     \end{enumerate}
 \end{lemma}
 
+\begin{definition}
+  Let $f$ be a definable continuous map from a definable $X \subseteq \mathbf{R}^n$ into $Y \subseteq \mathbf{R}^k$.
+
+  For $b \in Y$, $f$ is \emph{definably proper over $b$} if for every definable curve $\gamma:(0,1) \to X$ such that $\lim_{t\to 0} f(\gamma(t)) = b$,
+  $\gamma(t)$ tends to some limit in $X$ as $t$ tends to $0$.
+  If $f: X \to Y$ is definably proper over every $b\in Y$ then
+  we say that $f$ is \emph{definably proper over $Y$} or just 
+  $f$ is \emph{definably proper}.
+
+  For $A \subseteq X$, we say that $f|A$ is \emph{definably proper over its image} if $f|A : A \to f(A)$ is definably proper over $f(A)$.
+
+  We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighboorhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$. 
+\end{definition}
+
+\begin{lemma}
+  For $f: X \to Y$ a definable continuous map,
+  $X \subseteq \mathbf{R}^n$,
+  and $y\in Y$, the following are equivalent:
+  \begin{enumerate}[label = {(\roman*)}]
+    \item $f$ is definably proper over $y$.
+    \item $f$ is bounded over $y$ and the intersection of the closure of the graph of $f$ 
+      in $\mathbf{R}^n\times Y$ with $Fr(X)\times \{y\}$ is empty.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Let $X \subseteq \mathbf{R}^n$ be a definable,
+  locally closed set, $f: X \to \mathbf{R}^k$ a definable
+  continuous map. Then,
+  \begin{enumerate}[label = {(\roman*)}]
+    The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
+    If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
+  \end{enumerate}
+\end{lemma}
+
 TODO
+
+\begin{theorem}[Definable Chow's Theorem]
+  Let $A$ be a definable $\mathbf{K}$-algebraic subset of $\mathbf{K}^n$.
+  Then $A$ is an algebraic set over $\mathbf{K}$.
+\end{theorem}
+
+\begin{theorem}[The dimension Theorem]
+  Let $M$ be an $n$-dimensional $\mathbf{K}$-manifold,
+  $X$, $Y$ definable, irreducible $\mathbf{K}$-analytic subsets of $M$.
+  Then every irreducible component of $X \cap Y$ has $\mathbf{K}$-dimension not less than $\dim_{\mathbf{K}}X + \dim_{\mathbf{K}}Y - n$.
+\end{theorem}
+
+\begin{theorem}[Remmert'd proper mapping theorem]
+  Let $f: M \to N$ be a $\mathbf{K}$-holomorphic map between $\mathbf{K}$-manifolds.
+  Let $A \subseteq M$ be a $\mathbf{K}$-analytic subset.
+  Assume that $f(A)$ is a closed subset of $N$.
+  Then $f(A)$ is a $\mathbf{K}$-analytic subset of $N$.
+\end{theorem}
 
 \section{O-minimal GAGA Results}
 O-minimal GAGA theorems are from \cite{zbMATH07662555},
@@ -1111,7 +1164,7 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     X^{\definable}\ar[rr,"\phi"]\ar[dr,"f^{\definable}"'] & & \mathcal{Z} \\
     & Y^{\definable}\ar[ur,"\iota"'] &
     \end{tikzcd}\]
-    where $f: X\to Y$ is a proper dominant morphism of algebraic spaces and 
+    where $f: X\to Y$ is a proper dominant morphism of algebraic spaces and
     $\iota: Y^{\definable} \to \mathcal{Z}$ is a closed embedding of definable analytic spaces.
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
@@ -1266,7 +1319,7 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
     By Lemma \ref{Lemma 3.5} we must show that $\mathcal{E}$ is the definabilization of an algebraic coherent subsheaf $E \subset F$.
 
     \begin{enumerate}[label = {Step \arabic*.}]
-        \item 
+        \item
         \begin{lemma}[Lemma 3.7]
             Any exact sequence 
             \[
@@ -1280,12 +1333,12 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
             in $\mathbf{Coh}(X)$ where $E$ and $G$ are locally free.
         \end{lemma}
 
-        \item 
+        \item
         \begin{lemma}[Lemma 3.8]
             For some dense open $U \subset X$, $\mathcal{E}_{|U}$ is algebraic.
         \end{lemma}
 
-        \item 
+        \item
         With the notation above, 
         let $E_U$ be the algebraic sheaf on $U$ for which $(E_U)^{\definable} \cong \mathcal{E}_{|U}$.
         Let $\widetilde{E}$ be the "closure" of $E_U$ in $F$, i.e.,
