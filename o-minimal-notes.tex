@@ -3,7 +3,7 @@
 \usepackage[style=alphabetic,backref, giveninits, maxbibnames=10]{biblatex}
 \addbibresource{o-minimal.bib}
 
-\usepackage{graphicx} 
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
 \usepackage{enumitem}
@@ -67,10 +67,13 @@ An $\mathcal{L}$-structure $\mathcal{M}$ is given by the following data:
 
 \begin{definition}
     Suppose that $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$-structures with universes $M$ and $N$, respectively.
-    An \emph{$\mathcal{L}$-embedding} is a one-to-one (injective) map $\eta: M \to N$ that preserves the interpretation of all of the symbols of $\mathcal{L}$.
+    An \emph{$\mathcal{L}$-embedding} is a one-to-one (injective) map $\eta: M \to N$
+    that preserves the interpretation of all of the symbols of $\mathcal{L}$.
     \begin{enumerate}[label = {(\roman*)}]
-        \item $\eta(f^{\mathcal{M}}(a_1,\dots,a_{n_f})) = f^{\mathcal{N}}(\eta(a_1),\dots,\eta(a_{n_f}))$ for all $f\in \mathcal{F}$ and $a_1,\dots,a_{n_f} \in M$;
-        \item $(a_1,\dots,a_{n_R}) \in R^{\mathcal{M}}$ if and only if $(\eta(a_1),\dots,\eta(a_{n_R})) \in R^{\mathcal{N}}$ for all $R \in \mathcal{R}$ and $a_1,\dots,a_{n_R} \in M$;
+        \item $\eta(f^{\mathcal{M}}(a_1,\dots,a_{n_f})) = f^{\mathcal{N}}(\eta(a_1),\dots,\eta(a_{n_f}))$
+          for all $f\in \mathcal{F}$ and $a_1,\dots,a_{n_f} \in M$;
+        \item $(a_1,\dots,a_{n_R}) \in R^{\mathcal{M}}$ if and only if
+          $(\eta(a_1),\dots,\eta(a_{n_R})) \in R^{\mathcal{N}}$ for all $R \in \mathcal{R}$ and $a_1,\dots,a_{n_R} \in M$;
         \item $\eta(c^{\mathcal{M}}) = c^{\mathcal{N}}$ for all $c \in \mathcal{C}$.
     \end{enumerate}
     A bijective $\mathcal{L}$-embedding is called an \emph{$\mathcal{L}$-isomorphism}.
@@ -118,13 +121,19 @@ A formula is a \emph{sentence} if it has no free variables.
     $\overline{a} = (a_{i_1},\dots,a_{i_m})\in M^m$.
     Inductively define $\mathcal{M} \models \phi(\overline{a})$ as follows.
     \begin{enumerate}[label = {\roman*)}]
-        \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$ if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
-        \item If $\phi$ is $R(t_1,\dots,t_{n_R})$, then $\mathcal{M} \models \phi(\overline{a})$ if $(t^{\mathcal{M}}_1(\overline{a}),\dots,t^{\mathcal{M}}_{n_R}(\overline{a})) \in R^{\mathcal{M}}$.
+        \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
+          if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
+        \item If $\phi$ is $R(t_1,\dots,t_{n_R})$, then $\mathcal{M} \models \phi(\overline{a})$
+          if $(t^{\mathcal{M}}_1(\overline{a}),\dots,t^{\mathcal{M}}_{n_R}(\overline{a})) \in R^{\mathcal{M}}$.
         \item If $\phi$ is $\neg \psi$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \not\models \psi(\overline{a})$.
-        \item If $\phi$ is $(\psi \land \theta)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a})$ and $\mathcal{M} \models \theta(\overline{a})$.
-        \item If $\phi$ is $(\psi \lor \theta)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a})$ or $\mathcal{M} \models \theta(\overline{a})$.
-        \item If $\phi$ is $\exists v_j \psi(\overline{v},v_j)$, then $\mathcal{M} \models \phi(\overline{a})$ if there is $b \in M$ such that $\mathcal{M} \models \psi(\overline{a},b)$.
-        \item If $\phi$ is $\forall v_j \psi(\overline{v},v_j)$, then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a},b)$ for all $b \in M$.
+        \item If $\phi$ is $(\psi \land \theta)$, then $\mathcal{M} \models \phi(\overline{a})$
+          if $\mathcal{M} \models \psi(\overline{a})$ and $\mathcal{M} \models \theta(\overline{a})$.
+        \item If $\phi$ is $(\psi \lor \theta)$, then $\mathcal{M} \models \phi(\overline{a})$
+          if $\mathcal{M} \models \psi(\overline{a})$ or $\mathcal{M} \models \theta(\overline{a})$.
+        \item If $\phi$ is $\exists v_j \psi(\overline{v},v_j)$, then $\mathcal{M} \models \phi(\overline{a})$
+          if there is $b \in M$ such that $\mathcal{M} \models \psi(\overline{a},b)$.
+        \item If $\phi$ is $\forall v_j \psi(\overline{v},v_j)$,
+          then $\mathcal{M} \models \phi(\overline{a})$ if $\mathcal{M} \models \psi(\overline{a},b)$ for all $b \in M$.
     \end{enumerate}
     If $\mathcal{M} \models \phi(\overline{a})$ we say that
     $\mathcal{M}$ \emph{satisfies} $\phi(\overline{a})$ or $\phi(\overline{a})$ is \emph{true} in $\mathcal{M}$.
@@ -137,7 +146,8 @@ A formula is a \emph{sentence} if it has no free variables.
 \end{proposition}
 
 \begin{definition}
-    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent and denote $\mathcal{M} \equiv \mathcal{N}$ if
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent
+    and denote $\mathcal{M} \equiv \mathcal{N}$ if
     \[
     \mathcal{M} \models \phi \text{ if and only if }\mathcal{N} \models \phi
     \]
@@ -162,26 +172,28 @@ $\mathcal{M}$ is a \emph{model} of $T$ and denote $\mathcal{M} \models T$ if $\m
 
 A theory is \emph{satisfiable} if it has a model.
 
-A class of $\mathcal{L}$-structures $\mathcal{K}$ is an \emph{elementary class} if there is an $\mathcal{L}$-theory $T$ such that $\mathcal{K} = \{ \mathcal{M}:\mathcal{M} \models T \}$.
+A class of $\mathcal{L}$-structures $\mathcal{K}$ is an \emph{elementary class}
+if there is an $\mathcal{L}$-theory $T$ such that $\mathcal{K} = \{ \mathcal{M}:\mathcal{M} \models T \}$.
 The sentences in $T$ are called \emph{axioms} for the elementary class.
 
 \begin{definition}
     Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence.
-    $\phi$ is a \emph{logical consequence} of $T$ and denote $T \models \phi$ if $\mathcal{M} \models \phi$ whenever $\mathcal{M} \models T$.
+    $\phi$ is a \emph{logical consequence} of $T$ and denote $T \models \phi$ if $\mathcal{M} \models \phi$
+    whenever $\mathcal{M} \models T$.
 \end{definition}
 
 \subsubsection{Definability and Interpretability}
 \begin{definition}
     Let $\mathcal{M} = (M,\dots)$ be an $\mathcal{L}$-structure.
-    $X \subseteq M^n$ is \emph{definable} if and only if there is an $\mathcal{L}$-formula $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$ and $\overline{b} \in M^m$ such that 
-    $X = \{ \overline{a} \in M^n : \mathcal{M} \models \phi(\overline{a},\overline{b}) \}$.
+    $X \subseteq M^n$ is \emph{definable} if and only if there is an $\mathcal{L}$-formula $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$
+    and $\overline{b} \in M^m$ such that $X = \{ \overline{a} \in M^n : \mathcal{M} \models \phi(\overline{a},\overline{b}) \}$.
     $\phi(\overline{v},\overline{b})$ \emph{defines} $X$.
-    $X$ is \emph{$A$-definable }or \emph{definable over $A$} 
-    if there is a formula $\psi(\overline{v},w_1,\dots,w_l)$ and $\overline{b} \in A^l$ such that $\psi(\overline{v},\overline{b})$ defines $X$.
+    $X$ is \emph{$A$-definable }or \emph{definable over $A$} if there is a formula $\psi(\overline{v},w_1,\dots,w_l)$ and
+    $\overline{b} \in A^l$ such that $\psi(\overline{v},\overline{b})$ defines $X$.
 \end{definition}
 
 \begin{lemma}
-    Let $\mathcal{L}_r$ be the language of ordered rings and 
+    Let $\mathcal{L}_r$ be the language of ordered rings and
     $(\mathbb{R}, +, -, \dot, <, 0, 1)$ be the ordered field of real numbers.
     Suppose that $X \subset \mathbb{R}^n$ is $A$-definable.
     Then, the topological closure of $X$ is also $A$-definable.
@@ -189,7 +201,7 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
 
 \begin{proposition}[Concrete Characterization of Definable Sets]
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
-    Suppose that $D_n$ is a collection of subsets of $M^n$ for all $n \ge 1$ and 
+    Suppose that $D_n$ is a collection of subsets of $M^n$ for all $n \ge 1$ and
     $\mathcal{D} = (D_n : n \ge 1)$ is the smallest collection such that:
     \begin{enumerate}[label = {\roman*)}]
         \item $M^n \in D_n$;
@@ -198,7 +210,8 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
         \item for all $i$, $j\le n$, $\{(x_1,\dots,x_n)\in M^n : x_i = x_j\} \in D_n$;
         \item if $X \in D_n$, then $M \times X \in D_{n+1}$;
         \item each $D_n$ is closed under complement, union, and intersection;
-        \item if $X \in D_{n+1}$ and $\pi: M^{n+1} \to M^n$ is the projection map $(x_1,\dots,x_{n+1}) \mapsto (x_1,\dots,x_n)$, then $\pi(X) \in D_n$;
+        \item if $X \in D_{n+1}$ and $\pi: M^{n+1} \to M^n$ is the projection map $(x_1,\dots,x_{n+1}) \mapsto (x_1,\dots,x_n)$,
+          then $\pi(X) \in D_n$;
         \item if $X \in D_{n+m}$ and $b \in M^m$, then $\{a\in M^n: (a,b) \in X \} \in D_n$.
     \end{enumerate}
     Then, $X \subseteq M^n$ is definable if and only if $X \in D_n$.
@@ -212,10 +225,14 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
 
 \begin{definition}
     An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$ 
-    if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$ as definable subsets and functions on $X$ (definable using $\mathcal{L}$) so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
+    if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$
+    as definable subsets and functions on $X$ (definable using $\mathcal{L}$)
+    so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
 
-    An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{interpretable} in an $\mathcal{L}$-structure $\mathcal{M}$ if there is a definable $X \subseteq M^n$, a definable equivalence relation $E$ on $X$,
-    and for each symbol of $\mathcal{L}_0$, one can find definable $E$-invariant sets on $X$ such that $X / E$ with the induced structure is isomorphic to $\mathcal{N}$.
+    An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{interpretable} in an $\mathcal{L}$-structure $\mathcal{M}$
+    if there is a definable $X \subseteq M^n$, a definable equivalence relation $E$ on $X$,
+    and for each symbol of $\mathcal{L}_0$, one can find definable $E$-invariant sets on $X$
+    such that $X / E$ with the induced structure is isomorphic to $\mathcal{N}$.
 \end{definition}
 
 Let $S$ be a set.
@@ -241,7 +258,8 @@ we have in $\mathcal{M}^{\mathrm{eq}}$ an $n$-ary function $f_E: M^n \to S_E$ gi
         \item If $X \subseteq M^n$ is definable in $\mathcal{M}^{\mathrm{eq}}$, then $X$ is definable in $\mathcal{M}$.
         \item If $\mathcal{M} \equiv \mathcal{N}$, then $\mathcal{M}^{\mathrm{eq}} \equiv \mathcal{N}^{\mathrm{eq}}$.
         \item If $\sigma$ is an automorphism of $\mathcal{M}^{\mathrm{eq}}$, then $\sigma|M$ is an automorphism of $\mathcal{M}$.
-        \item If $\sigma$ is an automorphism of $\mathcal{M}$, there is $\widehat{\sigma}$ an automorphism of $\mathcal{M}^{\mathrm{eq}}$ such that $\sigma = \widehat{\sigma}|M$.
+        \item If $\sigma$ is an automorphism of $\mathcal{M}$,
+          there is $\widehat{\sigma}$ an automorphism of $\mathcal{M}^{\mathrm{eq}}$ such that $\sigma = \widehat{\sigma}|M$.
     \end{enumerate}
 \end{lemma}
 
@@ -258,10 +276,13 @@ Some properties of the proof system:
 \begin{enumerate}[label = {$\bullet$}]
     \item Proofs are finite.
     \item (Soundness) If $T \vdash \phi$, then $T \models \phi$.
-    \item If $T$ is a finite set of sentences, then there is an algorithm that, when given a sequence of $\mathcal{L}$-formulas $\sigma$ and an $\mathcal{L}$-sentence $\phi$, will decide whether $\sigma$ is a proof of $\phi$ from $T$.
+    \item If $T$ is a finite set of sentences, then there is an algorithm that,
+      when given a sequence of $\mathcal{L}$-formulas $\sigma$ and an $\mathcal{L}$-sentence $\phi$,
+      will decide whether $\sigma$ is a proof of $\phi$ from $T$.
 \end{enumerate}
 
-A language $\mathcal{L}$ is \emph{recursive} if there is an algorithm that decides whether a sequence of symbols is an $\mathcal{L}$-formula.
+A language $\mathcal{L}$ is \emph{recursive} if there is an algorithm that
+decides whether a sequence of symbols is an $\mathcal{L}$-formula.
 An $\mathcal{L}$-theory $T$ is recursive if there is a algorithm that,
 when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in T$.
 
@@ -362,11 +383,12 @@ where $p$ is either $0$ or a prime number.
 \end{theorem}
 
 \begin{definition}
-    An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
+    An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that
+    when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
 \end{definition}
 
 \begin{lemma}
-    Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$. 
+    Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$.
     Then $T$ is decidable.
 \end{lemma}
 
@@ -389,7 +411,7 @@ where $p$ is either $0$ or a prime number.
 \subsubsection{Between structures}
 \begin{definition}
     If $\mathcal{M}$ and $\mathcal{N}$ are $\mathcal{L}$-structures,
-    then an $\mathcal{L}$-embedding $j: \mathcal{M} \to \mathcal{N}$ is called an \emph{elementary embedding} if 
+    then an $\mathcal{L}$-embedding $j: \mathcal{M} \to \mathcal{N}$ is called an \emph{elementary embedding} if
     \[
     \mathcal{M} \models \phi(a_1,\dots,a_n) \iff \mathcal{N} \models \phi(j(a_1),\dots,j(a_n))
     \] 
@@ -416,26 +438,29 @@ where $p$ is either $0$ or a prime number.
 \end{proposition}
 
 An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
-if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$ such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
+if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$
+such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
 In other words, there are enough function symbols in the language to witness all existential statements.
 
 \begin{lemma}
-    Let $T$ be an $\mathcal{L}$-theory. 
-    There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory such that $T^*$ has built-in Skolem functions, 
-    and if $\mathcal{M} \models T$, 
-    then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$. 
+    Let $T$ be an $\mathcal{L}$-theory.
+    There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory
+    such that $T^*$ has built-in Skolem functions,
+    and if $\mathcal{M} \models T$,
+    then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$.
     $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
 
     We call $T^*$ a skolemization of $T$.
 \end{lemma}
 
 \begin{theorem}[L\"owenheim--Skolem Theorem]
-    Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure and 
-    $X \subseteq M$, there is an elementary submodel $\mathcal{N}$ of $\mathcal{M}$ such that $X \subseteq N$ and $|\mathcal{N}| \le |X| + |\mathcal{L}| + \aleph_0$.
+    Suppose $\mathcal{M}$ is an $\mathcal{L}$-structure and
+    $X \subseteq M$, there is an elementary submodel $\mathcal{N}$ of $\mathcal{M}$
+    such that $X \subseteq N$ and $|\mathcal{N}| \le |X| + |\mathcal{L}| + \aleph_0$.
 \end{theorem}
 
 \begin{definition}
-    A \emph{universal sentence} is one of the form 
+    A \emph{universal sentence} is one of the form
     $\forall \overline{v} \phi(\overline{v})$,
     where $\phi$ is quantifier-free.
     An $\mathcal{L}$-theory $T$ has a \emph{universal axiomatization} if there is a set of universal $\mathcal{L}$-sentences $\Gamma$
@@ -443,7 +468,7 @@ In other words, there are enough function symbols in the language to witness all
 \end{definition}
 
 \begin{theorem}
-    An $\mathcal{L}$-theory $T$ has a universal axiomatization if and only if 
+    An $\mathcal{L}$-theory $T$ has a universal axiomatization if and only if
     whenever $\mathcal{M} \models T$ and $\mathcal{N}$ is a substructure of $\mathcal{M}$,
     then $\mathcal{N} \models T$.
 \end{theorem}
@@ -463,12 +488,13 @@ In other words, there are enough function symbols in the language to witness all
 \end{proposition}
 
 \begin{definition}
-    A theory $T$ has a $\forall\exists$-axiomatization if it can be axiomatized by sentences of the form $\forall v_1\dots\forall v_n \exists w_1\dots \exists w_m \phi(\overline{v},\overline{w})$ 
+    A theory $T$ has a $\forall\exists$-axiomatization if it can be axiomatized by sentences of
+    the form $\forall v_1\dots\forall v_n \exists w_1\dots \exists w_m \phi(\overline{v},\overline{w})$
     where $\phi$ is a quantifier-free formula.
 \end{definition}
 
 \begin{definition}
-    $\mathcal{M} \models T$is existentially closed 
+    $\mathcal{M} \models T$is existentially closed
     if whenever $\mathcal{N} \models T$, $\mathcal{N} \supseteq \mathcal{M}$,
     and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$,
     where $\overline{a} \in M$ and $\phi$ is quantifier-free,
@@ -522,7 +548,8 @@ In other words, there are enough function symbols in the language to witness all
 
     Suppose that $R$ is a relation symbol of $\mathcal{L}$ and
     $g_1,\dots,g_n,h_1,\dots,h_n\in X$ as above.
-    Then $\{i\in I: (g_1(i),\dots,g_n(i)) \in R^{\mathcal{M}_i}\} \in D$ if and only if $\{i \in I: (h_1(i),\dots,h_n(i)) \in R^{\mathcal{M}_i}\} \in D$.
+    Then $\{i\in I: (g_1(i),\dots,g_n(i)) \in R^{\mathcal{M}_i}\} \in D$ if and only if
+    $\{i \in I: (h_1(i),\dots,h_n(i)) \in R^{\mathcal{M}_i}\} \in D$.
     One can interpret
     \[
     R^{\mathcal{M}} = \{(g_1/\sim,\dots,g_m/\sim): \{ i\in I: (g_1(i),\dots,g_m(i)) \in R^{\mathcal{M}_i}\} \in D\}.
@@ -538,21 +565,23 @@ In other words, there are enough function symbols in the language to witness all
 \end{definition}
 
 \begin{theorem}[Keisler--Shelah Theorem]
-    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent
+    if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
 \end{theorem}
 
 \subsection{Algebraic Examples and Quantifiers}
 The study of definable sets is often made quite complicated by quantifiers.
 
 \begin{definition}
-    A theory $T$ has \emph{quantifier elimination} if for every formula $\phi$ there is a quantifier-free formula $\psi$ such that 
+    A theory $T$ has \emph{quantifier elimination} if for every formula $\phi$ there is a quantifier-free formula $\psi$ such that
     \[
     T \models \phi \leftrightarrow \psi.
     \]
 \end{definition}
 
 \begin{definition}
-    An $\mathcal{L}$-theory $T$ is \emph{strongly minimal} if for any $\mathcal{M} \models T$ every definable subset of $M$ is either finite or cofinite.
+    An $\mathcal{L}$-theory $T$ is \emph{strongly minimal} if for any $\mathcal{M} \models T$
+    every definable subset of $M$ is either finite or cofinite.
 \end{definition}
 
 \begin{definition}
@@ -561,7 +590,9 @@ The study of definable sets is often made quite complicated by quantifiers.
 
     A theory $T$ has \emph{algebraically prime models}
     if for any $\mathcal{A} \models T_{\forall}$ there is 
-    $\mathcal{M} \models T$ and an embedding $i:\mathcal{A} \to \mathcal{M}$ such that for all $\mathcal{N} \models T$ and embedding $j: \mathcal{A} \to \mathcal{N}$ there is $h: \mathcal{M} \to \mathcal{N}$ such that $j = h \circ i$.
+    $\mathcal{M} \models T$ and an embedding $i:\mathcal{A} \to \mathcal{M}$
+    such that for all $\mathcal{N} \models T$ and embedding $j: \mathcal{A} \to \mathcal{N}$
+    there is $h: \mathcal{M} \to \mathcal{N}$ such that $j = h \circ i$.
 
     If $\mathcal{M}$, $\mathcal{N} \models T$ and $\mathcal{M} \subseteq \mathcal{N}$,
     $\mathcal{M}$ is \emph{simply closed} in $\mathcal{N}$ and denote
@@ -591,7 +622,8 @@ The study of definable sets is often made quite complicated by quantifiers.
 \begin{definition}
     An ordered structure $(M,<,\dots)$ is \emph{o-minimal} if
     for any definable $X \subset M$,
-    there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$ and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
+    there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$
+    and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
 \end{definition}
 
 \subsubsection{Algebraic Closed Fields}
@@ -660,7 +692,8 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
 \end{corollary}
 
 \begin{definition}
-    Let $\mathbf{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields and the axioms for ordered fields.
+    Let $\mathbf{RCF}$ be the $\mathcal{L}_{or}$-theory axiomatized by the axioms for real closed fields
+    and the axioms for ordered fields.
 
     If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
 \end{definition}
@@ -725,7 +758,8 @@ A function is semialgebraic if its graph is semialgebraic.
 \begin{corollary}
     Let $F$ be a real closed field and $f: F \to F$ is a semialgebraic function.
     Then, one can partition $F$ into $I_1\cup \dots \cup I_m\cup X$,
-    where $X$ is finite and the $I_j$ are pairwise disjoint open intervals with endpoints in $F\cup \{\pm\infty\}$ such that $f$ is continuous on each $I_j$.
+    where $X$ is finite and the $I_j$ are pairwise disjoint open intervals with endpoints in $F\cup \{\pm\infty\}$
+    such that $f$ is continuous on each $I_j$.
 \end{corollary}
 
 \begin{corollary}[Curve Selection]
@@ -748,9 +782,14 @@ A function is semialgebraic if its graph is semialgebraic.
     Inductive definition of the collection of \emph{cells}.
     \begin{enumerate}[label = {$\bullet$}]
         \item $X \subseteq F^n$ is a $0$-cell if it is a single point.
-        \item $X \subset F$ is a $1$-cell if it is an interval $(a,b)$, where $a \in F \cup \{-\infty\}$, $b\in F\cup \{+\infty\}$, and $a < b$.
-        \item If $X \subset F^n$ is an $n$-cell and $f: X\to F$ is a continuous definable function, then $Y = \{(\overline{x},f(\overline{x})): \overline{x} \in X\}$ is an $n$-cell.
-        \item Let $X \subseteq F^n$ be an $n$-cell. Suppose that $f$ is either a continuous definable function from $X$ to $F$ or identically $-\infty$ and $g$ is either a continuous definable function from $X$ to $F$ such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then 
+        \item $X \subset F$ is a $1$-cell if it is an interval $(a,b)$,
+          where $a \in F \cup \{-\infty\}$, $b\in F\cup \{+\infty\}$, and $a < b$.
+        \item If $X \subset F^n$ is an $n$-cell and $f: X\to F$ is a continuous definable function,
+          then $Y = \{(\overline{x},f(\overline{x})): \overline{x} \in X\}$ is an $n$-cell.
+        \item Let $X \subseteq F^n$ be an $n$-cell. Suppose that $f$ is
+          either a continuous definable function from $X$ to $F$ or identically $-\infty$ and
+          $g$ is either a continuous definable function from $X$ to $F$
+          such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then 
         \[
         Y = \{(\overline{x},y): \overline{x} \in X \land f(\overline{x}) < y < g(\overline{x})\}
         \]
@@ -932,7 +971,7 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 % TODO
 
 \subsection{Definable Spaces and Quotients}
-\paragraph{\bfseries Definable spaces}
+\subsubsection{Definable spaces}
 Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
 and for each index $i \in I$ a set-theoretic bijection $g_i: U_i \to U'_i$ a topological space,
 such that the transition maps are continuous.
@@ -961,16 +1000,20 @@ Then we call the set $S$ equipped with the sheaf $(\mathbf{DC}(U))_{U \in \mathb
 
 \begin{definition}
     Let $S$ and $T$ be definable spaces.
-    Then a map $F: S \to T$ is said to be \emph{definable} if its graph $\Gamma(F)$ is a definable subset of the product space $S \times T$.
+    Then a map $F: S \to T$ is said to be \emph{definable} if its graph $\Gamma(F)$ is a definable subset of
+    the product space $S \times T$.
 \end{definition}
 
 \begin{definition}
-    Recall that a topological space $S$ is said to be regular if for each $a \in  S$ and open $U \subseteq S$ with $a \in U$ there is an open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$. 
-    A definable space $S$ is regular if and only if for each $a \in S$ and definable open $U \subseteq S$ with $a \in U$ there is a definable open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$, 
-    and also if and only if for each $a \in S$ and definable closed $X \subseteq S$ with $a \notin X$ there are disjoint definable open neighborhoods of $a$ and $X$ in $S$.
+    Recall that a topological space $S$ is said to be regular if for each $a \in  S$ and
+    open $U \subseteq S$ with $a \in U$ there is an open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$.
+    A definable space $S$ is regular if and only if for each $a \in S$ and definable open $U \subseteq S$ with $a \in U$
+    there is a definable open $V \subseteq S$ with $a \in V$ and $\mathrm{cl}(V) \subseteq U$,
+    and also if and only if for each $a \in S$ and definable closed $X \subseteq S$ with $a \notin X$
+    there are disjoint definable open neighborhoods of $a$ and $X$ in $S$.
 \end{definition}
 
-\paragraph{\bfseries Definable quotient spaces}
+\subsubsection{Definable quotient spaces}
 
 Let $E \subseteq X\times X$ be a definable equivalence relation on a definable set $X \subseteq R^m$.
 
@@ -993,7 +1036,7 @@ $E$ is called \emph{definably proper over $X$} if $pr_1$ is a definably proper m
 \end{theorem}
 
 \section{Definable complex geometry}
-Materials follows from \cite{MR2441378}.
+Materials follow from \cite{MR2441378}.
 
 Let $\mathbf{R}$ be a real closed field and $\mathbf{K}$ its algebraic closure,
 identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
@@ -1003,7 +1046,8 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
     covered by finitely many nonempty sets $U_1, \dots, U_k$,
     and for each $i = 1, \dots, k$,
     there is a set-theoretic bijection $\phi_i:U_i \to V_i$,
-    where $V_i$ is definable and open in $\mathbf{R}^n$ and such that each $\phi_i(U_j\cap U_i)$ is definable  an open and the transition maps are definable and continuous.
+    where $V_i$ is definable and open in $\mathbf{R}^n$ and such that each $\phi_i(U_j\cap U_i)$ is definable an open
+    and the transition maps are definable and continuous.
     Moreover, the topology induced on $X$ by this covering is Hausdorff.
 
     A manifold is a \emph{$C^p$ $\mathbf{R}$-manifold} if in addition
@@ -1016,7 +1060,8 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
     as $t$ tends to $0$ in $\mathbf{R}$, exists in $X$.
     This is equivalent to $X$ being closed and bounded in $\mathbf{R}^n$.
 
-    A definable set $X \subseteq \mathbf{R}^n$ is \emph{locally definably compact} if every $x \in $ has a definable neighborhood $V\subseteq X$
+    A definable set $X \subseteq \mathbf{R}^n$ is \emph{locally definably compact}
+    if every $x \in $ has a definable neighborhood $V\subseteq X$
     (i.e., $V$ contains an $X$-open set around $x$)
     which is definably compact.
 
@@ -1097,12 +1142,18 @@ that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
 Given a basic definable complex analytic space $X \subset U \subset \mathbb{C}^n$,
 we may naturally consider $X$ as an analytic space,
 which is denoted $X^{\analytic}$.
-For simplicity, denote $\mathbf{Coh}(X) := \mathbf{Coh}(\mathcal{O}_X)$ and $\mathbf{Coh}(X^{\analytic}) := \mathbf{Coh}(\mathcal{O}_{X^{\analytic}})$.
-There is a natural morphism $g: (X^{\analytic},\mathcal{O}_{X^{\analytic}}) \to (\underline{X},\mathcal{O}_X)$ of locally $\mathbb{C}$-ringed sites,
-and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ given by $F^{\analytic} := \mathcal{O}_{X^{\analytic}} \otimes_{g^{-1}\mathcal{O}_X} g^{-1}F$ together with a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analytic}}$.
+For simplicity, denote $\mathbf{Coh}(X) := \mathbf{Coh}(\mathcal{O}_X)$ and
+$\mathbf{Coh}(X^{\analytic}) := \mathbf{Coh}(\mathcal{O}_{X^{\analytic}})$.
+There is a natural morphism $g: (X^{\analytic},\mathcal{O}_{X^{\analytic}}) \to (\underline{X},\mathcal{O}_X)$
+of locally $\mathbb{C}$-ringed sites,
+and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$
+given by $F^{\analytic} := \mathcal{O}_{X^{\analytic}} \otimes_{g^{-1}\mathcal{O}_X} g^{-1}F$ together with
+a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analytic}}$.
 
 \begin{theorem}[Theorem 2.27]
-    Let $X$ be a basic definable complex analytic space and $(-)^{\analytic} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ the analytification functor. Then
+    Let $X$ be a basic definable complex analytic space and
+    $(-)^{\analytic} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ the analytification functor.
+    Then
     \begin{enumerate}[label = {(\arabic*)}]
         \item $(-)^{\analytic}$ is exact;
         \item $(-)^{\analytic}$ is faithful.
@@ -1112,8 +1163,11 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
 \subsubsection{Global case}
 \begin{definition}[Definition 2.35]
     A locally $\mathbb{C}$-ringed definable space $(X,\mathcal{O}_X)$ is \emph{locally a basic definable complex analytic space}
-    if on a definable cover it is isomorphic to the locally $\mathbb{C}$ definable space associated to a basic definable complex analytic space.
-    We define the category of \emph{definable complex analytic spaces} (DefAnSp/$\mathbb{C}$) to be the full subcategory of the category of locally $\mathbb{C}$-ringed definable spaces consisting of $(X,\mathcal{O}_X)$ which are locally a basic definable complex analytic space.
+    if on a definable cover it is isomorphic to the locally $\mathbb{C}$ definable space
+    associated to a basic definable complex analytic space.
+    We define the category of \emph{definable complex analytic spaces} (DefAnSp/$\mathbb{C}$) to be
+    the full subcategory of the category of locally $\mathbb{C}$-ringed definable spaces consisting of $(X,\mathcal{O}_X)$
+    which are locally a basic definable complex analytic space.
 \end{definition}
 
 \begin{theorem}[Theorem 2.38]
@@ -1156,7 +1210,7 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
     \end{tikzcd}
     \hspace*{30pt}
     \begin{tikzcd}
-        X^{\analytic} \ar[r,"h^{\analytic}"] \ar[d,"g^{\analytic}"'] & Y^{\analytic}\ar[dl,"\varphi"] \\ Z^{\analytic} 
+        X^{\analytic} \ar[r,"h^{\analytic}"] \ar[d,"g^{\analytic}"'] & Y^{\analytic}\ar[dl,"\varphi"] \\ Z^{\analytic}
     \end{tikzcd}
     \]
     such that $h$ is proper, surjective on points,
@@ -1168,8 +1222,9 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
 
 \begin{theorem}[Theorem 3.1]
     \label{def GAGA}
-    Let $X$ be an algebraic space and 
-    $(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
+    Let $X$ be an algebraic space and
+    \[(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})\]
+    the definabilization functor.
     Then 
     \begin{enumerate}[label = {(\arabic*)}]
         \item $(-)^{\definable}$ is fully faithful and exact.
@@ -1192,7 +1247,8 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
     Let $X$ be an algebraic space.
     Then Definable GAGA Theorem \ref{def GAGA} holds for $X$ if and only if 
     for every algebraic coherent sheaf $F$ on $X$,
-    any definable coherent subsheaf $\mathcal{E} \subset F^{\definable}$ is the definabilization of an algebraic coherent subsheaf $E \subset F$.
+    any definable coherent subsheaf $\mathcal{E} \subset F^{\definable}$ is the definabilization of
+    an algebraic coherent subsheaf $E \subset F$.
 \end{lemma}
 
 The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only if it holds on the reduction $X^{\mathrm{red}}$:
@@ -1216,7 +1272,8 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
             \[
             0 \to \mathcal{E} \to F^{\definable} \to \mathcal{G} \to 0
             \]
-            in $\mathbf{Coh}(X^{\definable})$ for which $\mathcal{E}$ and $\mathcal{G}$ are locally free in the definabilization of an exact sequence
+            in $\mathbf{Coh}(X^{\definable})$ for which $\mathcal{E}$ and $\mathcal{G}$ are locally free
+            in the definabilization of an exact sequence
             \[
             0 \to E \to F \to G \to 0
             \]
@@ -1242,7 +1299,8 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
         Thus, $\widetilde{E}^{\definable}$ and $\mathcal{E}$ are both definable coherent subsheaves of $F^{\definable}$,
         and therefore so is their intersection $\mathcal{G}$.
 
-        Let $I_Z$ be the ideal sheaf of $Z = X \backslash U$ with the reduced algebraic space structure, and $\mathcal{I} = I_Z^{\definable}$.
+        Let $I_Z$ be the ideal sheaf of $Z = X \backslash U$ with the reduced algebraic space structure,
+        and $\mathcal{I} = I_Z^{\definable}$.
         \begin{lemma}[Lemma 3.9]
             Suppose we have definable coherent sheaves $\mathcal{G} \subset \mathcal{G}'$
             for which $\mathcal{G}_{|U} = \mathcal{G}'_{|U}$.
@@ -1250,7 +1308,8 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
         \end{lemma}
         Applying the lemma to $\mathcal{G} \subset \widetilde{E}^{\definable}$,
         we have $(I^n_Z\widetilde{E})^{\definable} \subset \mathcal{E}$ for some positive integer $n$.
-        The quotient $\mathcal{E}'$ is then a subsheaf of $(F')^{\definable}$, where $F' = F/I^n_Z\widetilde{E}$ is supported on a subspace whose reduction is $Z$.
+        The quotient $\mathcal{E}'$ is then a subsheaf of $(F')^{\definable}$,
+        where $F' = F/I^n_Z\widetilde{E}$ is supported on a subspace whose reduction is $Z$.
         By the induction hypothesis, $\mathcal{E}'$ is algebraic,
         and $\mathcal{E}$ is the preimage in $F$,
         hence algebraic, so the proof is complete.
@@ -1264,7 +1323,8 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
 
 \begin{corollary}[Corollary 3.11]
     Let $X$, $Y$ be algebraic spaces.
-    Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely) the definabilization of an algebraic morphism.
+    Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely)
+    the definabilization of an algebraic morphism.
 \end{corollary}
 
 \subsection{Definable Images}
@@ -1323,7 +1383,7 @@ the case that $X$ is reduced and the reduction to this case.
     Let $X$ be a smooth algebraic space,
     $\mathcal{U}$ a smooth definable complex analytic space,
     and $\varphi: X^{\definable} \to \mathcal{U}$ a smooth proper definable analytic morphism.
-    Then $\varphi: X^{\definable} \to \mathcal{U}$ is the definabilization of an algebraic morphism $f: X \to U$ and 
+    Then $\varphi: X^{\definable} \to \mathcal{U}$ is the definabilization of an algebraic morphism $f: X \to U$ and
     the associated morphism $U \to \mathrm{Hilb}(X)$ is a closed embedding.
 \end{proposition}
 
