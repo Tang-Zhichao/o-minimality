@@ -13,7 +13,7 @@
 \usepackage{tikz}
 \usetikzlibrary{cd}
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -187,7 +187,7 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
     Then, the topological closure of $X$ is also $A$-definable.
 \end{lemma}
 
-\begin{proposition}[conrete characterization of definable sets]
+\begin{proposition}[Concrete Characterization of Definable Sets]
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
     Suppose that $D_n$ is a collection of subsets of $M^n$ for all $n \ge 1$ and 
     $\mathcal{D} = (D_n : n \ge 1)$ is the smallest collection such that:
@@ -207,16 +207,15 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
 \begin{proposition}
     Let $\mathcal{M}$ be an $\mathcal{L}$-structure.
     If $X \subset M^n$ is $A$-definable,
-    then every $\mathcal{L}$-automorphism of $\mathcal{M}$ that fixes $A$ point-wise fixes $X$ set-wise.
+    then every $\mathcal{L}$-automorphism of $\mathcal{M}$ that fixes $A$ pointwise fixes $X$ setwise.
 \end{proposition}
 
-An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$ 
-if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$ as definable subsets and functions on $X$ (definable using $\mathcal{L}$) so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
-
 \begin{definition}
+    An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$ 
+    if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$ as definable subsets and functions on $X$ (definable using $\mathcal{L}$) so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
+
     An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{interpretable} in an $\mathcal{L}$-structure $\mathcal{M}$ if there is a definable $X \subseteq M^n$, a definable equivalence relation $E$ on $X$,
     and for each symbol of $\mathcal{L}_0$, one can find definable $E$-invariant sets on $X$ such that $X / E$ with the induced structure is isomorphic to $\mathcal{N}$.
-if and only if 
 \end{definition}
 
 Let $S$ be a set.
@@ -470,7 +469,7 @@ In other words, there are enough function symbols in the language to witness all
 
 \begin{definition}
     $\mathcal{M} \models T$is existentially closed 
-    if whenever $\mathcal{N} \models T$, $\mathcal{N} supseteq \mathcal{M}$,
+    if whenever $\mathcal{N} \models T$, $\mathcal{N} \supseteq \mathcal{M}$,
     and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$,
     where $\overline{a} \in M$ and $\phi$ is quantifier-free,
     then $\mathcal{M} \models \exists \overline{v} \, \phi(\overline{v},\overline{a})$.
@@ -489,7 +488,7 @@ In other words, there are enough function symbols in the language to witness all
     \begin{enumerate}
         \item Let $\kappa$ be an infinite cardinal with $\kappa \le |I|$. 
         $D = \{ X \subseteq I : |I \backslash X| < \kappa\}$ is a filter.
-        If $\kappa = \aleph_0$, $D$ is called the \emph{Fr\'echet filter}
+        If $\kappa = \aleph_0$, $D$ is called the \emph{Fr\'echet filter}.
         \item For $x \in I$, $D = \{X\subseteq I: x\in X\}$ is a filter on $I$, called the \emph{principal filter}.
     \end{enumerate}
 
@@ -542,7 +541,7 @@ In other words, there are enough function symbols in the language to witness all
     Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent if and only if there is an index set $I$ and an ultrafilter $D$ on $I$ such that $\prod \mathcal{M}/D \cong \prod \mathcal{N}/D$.
 \end{theorem}
 
-\subsubsection{Algebraic Examples and Quantifiers}
+\subsection{Algebraic Examples and Quantifiers}
 The study of definable sets is often made quite complicated by quantifiers.
 
 \begin{definition}
@@ -595,11 +594,11 @@ The study of definable sets is often made quite complicated by quantifiers.
     there are finitely many intervals $I_1,\dots,I_m$ with endpoints in $M \cup \{\pm\infty\}$ and a finite set $X_0$ such that $X = X_0 \cup I_1 \cup \dots \cup I_m$.
 \end{definition}
 
-\paragraph{\bfseries Algebraic Closed Fields}
+\subsubsection{Algebraic Closed Fields}
 
-\begin{lemma}
-    $\mathbf{ACF}_{\forall}$ is the theory of integral domains.
-\end{lemma}
+% \begin{lemma}
+%     $\mathbf{ACF}_{\forall}$ is the theory of integral domains.
+% \end{lemma}
 
 \begin{theorem}
     $\mathbf{ACF}$ has quantifier elimination.
@@ -630,7 +629,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
     $\mathbf{ACF}$ is a strongly minimal theory.
 \end{corollary}
 
-\paragraph{\bfseries Real Closed Fields}
+\subsubsection{Real Closed Fields}
 
 \begin{definition}
     A field $F$ is \emph{orderable} if there is a linear order $<$ of $F$ making $(F,<)$ an ordered field.
@@ -684,7 +683,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
     $\mathbf{RCF}$ is complete, model complete, and decidable.
 \end{corollary}
 
-\subsubsection{Semialgebraic Sets}
+\subsection{Semialgebraic Sets and O-minimality}
 \begin{definition}
     Let $F$ be an ordered field.
     $X \subset F^n$ is \emph{semialgebraic} if it is a Boolean combination of sets of the form $\{\overline{x}:p(\overline{x})>0\}$,
@@ -717,10 +716,32 @@ A function is semialgebraic if its graph is semialgebraic.
     $\mathbf{RCF}$ is an o-minimal theory.
 \end{corollary}
 
+\begin{lemma}
+    If $f:\mathbb{R} \to \mathbb{R}$ is semialgebraic,
+    then for any open interval $U \subseteq \mathbb{R}$,
+    there is a point $x\in U$ such that $f$ is continuous at $x$.
+\end{lemma}
+
 \begin{corollary}
     Let $F$ be a real closed field and $f: F \to F$ is a semialgebraic function.
     Then, one can partition $F$ into $I_1\cup \dots \cup I_m\cup X$,
     where $X$ is finite and the $I_j$ are pairwise disjoint open intervals with endpoints in $F\cup \{\pm\infty\}$ such that $f$ is continuous on each $I_j$.
+\end{corollary}
+
+\begin{corollary}[Curve Selection]
+    Let $F$ be a real closed field.
+    Let $X \subseteq F^n$ be semialgebraic and $\overline{a}$
+    be a point in the closure of $X$.
+    There is a continuous semialgebraic function $f:(0,r) \to F^n$
+    such that for all $\epsilon\in(0,r)$, $f(x) \in X$ and $\lim_{\epsilon\to 0} f(\epsilon) = \overline{a}$.
+\end{corollary}
+
+\begin{corollary}
+    Let $F$ be a real closed field.
+    Let $E \subseteq F^n \times F^n$ be a definable equivalence relation.
+    There is a definable $X \subset F^n$ such that for all 
+    $a \in F^n$ there is a unique $b\in X$ such that $aEb$.
+    Such $X$ is called a definable \emph{transversal} of $E$.
 \end{corollary}
 
 \begin{definition}[Cell]
@@ -737,160 +758,180 @@ A function is semialgebraic if its graph is semialgebraic.
     \end{enumerate}
 \end{definition}
 
-\begin{theorem} [Cell Decomposition]
+\begin{lemma}
+    Let $X \subseteq F^{n+1}$ be semialgebraic.
+    There is a natural number $N$ such that if $\overline{a}\in F^n$
+    and $X_{\overline{a}} = \{y: (\overline{a},y)\in X\}$ is finite,
+    then $|X_{\overline{a}}| < N$.
+\end{lemma}
+
+\begin{theorem}[Cell Decomposition]
     Let $X \subseteq F^m$ be semialgebraic.
     There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
 \end{theorem}
 
-\subsubsection{van den Dries's original statements}
-
-We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
-
-\begin{theorem}[Monotonicity Theorem]
-    Let $f: (a,b)\to R$ be a definable function on the interval $(a,b)$.
-    Then there are points $a_1 < \cdot < a_k$ in $(a,b)$ such that on each subinterval $(a_j,a_{j+1})$,
-    with $a_0 = a$, $a_{k+1} = b$,
-    the function is either constant, or strictly monotone and continuous.
+\begin{theorem}[Real Nullstellensatz]
+    Let $F$ be a real closed field,
+    and let $I$ be an ideal in $F[\overline{X}]$.
+    Then, $V_F(I)$ is nonempty if and only if whenever $p_1,\dots,p_m\in F[\overline{X}]$ and $\sum p_i^2 \in I$,
+    then all the $p_i \in I$. 
 \end{theorem}
 
-\begin{corollary}
-    Let $f: (a,b) \to R$ be definable.
-    Then for each $c\in (a,b)$ the limit $\lim_{x\uparrow c}f(x)$
-    and $\lim_{x\downarrow c}f(x)$ exist in $R_{\infty}$.
-    Also the limits $\lim_{x\uparrow b}f(x)$ and $\lim_{x\downarrow a}f(x)$ exist in $R_{\infty}$.
-\end{corollary}
-
-\begin{corollary}
-    Let $f: [a,b]\to R$ be continuous and definable.
-    Then $f$ takes a maximum and a minimum value on $[a,b]$.
-\end{corollary}
-
-\begin{lemma}[Finiteness Lemma]
-    Let $A \subset R^2$ be definable and suppose that for each $x\in R$
-    the fiber $A_x \coloneq \{y\in R\colon (x,y)\in A\}$ is finite.
-    Then there is $N \in \mathbb{N}$ such that $A_x \le N$ for all $x\in R$.
-\end{lemma}
-
-A decomposition $\mathcal{D}$ of $R^m$ is said to \textbf{partition}
-a set $S \subseteq R^m$ if each cell in $\mathcal{D}$ is
-either part of $S$ or disjoint from $S$,
-in other words, if $S$ is a union of cells in $\mathcal{D}$.
-\begin{theorem}[Cell Decomposition]
-    \hfill
-    \begin{enumerate}[label = {$\mathrm{(\Roman*_{m})}$}]
-        \item Given any definable sets $A_1,dots,A_k \subset R^m$ there is a decomposition of $R^m$ partitioning each of $A_1,\dots,A_k$.
-        \item For each definable function $f: A \to R$, $A \subseteq R^m$,
-        there is a decomposition $\mathcal{D}$ of $R^m$ partitioning $A$ such that 
-        the restriction $f|B: B \to R$ to each cell $B \in \mathcal{D}$ with $B \subseteq A$ is continuous.
-    \end{enumerate}
-\end{theorem}
+Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 
 \begin{theorem}
-    The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
+    The theory of $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
 \end{theorem}
 
-\subsubsection{}
-\begin{theorem}
-  Let $(R,<,\mathcal{S})$ be an o-minimal structure and 
-  $S \subseteq R^{p+q}$ a definable set.
-  Then there is a positive integer $d = d(S)$ such that
-  for all sufficiently large $n\in\mathbb{N}$
-  each $n$-element set $F \subseteq R^q$ has at most $n^d$ subsets of the form $S_x \cap F$ with $x \in R^p$.
-\end{theorem}
+% \subsubsection{van den Dries's original statements}
 
-Let $\mathcal{C}$ be a collection of subsets of an infinite set $X$.
-Given $F \subseteq X$,
-  \[
-    \mathcal{C}\cap F := \{\mathcal{C}\cap F:C \in \mathcal{C}\},
-  \]
-the set of intersections of sets in $\mathcal{C}$ with $F$.
-  If $A \subseteq F$ is of the form $A = C\cap F$ for some $C\in \mathcal{C}$,
-  $A$ is \emph{cut out from $F$ by a set in $\mathcal{C}$}.
-  \[
-    f_{\mathcal{C}}(n):=\max\{|\mathcal{C}\cap F|:F\text{ is an $n$-element subset of $X$}\}.
-  \]
+% We work with a fixed but arbitrary o-minimal structure $(R,<,\mathcal{S})$.
 
-\begin{theorem}
-  Either $f_{\mathcal{C}}(n) = 2^n$ for all $n$,
-  or else there is $d\in \mathbb{N}$ such that 
-  $f_{\mathcal{C}}(n) = n^d$ for all sufficiently large $n$.
-\end{theorem}
+% \begin{theorem}[Monotonicity Theorem]
+%     Let $f: (a,b)\to R$ be a definable function on the interval $(a,b)$.
+%     Then there are points $a_1 < \cdot < a_k$ in $(a,b)$ such that on each subinterval $(a_j,a_{j+1})$,
+%     with $a_0 = a$, $a_{k+1} = b$,
+%     the function is either constant, or strictly monotone and continuous.
+% \end{theorem}
 
-\begin{theorem}
-  Let $\mathcal{R} = (R,\dots)$ be an infinite model-theoretic structure and suppose 
-  all definable relations $\Phi \subseteq R^p \times R$ for all $p > 0$, and dependent.
-  Then all definable relations $\Phi \subseteq R^p \times R^q$,
-  for all $p$, $q > 0$, are dependent.
-\end{theorem}
+% \begin{corollary}
+%     Let $f: (a,b) \to R$ be definable.
+%     Then for each $c\in (a,b)$ the limit $\lim_{x\uparrow c}f(x)$
+%     and $\lim_{x\downarrow c}f(x)$ exist in $R_{\infty}$.
+%     Also the limits $\lim_{x\uparrow b}f(x)$ and $\lim_{x\downarrow a}f(x)$ exist in $R_{\infty}$.
+% \end{corollary}
 
-\begin{theorem}[Ramsey's Theorem]
-  Given positive integers $M$, $r$ and $k$,
-  there is a positive integer $N = N(M,r,k)$ so large that 
-  if $X$ is a set with $|X| \ge N$ and
-  $X^{(r)} = P_1 \cup P_2 \cup \dots \cup P_k$,
-  then there is a set $Y \subseteq X$ with $|Y|=M$ such that 
-  $Y^{(r)} \subseteq P_j$ for some $j\in \{1,\dots,k\}$.
-\end{theorem}
+% \begin{corollary}
+%     Let $f: [a,b]\to R$ be continuous and definable.
+%     Then $f$ takes a maximum and a minimum value on $[a,b]$.
+% \end{corollary}
 
-\begin{definition}
-  Let $X$ be an infinite set.
-  Given a relation $A \subseteq X^r$,
-  a finite sequence $x_1,\dots,x_M$ in $X$ is \emph{$A$-indiscernible} if 
-  \[
-    (x_{i(1)},\dots,x_{i(r)})\in A \iff (x_{j(1)},\dots,x_{j(r)}) \in A.
-  \]
-  whenever $1\le i(1) < \cdots < i(r) \le M$ and
-  $1\le j(1) < \cdots < j(r) \le M$.
-  Let $\mathcal{A}$ be a collection of relations on $X$,
-  that is, each element of $\mathcal{A}$ is a set $A \subseteq A^r$,
-  with $r \in\mathbb{N}$ depending on $A$.
-  Then a sequence $x_1,\dots,x_M$ in $X$ is called \emph{$\mathcal{A}$-indiscernible} if it is $A$-indiscernible for each $A \in \mathcal{A}$.
-  A \emph{subsequence} of a sequence $x_1,\dots,x_N$ is by definition a sequence $x_{i(1)},\dots,x_{i(M)}$ with 
-  $1\le i(1)< \dots < i(M) \le N$.
-\end{definition}
+% \begin{lemma}[Finiteness Lemma]
+%     Let $A \subset R^2$ be definable and suppose that for each $x\in R$
+%     the fiber $A_x \coloneq \{y\in R\colon (x,y)\in A\}$ is finite.
+%     Then there is $N \in \mathbb{N}$ such that $A_x \le N$ for all $x\in R$.
+% \end{lemma}
 
-\begin{corollary}
-    Let $X$ be an infinite set and $\mathcal{A}$ a finite collection of relation on $X$.
-    Then, given any positive integer $M$ there is a positive integer $N$ so large that each sequence in $X$ of length $N$ contains an $\mathcal{A}$-indiscernible subsequence of length $M$.
-\end{corollary}
+% A decomposition $\mathcal{D}$ of $R^m$ is said to \textbf{partition}
+% a set $S \subseteq R^m$ if each cell in $\mathcal{D}$ is
+% either part of $S$ or disjoint from $S$,
+% in other words, if $S$ is a union of cells in $\mathcal{D}$.
+% \begin{theorem}[Cell Decomposition]
+%     \hfill
+%     \begin{enumerate}[label = {$\mathrm{(\Roman*_{m})}$}]
+%         \item Given any definable sets $A_1,dots,A_k \subset R^m$ there is a decomposition of $R^m$ partitioning each of $A_1,\dots,A_k$.
+%         \item For each definable function $f: A \to R$, $A \subseteq R^m$,
+%         there is a decomposition $\mathcal{D}$ of $R^m$ partitioning $A$ such that 
+%         the restriction $f|B: B \to R$ to each cell $B \in \mathcal{D}$ with $B \subseteq A$ is continuous.
+%     \end{enumerate}
+% \end{theorem}
 
-TODO
+% \begin{theorem}
+%     The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
+% \end{theorem}
 
-\subsubsection{}
-Fix an o-minimal expansion $(R,<,\mathcal{S})$ of an ordered abelian group $(R,<,0,-,+)$.
+% \subsubsection{}
+% \begin{theorem}
+%   Let $(R,<,\mathcal{S})$ be an o-minimal structure and 
+%   $S \subseteq R^{p+q}$ a definable set.
+%   Then there is a positive integer $d = d(S)$ such that
+%   for all sufficiently large $n\in\mathbb{N}$
+%   each $n$-element set $F \subseteq R^q$ has at most $n^d$ subsets of the form $S_x \cap F$ with $x \in R^p$.
+% \end{theorem}
 
-Definable curves play a role similar to that of sequences in $\mathbb{R}$, better properties.
+% Let $\mathcal{C}$ be a collection of subsets of an infinite set $X$.
+% Given $F \subseteq X$,
+%   \[
+%     \mathcal{C}\cap F := \{\mathcal{C}\cap F:C \in \mathcal{C}\},
+%   \]
+% the set of intersections of sets in $\mathcal{C}$ with $F$.
+%   If $A \subseteq F$ is of the form $A = C\cap F$ for some $C\in \mathcal{C}$,
+%   $A$ is \emph{cut out from $F$ by a set in $\mathcal{C}$}.
+%   \[
+%     f_{\mathcal{C}}(n):=\max\{|\mathcal{C}\cap F|:F\text{ is an $n$-element subset of $X$}\}.
+%   \]
 
-\begin{corollary}[Curve Selection]
-    If $a\in\mathrm{cl}(X)-X$,
-    where $X$ is definable,
-    then there is a definable continuous injective map
-    $\gamma: (0,\epsilon) \to X$, for some $\epsilon > 0$,
-    such that $\lim_{t\to 0}\gamma(t) = a$.
-\end{corollary}
+% \begin{theorem}
+%   Either $f_{\mathcal{C}}(n) = 2^n$ for all $n$,
+%   or else there is $d\in \mathbb{N}$ such that 
+%   $f_{\mathcal{C}}(n) = n^d$ for all sufficiently large $n$.
+% \end{theorem}
 
-\begin{lemma}
-    Let $f: X \to R^n$ be a definable continuous map on a closed bounded set $X \subseteq R^m$.
-    Then $f(X)$ is bounded in $R^n$.
-\end{lemma}
+% \begin{theorem}
+%   Let $\mathcal{R} = (R,\dots)$ be an infinite model-theoretic structure and suppose 
+%   all definable relations $\Phi \subseteq R^p \times R$ for all $p > 0$, and dependent.
+%   Then all definable relations $\Phi \subseteq R^p \times R^q$,
+%   for all $p$, $q > 0$, are dependent.
+% \end{theorem}
 
-\begin{proposition}
-    If $f: X \to R^n$ is a continuous definable map on a closed bounded set $X \subseteq R^m$,
-    then $f(X)$ is closed and bounded in $R^m$.
-\end{proposition}
+% \begin{theorem}[Ramsey's Theorem]
+%   Given positive integers $M$, $r$ and $k$,
+%   there is a positive integer $N = N(M,r,k)$ so large that 
+%   if $X$ is a set with $|X| \ge N$ and
+%   $X^{(r)} = P_1 \cup P_2 \cup \dots \cup P_k$,
+%   then there is a set $Y \subseteq X$ with $|Y|=M$ such that 
+%   $Y^{(r)} \subseteq P_j$ for some $j\in \{1,\dots,k\}$.
+% \end{theorem}
 
-TODO
+% \begin{definition}
+%   Let $X$ be an infinite set.
+%   Given a relation $A \subseteq X^r$,
+%   a finite sequence $x_1,\dots,x_M$ in $X$ is \emph{$A$-indiscernible} if 
+%   \[
+%     (x_{i(1)},\dots,x_{i(r)})\in A \iff (x_{j(1)},\dots,x_{j(r)}) \in A.
+%   \]
+%   whenever $1\le i(1) < \cdots < i(r) \le M$ and
+%   $1\le j(1) < \cdots < j(r) \le M$.
+%   Let $\mathcal{A}$ be a collection of relations on $X$,
+%   that is, each element of $\mathcal{A}$ is a set $A \subseteq A^r$,
+%   with $r \in\mathbb{N}$ depending on $A$.
+%   Then a sequence $x_1,\dots,x_M$ in $X$ is called \emph{$\mathcal{A}$-indiscernible} if it is $A$-indiscernible for each $A \in \mathcal{A}$.
+%   A \emph{subsequence} of a sequence $x_1,\dots,x_N$ is by definition a sequence $x_{i(1)},\dots,x_{i(M)}$ with 
+%   $1\le i(1)< \dots < i(M) \le N$.
+% \end{definition}
 
-\subsubsection{}
-\begin{theorem}[Triangulation Theorem]
-    Let $S \subset R^m$ be a definable set,
-    with definable subsets $S_1,\dots,S_k$.
-    Then $S$ has a triangulation in $R^m$ that is compatible with these subsets.
-\end{theorem}
+% \begin{corollary}
+%     Let $X$ be an infinite set and $\mathcal{A}$ a finite collection of relation on $X$.
+%     Then, given any positive integer $M$ there is a positive integer $N$ so large that each sequence in $X$ of length $N$ contains an $\mathcal{A}$-indiscernible subsequence of length $M$.
+% \end{corollary}
 
-TODO
+% TODO
 
-\subsubsection{Definable Spaces and Quotients}
+% \subsubsection{}
+% Fix an o-minimal expansion $(R,<,\mathcal{S})$ of an ordered abelian group $(R,<,0,-,+)$.
+
+% Definable curves play a role similar to that of sequences in $\mathbb{R}$, better properties.
+
+% \begin{corollary}[Curve Selection]
+%     If $a\in\mathrm{cl}(X)-X$,
+%     where $X$ is definable,
+%     then there is a definable continuous injective map
+%     $\gamma: (0,\epsilon) \to X$, for some $\epsilon > 0$,
+%     such that $\lim_{t\to 0}\gamma(t) = a$.
+% \end{corollary}
+
+% \begin{lemma}
+%     Let $f: X \to R^n$ be a definable continuous map on a closed bounded set $X \subseteq R^m$.
+%     Then $f(X)$ is bounded in $R^n$.
+% \end{lemma}
+
+% \begin{proposition}
+%     If $f: X \to R^n$ is a continuous definable map on a closed bounded set $X \subseteq R^m$,
+%     then $f(X)$ is closed and bounded in $R^m$.
+% \end{proposition}
+
+% TODO
+
+% \subsubsection{}
+% \begin{theorem}[Triangulation Theorem]
+%     Let $S \subset R^m$ be a definable set,
+%     with definable subsets $S_1,\dots,S_k$.
+%     Then $S$ has a triangulation in $R^m$ that is compatible with these subsets.
+% \end{theorem}
+
+% TODO
+
+\subsection{Definable Spaces and Quotients}
 \paragraph{\bfseries Definable spaces}
 Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
 and for each index $i \in I$ a set-theoretic bijection $g_i: U_i \to U'_i$ a topological space,
@@ -951,10 +992,62 @@ $E$ is called \emph{definably proper over $X$} if $pr_1$ is a definably proper m
     Then $X/E$ exists as a definably proper quotient of $X$.
 \end{theorem}
 
+\section{Definable complex geometry}
+Materials follows from \cite{MR2441378}.
+
+Let $\mathbf{R}$ be a real closed field and $\mathbf{K}$ its algebraic closure,
+identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
+
+\begin{definition}
+    A \emph{definable $C^0$ $\mathbf{R}$-manifold of dimension $n$, with respect to $\mathbf{R}$} is a set $X$,
+    covered by finitely many nonempty sets $U_1, \dots, U_k$,
+    and for each $i = 1, \dots, k$,
+    there is a set-theoretic bijection $\phi_i:U_i \to V_i$,
+    where $V_i$ is definable and open in $\mathbf{R}^n$ and such that each $\phi_i(U_j\cap U_i)$ is definable  an open and the transition maps are definable and continuous.
+    Moreover, the topology induced on $X$ by this covering is Hausdorff.
+
+    A manifold is a \emph{$C^p$ $\mathbf{R}$-manifold} if in addition
+    the transition maps are $C^p$ with respect to the field $\mathbf{R}$.
+\end{definition}
+
+\begin{definition}
+    Let $X$ be a definable subset of $\mathbf{R}^n$.
+    $X$ is called \emph{definably compact} if for every definable continuous $\gamma:(0,1) \to X$ the limit of $\gamma(t)$,
+    as $t$ tends to $0$ in $\mathbf{R}$, exists in $X$.
+    This is equivalent to $X$ being closed and bounded in $\mathbf{R}^n$.
+
+    A definable set $X \subseteq \mathbf{R}^n$ is \emph{locally definably compact} if every $x \in $ has a definable neighborhood $V\subseteq X$
+    (i.e., $V$ contains an $X$-open set around $x$)
+    which is definably compact.
+
+    $X \subseteq \mathbf{R}^n$ is \emph{locally closed} if there is a (definable) open set $U \subseteq \mathbf{R}^n$ containing $X$
+    such that $X$ is relatively closed in $U$.
+
+    Let $U$ be an open subset of $\mathbf{R}^n$.
+    For $X \subseteq U$, 
+    the \emph{frontier of $X$ in $U$} is defined as $Fr_U(X) = Cl_U(X)\backslash X$,
+    where $Cl_U(X)$ is the closure of $X$ in $U$.
+    If $U = \mathbf{R}^n$ then we write $Fr(X)$ instead of $Fr_{\mathbf{R}^n}$.  
+\end{definition}
+
+\begin{lemma}
+    Let $X$ be a definable subset of $\mathbf{R}^n$.
+    Then the following are equivalent:
+    \begin{enumerate}[label = {(\roman*)}]
+        \item $X$ is locally definably compact.
+        \item $X$ is locally closed in $\mathbf{R}^n$.
+        \item $Fr(X)$ is closed subset of $\mathbf{R}^n$.
+    \end{enumerate}
+\end{lemma}
+
+TODO
+
 \section{O-minimal GAGA Results}
 O-minimal GAGA theorems are from \cite{zbMATH07662555},
 which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
 to adapt to the non-algebraic period domains from moduli spaces of abelian varieties.
+
+\vspace{1em}
 
 {\noindent\Large\bfseries Main results:}
 
@@ -978,6 +1071,8 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
 
+The following materials follow from \cite{zbMATH07662555}.
+
 \subsection{Definable Analytic Spaces}
 \subsubsection{Local case}
 Identify $\mathbb{C} = \mathbb{R}^2$ using the real and imaginary parts,
@@ -986,7 +1081,7 @@ For a definable open $U \subset \mathbb{C}^n$,
 let $\mathcal{O}_{\mathbb{C}^n}(U)$ be the definable holomorphic functions on $U$,
 that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
 
-\begin{definition}[{\cite[Definition 2.19]{zbMATH07662555}}]
+\begin{definition}[Definition 2.19]
     Given an open definable subset $U \subset \mathbb{C}^n$ and 
     a finitely generated ideal $I$ of $\mathcal{O}_{\mathbb{C}^n}(U)$,
     the vanishing locus $X = |V(I)|$ is naturally a definable topological space.
@@ -995,7 +1090,7 @@ that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
     and denote by $I_X := I\mathcal{O}_U$.
 \end{definition}
 
-\begin{theorem}[{Definable Oka coherence, \cite[Theorem 2.21]{zbMATH07662555}}]
+\begin{theorem}[Definable Oka coherence, Theorem 2.21]
     The definable structure sheaf $\mathcal{O}_{\mathbb{C}^n}$ of $\mathbb{C}^n$ is a coherent $\mathcal{O}_{\mathbb{C}^n}$-module.
 \end{theorem}
 
@@ -1006,7 +1101,7 @@ For simplicity, denote $\mathbf{Coh}(X) := \mathbf{Coh}(\mathcal{O}_X)$ and $\ma
 There is a natural morphism $g: (X^{\analytic},\mathcal{O}_{X^{\analytic}}) \to (\underline{X},\mathcal{O}_X)$ of locally $\mathbb{C}$-ringed sites,
 and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ given by $F^{\analytic} := \mathcal{O}_{X^{\analytic}} \otimes_{g^{-1}\mathcal{O}_X} g^{-1}F$ together with a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analytic}}$.
 
-\begin{theorem}[{\cite[Theorem 2.27]{zbMATH07662555}}]
+\begin{theorem}[Theorem 2.27]
     Let $X$ be a basic definable complex analytic space and $(-)^{\analytic} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ the analytification functor. Then
     \begin{enumerate}[label = {(\arabic*)}]
         \item $(-)^{\analytic}$ is exact;
@@ -1015,53 +1110,53 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
 \end{theorem}
 
 \subsubsection{Global case}
-\begin{definition}[{\cite[Definition 2.35]{zbMATH07662555}}]
+\begin{definition}[Definition 2.35]
     A locally $\mathbb{C}$-ringed definable space $(X,\mathcal{O}_X)$ is \emph{locally a basic definable complex analytic space}
     if on a definable cover it is isomorphic to the locally $\mathbb{C}$ definable space associated to a basic definable complex analytic space.
     We define the category of \emph{definable complex analytic spaces} (DefAnSp/$\mathbb{C}$) to be the full subcategory of the category of locally $\mathbb{C}$-ringed definable spaces consisting of $(X,\mathcal{O}_X)$ which are locally a basic definable complex analytic space.
 \end{definition}
 
-\begin{theorem}[{\cite[Theorem 2.38]{zbMATH07662555}}]
+\begin{theorem}[Theorem 2.38]
     Let $X$ be a definable complex analytic space.
     Then $\mathcal{O}_X$ is a coherent $\mathcal{O}_X$-module.
 \end{theorem}
 
-\begin{theorem}[{\cite[Theorem 2.39]{zbMATH07662555}}]
+\begin{theorem}[Theorem 2.39]
     Let $X$ be a definable complex analytic space.
     Then the analytification functor 
     $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
 \end{theorem}
 
-\begin{corollary}[{\cite[Corollary 2.40]{zbMATH07662555}}]
+\begin{corollary}[Corollary 2.40]
     For $X$ a definable complex analytic space,
     a sequence $M' \to M \to M''$ of coherent $\mathcal{O}_X$-modules
     is exact if and only if it is exact on stalks (or even analytic stalks).
 \end{corollary}
 
 \subsubsection{Reduced case}
-\begin{proposition}[{\cite[Proposition 2.45]{zbMATH07662555}}]
+\begin{proposition}[Proposition 2.45]
     Let $X$ be a definable complex analytic space and 
     $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
     Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
 \end{proposition}
 
 \subsubsection{Indcution method}
-\begin{proposition}[Definable Noetherian induction, {\cite[Proposition 2.46]{zbMATH07662555}}]
+\begin{proposition}[Definable Noetherian induction, Proposition 2.46]
     Let $X$ be a definable complex analytic space and $F$ a coherent sheaf on $X$. 
     Any increasing chain of coherent subsheaves of $F$ must stabilize.
 \end{proposition}
 
 \subsubsection{Analytic factorization}
-\begin{proposition}[{\cite[Proposition 2.55]{zbMATH07662555}}]
+\begin{proposition}[Proposition 2.55]
     Let $X$, $Y$, $Z$ be definable complex analytic spaces and
     suppose we have (solid) diagrams
     \[
     \begin{tikzcd}
-        X \ar[r,"h"] \ar[d,"g"] & Y\ar[dl,"f",dotted] \\ Z 
+        X \ar[r,"h"] \ar[d,"g"'] & Y\ar[dl,"f",dotted] \\ Z 
     \end{tikzcd}
     \hspace*{30pt}
     \begin{tikzcd}
-        X^{\analytic} \ar[r,"h^{\analytic}"] \ar[d,"g^{\analytic}"] & Y^{\analytic}\ar[dl,"\varphi"] \\ Z^{\analytic} 
+        X^{\analytic} \ar[r,"h^{\analytic}"] \ar[d,"g^{\analytic}"'] & Y^{\analytic}\ar[dl,"\varphi"] \\ Z^{\analytic} 
     \end{tikzcd}
     \]
     such that $h$ is proper, surjective on points,
@@ -1071,7 +1166,7 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
 
 \subsection{Definable GAGA Theorem}
 
-\begin{theorem}[{\cite[Theorem 3.1]{zbMATH07662555}}]
+\begin{theorem}[Theorem 3.1]
     \label{def GAGA}
     Let $X$ be an algebraic space and 
     $(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})$ the definabilization functor.
@@ -1082,17 +1177,17 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
     \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[{Definable Chow theorem, \cite[Theorem 3.3]{zbMATH07662555}, Peterzil--Strarchenko \cite[Corollary 4.5]{zbMATH05364146}}]
+\begin{theorem}[{Definable Chow theorem, Theorem 3.3, Peterzil--Strarchenko \cite[Corollary 4.5]{zbMATH05364146}}]
     Let $Y$ be a reduced algebraic space and 
     $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subset.
     Then $\mathcal{X}$ is algebraic.
 \end{theorem}
 
-\begin{lemma}[{\cite[Lemma 3.4]{zbMATH07662555}}]
+\begin{lemma}[Lemma 3.4]
     $(-)^{\definable}$ is faithful and exact.
 \end{lemma}
 
-\begin{lemma}[{\cite[Lemma 3.5]{zbMATH07662555}}]
+\begin{lemma}[Lemma 3.5]
     \label{Lemma 3.5}
     Let $X$ be an algebraic space.
     Then Definable GAGA Theorem \ref{def GAGA} holds for $X$ if and only if 
@@ -1101,7 +1196,7 @@ and a resulting analytification functor $(-)^{\analytic}: \mathbf{Coh}(X) \to \m
 \end{lemma}
 
 The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only if it holds on the reduction $X^{\mathrm{red}}$:
-\begin{lemma}[{\cite[Lemma 3.6]{zbMATH07662555}}]
+\begin{lemma}[Lemma 3.6]
     \label{Lemma 3.6}
     Let $X$ be an algebraic space with a nilpotent sheaf of ideals $I$ cutting out a subspace $X_0$.
     Then Theorem \ref{def GAGA} holds for $X_0$ if and only if it holds for $X$.
@@ -1116,7 +1211,7 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
 
     \begin{enumerate}[label = {Step \arabic*.}]
         \item 
-        \begin{lemma}[{\cite[Lemma 3.7]{zbMATH07662555}}]
+        \begin{lemma}[Lemma 3.7]
             Any exact sequence 
             \[
             0 \to \mathcal{E} \to F^{\definable} \to \mathcal{G} \to 0
@@ -1129,7 +1224,7 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
         \end{lemma}
 
         \item 
-        \begin{lemma}[{\cite[Lemma 3.8]{zbMATH07662555}}]
+        \begin{lemma}[Lemma 3.8]
             For some dense open $U \subset X$, $\mathcal{E}_{|U}$ is algebraic.
         \end{lemma}
 
@@ -1148,7 +1243,7 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
         and therefore so is their intersection $\mathcal{G}$.
 
         Let $I_Z$ be the ideal sheaf of $Z = X \backslash U$ with the reduced algebraic space structure, and $\mathcal{I} = I_Z^{\definable}$.
-        \begin{lemma}[{\cite[Lemma 3.9]{zbMATH07662555}}]
+        \begin{lemma}[Lemma 3.9]
             Suppose we have definable coherent sheaves $\mathcal{G} \subset \mathcal{G}'$
             for which $\mathcal{G}_{|U} = \mathcal{G}'_{|U}$.
             Then for some positive integer $n$, $\mathcal{I}^n\mathcal{G}' \subset \mathcal{G}$.
@@ -1162,12 +1257,12 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
     \end{enumerate}
 \end{proof}
 
-\begin{corollary}[{\cite[Corollary 3.10]{zbMATH07662555}}]
+\begin{corollary}[Corollary 3.10]
     Let $Y$ be an algebraic space and $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subspace.
     Then $\mathcal{X}$ is (uniquely) the definabilization of an algebraic subspace.
 \end{corollary}
 
-\begin{corollary}[{\cite[Corollary 3.11]{zbMATH07662555}}]
+\begin{corollary}[Corollary 3.11]
     Let $X$, $Y$ be algebraic spaces.
     Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely) the definabilization of an algebraic morphism.
 \end{corollary}
@@ -1195,7 +1290,7 @@ Goal:
 The proof involves two main steps:
 the case that $X$ is reduced and the reduction to this case.
 
-\begin{proposition}[{\cite[Proposition 4.5]{zbMATH07662555}}]
+\begin{proposition}[Proposition 4.5]
     Let $f: W \to Z$ be a proper dominant morphism of algebraic spaces.
     Suppose we have an algebraic square-zero thickening
     $W \to W'$, a definable closed immersion $Z^{\definable} \to \mathcal{Z}'$,
@@ -1212,19 +1307,19 @@ the case that $X$ is reduced and the reduction to this case.
     such that we have commutative diagrams
     \[
     \begin{tikzcd}
-        W\ar[r]\ar[d,"f"] & W'\ar[d,"f'"] \\
+        W\ar[r]\ar[d,"f"'] & W'\ar[d,"f'"] \\
         Z \ar[r] & Z''
     \end{tikzcd}
     \hspace{40pt}
     \begin{tikzcd}
-        W^{'\definable}\ar[dd,"f^{'\definable}"]\ar[rd,"\varphi'"] & \\
+        W^{'\definable}\ar[dd,"f^{'\definable}"']\ar[rd,"\varphi'"] & \\
         & \mathcal{Z}' \\
         Z^{''\definable}\ar[ur] &
     \end{tikzcd}
     \]
 \end{proposition}
 
-\begin{proposition}[{\cite[Proposition 4.6]{zbMATH07662555}}]
+\begin{proposition}[Proposition 4.6]
     Let $X$ be a smooth algebraic space,
     $\mathcal{U}$ a smooth definable complex analytic space,
     and $\varphi: X^{\definable} \to \mathcal{U}$ a smooth proper definable analytic morphism.
@@ -1232,7 +1327,7 @@ the case that $X$ is reduced and the reduction to this case.
     the associated morphism $U \to \mathrm{Hilb}(X)$ is a closed embedding.
 \end{proposition}
 
-\begin{lemma}[{\cite[Lemma 4.11]{zbMATH07662555}}]
+\begin{lemma}[Lemma 4.11]
     Suppose $Z$ is an algebraic space,
     and $J$ is a coherent sheaf on $Z$.
     Let $R$ be a sheaf of rings on the {\'e}tale site $Z^{\text{\' et}}$ of $Z$ such that 
