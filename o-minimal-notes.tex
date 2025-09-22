@@ -41,9 +41,9 @@ Materials follow from \cite{zbMATH01821671,zbMATH01160037},
 mainly \cite{zbMATH01821671}.
 \subsection{Languages and Structures}
 \subsubsection{Basic definitions}
-In mathematical logic, 
-we use first-order languages to describe mathematical structures. 
-Intuitively, a structure is a set that we wish to study equipped with a collection of distinguished functions, relations, and elements. 
+In mathematical logic,
+we use first-order languages to describe mathematical structures.
+Intuitively, a structure is a set that we wish to study equipped with a collection of distinguished functions, relations, and elements.
 We then choose a language where we can talk about the distinguished functions, relations, and elements and nothing more.
 
 \begin{definition}
@@ -703,7 +703,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
 A function is semialgebraic if its graph is semialgebraic.
 
 \begin{definition}
-    Let $F$ be a real closed field and 
+    Let $F$ be a real closed field and
     $f(\overline{X}) \in F(X_1,\dots,X_n)$ be a rational function.
     $f$ is \emph{positive semi-definite} if $f(\overline{a}) \ge 0$ for all $\overline{a} \in F^n$.
 \end{definition}
@@ -789,11 +789,106 @@ in other words, if $S$ is a union of cells in $\mathcal{D}$.
     The theory $\mathbb{R}_{\exp}$ is model-complete and o-minimal.
 \end{theorem}
 
+\subsubsection{}
+\begin{theorem}
+  Let $(R,<,\mathcal{S})$ be an o-minimal structure and 
+  $S \subseteq R^{p+q}$ a definable set.
+  Then there is a positive integer $d = d(S)$ such that
+  for all sufficiently large $n\in\mathbb{N}$
+  each $n$-element set $F \subseteq R^q$ has at most $n^d$ subsets of the form $S_x \cap F$ with $x \in R^p$.
+\end{theorem}
+
+Let $\mathcal{C}$ be a collection of subsets of an infinite set $X$.
+Given $F \subseteq X$,
+  \[
+    \mathcal{C}\cap F := \{\mathcal{C}\cap F:C \in \mathcal{C}\},
+  \]
+the set of intersections of sets in $\mathcal{C}$ with $F$.
+  If $A \subseteq F$ is of the form $A = C\cap F$ for some $C\in \mathcal{C}$,
+  $A$ is \emph{cut out from $F$ by a set in $\mathcal{C}$}.
+  \[
+    f_{\mathcal{C}}(n):=\max\{|\mathcal{C}\cap F|:F\text{ is an $n$-element subset of $X$}\}.
+  \]
+
+\begin{theorem}
+  Either $f_{\mathcal{C}}(n) = 2^n$ for all $n$,
+  or else there is $d\in \mathbb{N}$ such that 
+  $f_{\mathcal{C}}(n) = n^d$ for all sufficiently large $n$.
+\end{theorem}
+
+\begin{theorem}
+  Let $\mathcal{R} = (R,\dots)$ be an infinite model-theoretic structure and suppose 
+  all definable relations $\Phi \subseteq R^p \times R$ for all $p > 0$, and dependent.
+  Then all definable relations $\Phi \subseteq R^p \times R^q$,
+  for all $p$, $q > 0$, are dependent.
+\end{theorem}
+
+\begin{theorem}[Ramsey's Theorem]
+  Given positive integers $M$, $r$ and $k$,
+  there is a positive integer $N = N(M,r,k)$ so large that 
+  if $X$ is a set with $|X| \ge N$ and
+  $X^{(r)} = P_1 \cup P_2 \cup \dots \cup P_k$,
+  then there is a set $Y \subseteq X$ with $|Y|=M$ such that 
+  $Y^{(r)} \subseteq P_j$ for some $j\in \{1,\dots,k\}$.
+\end{theorem}
+
+\begin{definition}
+  Let $X$ be an infinite set.
+  Given a relation $A \subseteq X^r$,
+  a finite sequence $x_1,\dots,x_M$ in $X$ is \emph{$A$-indiscernible} if 
+  \[
+    (x_{i(1)},\dots,x_{i(r)})\in A \iff (x_{j(1)},\dots,x_{j(r)}) \in A.
+  \]
+  whenever $1\le i(1) < \cdots < i(r) \le M$ and
+  $1\le j(1) < \cdots < j(r) \le M$.
+  Let $\mathcal{A}$ be a collection of relations on $X$,
+  that is, each element of $\mathcal{A}$ is a set $A \subseteq A^r$,
+  with $r \in\mathbb{N}$ depending on $A$.
+  Then a sequence $x_1,\dots,x_M$ in $X$ is called \emph{$\mathcal{A}$-indiscernible} if it is $A$-indiscernible for each $A \in \mathcal{A}$.
+  A \emph{subsequence} of a sequence $x_1,\dots,x_N$ is by definition a sequence $x_{i(1)},\dots,x_{i(M)}$ with 
+  $1\le i(1)< \dots < i(M) \le N$.
+\end{definition}
+
+\begin{corollary}
+    Let $X$ be an infinite set and $\mathcal{A}$ a finite collection of relation on $X$.
+    Then, given any positive integer $M$ there is a positive integer $N$ so large that each sequence in $X$ of length $N$ contains an $\mathcal{A}$-indiscernible subsequence of length $M$.
+\end{corollary}
+
+TODO
+
+\subsubsection{}
+Fix an o-minimal expansion $(R,<,\mathcal{S})$ of an ordered abelian group $(R,<,0,-,+)$.
+
+Definable curves play a role similar to that of sequences in $\mathbb{R}$, better properties.
+
+\begin{corollary}[Curve Selection]
+    If $a\in\mathrm{cl}(X)-X$,
+    where $X$ is definable,
+    then there is a definable continuous injective map
+    $\gamma: (0,\epsilon) \to X$, for some $\epsilon > 0$,
+    such that $\lim_{t\to 0}\gamma(t) = a$.
+\end{corollary}
+
+\begin{lemma}
+    Let $f: X \to R^n$ be a definable continuous map on a closed bounded set $X \subseteq R^m$.
+    Then $f(X)$ is bounded in $R^n$.
+\end{lemma}
+
+\begin{proposition}
+    If $f: X \to R^n$ is a continuous definable map on a closed bounded set $X \subseteq R^m$,
+    then $f(X)$ is closed and bounded in $R^m$.
+\end{proposition}
+
+TODO
+
+\subsubsection{}
 \begin{theorem}[Triangulation Theorem]
     Let $S \subset R^m$ be a definable set,
     with definable subsets $S_1,\dots,S_k$.
     Then $S$ has a triangulation in $R^m$ that is compatible with these subsets.
 \end{theorem}
+
+TODO
 
 \subsubsection{Definable Spaces and Quotients}
 \paragraph{\bfseries Definable spaces}
