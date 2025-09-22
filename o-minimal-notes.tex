@@ -452,14 +452,14 @@ In other words, there are enough function symbols in the language to witness all
 \begin{definition}
     Suppose that $(I,<)$ is a linear order.
     Suppose that $\mathcal{M}_i$ is an $\mathcal{L}$-structure for $i \in I$.
-    $(\mathcal{M}_i: i \in I)$ is a \emph{chian} of $\mathcal{L}$-structures if $\mathcal{M}_i \subseteq \mathcal{M}_j$ for $i < j$.
+    $(\mathcal{M}_i: i \in I)$ is a \emph{chain} of $\mathcal{L}$-structures if $\mathcal{M}_i \subseteq \mathcal{M}_j$ for $i < j$.
     If $\mathcal{M}_i \prec \mathcal{M}_j$ for $i < j$,
-    $(\mathcal{M}_i: i \in I)$ is an \emph{elementary chian}.
+    $(\mathcal{M}_i: i \in I)$ is an \emph{elementary chain}.
 \end{definition}
 
 \begin{proposition}
-    Suppose that $(I,<)$ is a linear order and 
-    $(\mathcal{M}_i: i \in I)$ is an elementary chian.
+    Suppose that $(I,<)$ is a linear order and
+    $(\mathcal{M}_i: i \in I)$ is an elementary chain.
     Then, $\mathcal{M} = \bigcup_{i\in I} M_i$ is an elementary extension of each $\mathcal{M}_i$.
 \end{proposition}
 
@@ -470,8 +470,8 @@ In other words, there are enough function symbols in the language to witness all
 
 \begin{definition}
     $\mathcal{M} \models T$is existentially closed 
-    if whenever $\mathcal{N} \models T$, $\mathcal{N} supseteq \mathcal{M}$, 
-    and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$, 
+    if whenever $\mathcal{N} \models T$, $\mathcal{N} supseteq \mathcal{M}$,
+    and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$,
     where $\overline{a} \in M$ and $\phi$ is quantifier-free,
     then $\mathcal{M} \models \exists \overline{v} \, \phi(\overline{v},\overline{a})$.
 \end{definition}
@@ -573,7 +573,7 @@ The study of definable sets is often made quite complicated by quantifiers.
 \end{definition}
 
 \begin{definition}
-    An $\mathcal{L}$-theory $T$ is \emph{model-complete} if, 
+    An $\mathcal{L}$-theory $T$ is \emph{model-complete} if,
     $\mathcal{M} \prec \mathcal{N}$ whenever
     $\mathcal{M} \subseteq \mathcal{N}$  and $\mathcal{M}$, $\mathcal{N} \models T$.
 \end{definition}
