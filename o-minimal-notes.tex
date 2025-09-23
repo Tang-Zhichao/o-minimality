@@ -442,6 +442,18 @@ where $p$ is either $0$ or a prime number.
     equivalently, $\mathcal{N}$ is an \emph{elementary extension} of $\mathcal{M}$.
 \end{definition}
 
+\begin{definition}
+  Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure.
+  Let $\mathcal{L}_M$ be the language where we add to $\mathcal{L}$ constant symbols $m$ for each element of $M$.
+  The \emph{atomic diagram} of $\mathcal{M}$ is 
+  $\{\phi(m_1,\dots,m_n):\phi\text{ is either an atomic $\mathcal{L}$-formula or the nagation of an atomic $\mathcal{L}$-formula and $\mathcal{M} \models \phi(m_1,\dots,m_n)$}\}$.
+  The \emph{elementary diagram} of $\mathcal{M}$ is
+  \[
+    \phi(m_1,\dots,m_n): \mathcal{M} \models \phi(m_1,\dots,m_n),\text{$\phi$ is an $\mathcal{L}$-formula}.
+  \]
+  Let $\mathrm{Diag}(\mathcal{M})$ and $\mathrm{Diag_el}(\mathcal{M})$ denote the atomic and elementary diagrams of $\mathcal{M}$, respectively.
+\end{definition}
+
 \begin{theorem}[Upward L\"owenheim--Skolem Theorem]
     Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and 
     $\kappa$ be an infinite cardinal $\kappa \ge |\mathcal{M}| + |\mathcal{L}|$.
@@ -1000,12 +1012,72 @@ Let $\mathrm{Th}_A(\mathcal{M})$ be the set of all $\mathcal{L}_A$-sentences tru
     Let $p$ be the set of $\mathcal{L}_A$-formulas in free variables $v_1,\dots,v_n$.
     $p$ is an \emph{$n$-type} if $p\cup \mathrm{Th}_A(\mathcal{M})$ is satisfiable.
     $p$ is a \emph{complete $n$-type} if $\phi\in p$ or $\neg\phi\in p$ for all $\mathcal{L}_A$-formulas $\phi$ with free variables from $v_1,\dots,v_n$.
-    Let $S^{\mathcal{M}}_n(A)$ be the set of all complete $n$-types. 
+    Let $S^{\mathcal{M}}_n(A)$ be the set of all complete $n$-types.
+
+    Icomplete types are refered to as \emph{partial types}.
+    We often write $p(v_1,\dots,v_n)$ to stree that $p$ is an $n$-type.
+
+    If $\mathcal{M}$ is any $\mathcal{L}$-structure,
+    $A \subset M$, and $(a_1,\dots,a_n)\in M^n$,
+    let $\mathrm{tp}^{\mathcal{M}}(\overline{a}/A) = \{\phi(v_1,\dots,v_m)\in \mathcal{L}_A:\mathcal{M}\models \phi(a_1,\dots,a_n)\}$.
+    Then, $\mathrm{tp}^{\mathcal{M}}(\overline{a}/A)$ is a complete $n$-type.
+    Write $\mathrm{tp}^{\mathcal{M}}(\overline{a})$ for $\mathrm{tp}^{\mathcal{M}}(\overline{a}/\emptyset)$.
 
     If $p$ is an $n$-type over $A$,
     $\overline{a}\in M^n$ \emph{realizes $p$} if $\mathcal{M} \models \phi(\overline{a})$ for all $\phi\in p$.
     If $p$ is not realized in $\mathcal{M}$,
     then $\mathcal{M}$ \emph{omits $p$}.
+\end{definition}
+
+\begin{definition}
+  Let $\phi(v_1,\dots,v_n)$ be an $\mathcal{L}$-formula such that $T \cup \{\phi(\overline{v})\}$ is satisfiable,
+  and let $p$ be an $n$-type.
+  \emph{$\phi$ isolates $p$} if
+  \[
+    T \models \forall\overline{v}(\phi(\overline{v} \to \psi(\overline{v})))
+  \]
+  for all $\psi \in p$.
+\end{definition}
+Note that if $p$ is a complete type and $\phi(\overline{v})$ isolates $p$, then
+\[
+  T \models \phi(\overline{v}) \to \psi(\overline{{v}}) \iff \psi(\overline{v})\in p
+\]
+for all formulas $\psi(\overline{v}$.
+In particular, for all formulas $\psi(\overline{v})$,
+exactly one of $T + \phi(\overline{v}) \land \psi(\overline{v})$ and $T + \phi(\overline{v}) \land \neg\psi(\overline{v})$ is satisfiable.
+
+\begin{theorem}[Omitting Types Theorem]
+  Let $\mathcal{L}$ be a countable language,
+  $T$ an $\mathcal{L}$-theory,
+  and $p$ a (possibly incomplete) nonisolated $n$-type over $\emptyset$.
+  Then, there is a countable $\mathcal{M} \models T$ omitting $p$.
+\end{theorem}
+
+\begin{definition}
+  $\mathcal{M}\models T$ is a \emph{prime model} of $T$ if whenever $\mathcal{N}\models T$ there is an elementary embedding of $\mathcal{M}$ into $\mathcal{N}$.
+\end{definition}
+
+\begin{definition}
+  $\mathcal{M}\models T$ is \emph{atomic} if $\mathrm{tp}^{\mathcal{M}}(\overline{a})$ is isolated for all $\overline{a} \in M^n$.
+\end{definition}
+
+\begin{definition}
+  Let $\kappa$ be an infinite cardinal.
+  $\mathcal{M}\models T$ is \emph{$\kappa$-homogeneous} 
+  if whenever $A \subset M$ with $|A| < \kappa$,
+  $f: A \to M$ is a partial elementary map,
+  and $a \in M$, there is $f^*\supseteq f$ such that $f^*: A\cup \{a\} \to M$ is partial elementary.
+
+  $\mathcal{M}$ is \emph{homogeneous} if it is $|M|$-homogeneous.
+\end{definition}
+
+\begin{definition}
+  Let $T$ be a complete theory in a countable language,
+  and let $\kappa$ be an infinite cardinal.
+  $T$ is \emph{$\kappa$-stable} if whenever $\mathcal{M}\models T$,
+  $A \subseteq M$, and $|A| = \kappa$, then $|S^{\mathcal{M}}_n(A)| = \kappa$.
+
+  $\mathcal{M}$ is $\kappa$-stable if $\mathrm{Th}(\mathcal{M})$ is $\kappa$-stable.
 \end{definition}
 
 TODO
@@ -1018,6 +1090,11 @@ TODO
 
     $\mathcal{M}$ is \emph{saturated} if it is $|M|$-saturated.
 \end{definition}
+
+\begin{proposition}
+  If $\mathcal{M}$ is $\kappa$-saturated,
+  then $\mathcal{M}$ is $\kappa$-homogeneous.
+\end{proposition}
 
 TODO
 
