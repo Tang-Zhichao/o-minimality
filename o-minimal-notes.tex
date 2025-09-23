@@ -970,6 +970,36 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 
 % TODO
 
+\subsection{About Types}
+Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure and $A \subseteq M$.
+Let $\mathcal{L}_A$ be the language obtained by adding to $\mathcal{L}$ constant symbols for each $a\in A$.
+We can naturally view $\mathcal{M}$ as an $\mathcal{L}_A$-structure by interpreting the new symbols in the obvious way.
+Let $\mathrm{Th}_A(\mathcal{M})$ be the set of all $\mathcal{L}_A$-sentences true in $\mathcal{M}$.
+% Note that $\mathrm{Th}_A(\mathcal{M}) \subseteq \mathrm{Diag_el}(\mathcal{M})$.
+
+\begin{definition}
+    Let $p$ be the set of $\mathcal{L}_A$-formulas in free variables $v_1,\dots,v_n$.
+    $p$ is an \emph{$n$-type} if $p\cup \mathrm{Th}_A(\mathcal{M})$ is satisfiable.
+    $p$ is a \emph{complete $n$-type} if $\phi\in p$ or $\neg\phi\in p$ for all $\mathcal{L}_A$-formulas $\phi$ with free variables from $v_1,\dots,v_n$.
+    Let $S^{\mathcal{M}}_n(A)$ be the set of all complete $n$-types. 
+
+    If $p$ is an $n$-type over $A$,
+    $\overline{a}\in M^n$ \emph{realizes $p$} if $\mathcal{M} \models \phi(\overline{a})$ for all $\phi\in p$.
+    If $p$ is not realized in $\mathcal{M}$,
+    then $\mathcal{M}$ \emph{omits $p$}.
+\end{definition}
+
+TODO
+
+\begin{definition}
+    Let $\kappa$ be an infinite cardinal.
+    $\mathcal{M} \models T$ is $\kappa$-saturated if,
+    for all $A \subseteq M$, if $|A| < \kappa$ and $p \in S^{\mathcal{M}}_n(A)$,
+    then $p$ is realized in $\mathcal{M}$.
+
+    $\mathcal{M}$ is \emph{saturated} if it is $|M|$-saturated.
+\end{definition}
+
 \subsection{Definable Spaces and Quotients}
 \subsubsection{Definable spaces}
 Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
@@ -1096,7 +1126,7 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
 
   For $A \subseteq X$, we say that $f|A$ is \emph{definably proper over its image} if $f|A : A \to f(A)$ is definably proper over $f(A)$.
 
-  We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighboorhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$. 
+  We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighborhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$. 
 \end{definition}
 
 \begin{lemma}
@@ -1115,8 +1145,8 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
   locally closed set, $f: X \to \mathbf{R}^k$ a definable
   continuous map. Then,
   \begin{enumerate}[label = {(\roman*)}]
-    The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
-    If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
+    \item The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
+    \item If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
   \end{enumerate}
 \end{lemma}
 
@@ -1304,7 +1334,8 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
     an algebraic coherent subsheaf $E \subset F$.
 \end{lemma}
 
-The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only if it holds on the reduction $X^{\mathrm{red}}$:
+The two observations imply that Theorem \ref{def GAGA} holds for $X$
+if and only if it holds on the reduction $X^{\mathrm{red}}$:
 \begin{lemma}[Lemma 3.6]
     \label{Lemma 3.6}
     Let $X$ be an algebraic space with a nilpotent sheaf of ideals $I$ cutting out a subspace $X_0$.
@@ -1316,7 +1347,8 @@ The two observations imply that Theorem \ref{def GAGA} holds for $X$ if and only
     assuming that Theorem \ref{def GAGA} holds for every proper subspace of $X$.
     By \ref{Lemma 3.6}, $X$ can be assumed reduced.
     Let $F$ be an algebraic coherent sheaf on $X$ and $\mathcal{E} \subset F^{\definable}$ a definable coherent subsheaf.
-    By Lemma \ref{Lemma 3.5} we must show that $\mathcal{E}$ is the definabilization of an algebraic coherent subsheaf $E \subset F$.
+    By Lemma \ref{Lemma 3.5} we must show that $\mathcal{E}$
+    is the definabilization of an algebraic coherent subsheaf $E \subset F$.
 
     \begin{enumerate}[label = {Step \arabic*.}]
         \item
