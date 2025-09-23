@@ -1,5 +1,10 @@
 \documentclass{amsart}
 
+% \usepackage{fontspec}
+% \setmainfont{Libertinus Serif}
+% \setsansfont{Libertinus Sans}
+% \setmonofont{Liberation Mono}
+
 \usepackage[style=alphabetic,backref, giveninits, maxbibnames=10]{biblatex}
 \addbibresource{o-minimal.bib}
 
@@ -30,6 +35,7 @@
 \newcommand{\definable}{\mathrm{def}}
 \newcommand{\analytic}{\mathrm{an}}
 
+
 \title{Notes on o-minimality}
 \author{Tang Zhichao}
 \date{\today}
@@ -49,7 +55,7 @@ Intuitively, a structure is a set that we wish to study equipped with a collecti
 We then choose a language where we can talk about the distinguished functions, relations, and elements and nothing more.
 
 \begin{definition}
-A language $\mathcal{L}$ is given by specifying the following data:
+A \emph{language $\mathcal{L}$} is given by specifying the following data:
 \begin{enumerate}[label = {(\roman*)}]
     \item a set of function symbols $\mathcal{F}$ and positive integers $n_f$ for each $f \in \mathcal{F}$;
     \item a set of relation symbols $\mathcal{R}$ and positive integers $n_R$ for each $R \in \mathcal{R}$;
@@ -58,7 +64,7 @@ A language $\mathcal{L}$ is given by specifying the following data:
 \end{definition}
 
 \begin{definition}
-An $\mathcal{L}$-structure $\mathcal{M}$ is given by the following data:
+An \emph{$\mathcal{L}$-structure $\mathcal{M}$} is given by the following data:
     \begin{enumerate}[label = {(\roman*)}]
     \item a nonempty set $M$ called the universe, domain, or underlying set of $\mathcal{M}$;
     \item a function $f^{\mathcal{M}} : M^{n_f} \to M$ for each $f \in \mathcal{F}$;
@@ -114,14 +120,14 @@ the cardinality of $\mathcal{N}$ is at least the cardinality of $\mathcal{M}$.
 
 A variable $v$ \emph{occurs freely} in a formula $\phi$
 if it is not inside a $\exists v$ or $\forall v$ quantifier;
-otherwise, we say that it is \emph{bound}.
+otherwise, it is \emph{bound}.
 A formula is a \emph{sentence} if it has no free variables.
 
 \begin{definition}
     Let $\phi$ be a formula with free variables from 
     $\overline{v} = (v_{i_1},\dots,v_{i_m})$, and let
     $\overline{a} = (a_{i_1},\dots,a_{i_m})\in M^m$.
-    Inductively define $\mathcal{M} \models \phi(\overline{a})$ as follows.
+    Inductively define \emph{$\mathcal{M} \models \phi(\overline{a})$} as follows.
     \begin{enumerate}[label = {\roman*)}]
         \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
           if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
@@ -148,7 +154,7 @@ A formula is a \emph{sentence} if it has no free variables.
 \end{proposition}
 
 \begin{definition}
-    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are elementarily equivalent
+    Two $\mathcal{L}$-structures $\mathcal{M}$ and $\mathcal{N}$ are \emph{elementarily equivalent}
     and denote $\mathcal{M} \equiv \mathcal{N}$ if
     \[
     \mathcal{M} \models \phi \text{ if and only if }\mathcal{N} \models \phi
@@ -163,12 +169,12 @@ be the set of $\mathcal{M}$-sentences $\phi$ such that $\mathcal{M} \models \phi
 $\mathcal{M} \equiv \mathcal{N}$ if and only if $\mathrm{Th}(\mathcal{M}) = \mathrm{Th}(\mathcal{N})$.
 
 \begin{theorem}
-    Suppose that $j; \mathcal{M} \to \mathcal{N}$ is an isomorphism.
+    Suppose that $j: \mathcal{M} \to \mathcal{N}$ is an isomorphism.
     Then, $\mathcal{M} \equiv \mathcal{N}$.
 \end{theorem}
 
 Let $\mathcal{L}$ be a language.
-An $\mathcal{L}$-theory $T$ is a set of $\mathcal{L}$-sentences.
+An \emph{$\mathcal{L}$-theory $T$} is a set of $\mathcal{L}$-sentences.
 
 $\mathcal{M}$ is a \emph{model} of $T$ and denote $\mathcal{M} \models T$ if $\mathcal{M} \models \phi$ for all sentences $\phi \in T$.
 
@@ -190,13 +196,14 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
     $X \subseteq M^n$ is \emph{definable} if and only if there is an $\mathcal{L}$-formula $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$
     and $\overline{b} \in M^m$ such that $X = \{ \overline{a} \in M^n : \mathcal{M} \models \phi(\overline{a},\overline{b}) \}$.
     $\phi(\overline{v},\overline{b})$ \emph{defines} $X$.
+
     $X$ is \emph{$A$-definable }or \emph{definable over $A$} if there is a formula $\psi(\overline{v},w_1,\dots,w_l)$ and
     $\overline{b} \in A^l$ such that $\psi(\overline{v},\overline{b})$ defines $X$.
 \end{definition}
 
 \begin{lemma}
     Let $\mathcal{L}_r$ be the language of ordered rings and
-    $(\mathbb{R}, +, -, \dot, <, 0, 1)$ be the ordered field of real numbers.
+    $(\mathbb{R}, +, -, \cdot, <, 0, 1)$ be the ordered field of real numbers.
     Suppose that $X \subset \mathbb{R}^n$ is $A$-definable.
     Then, the topological closure of $X$ is also $A$-definable.
 \end{lemma}
@@ -387,19 +394,19 @@ where $p$ is either $0$ or a prime number.
     Then $T$ is complete.
 \end{theorem}
 
-\begin{definition}
-    An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that
-    when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
-\end{definition}
+% \begin{definition}
+%     An $\mathcal{L}$-theory $T$ is \emph{decidable} if there is an algorithm that
+%     when given an $\mathcal{L}$-sentence $\phi$ as input decides whether $T \models \phi$.
+% \end{definition}
 
-\begin{lemma}
-    Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$.
-    Then $T$ is decidable.
-\end{lemma}
+% \begin{lemma}
+%     Let $T$ be a recursive complete satisfiable theory in a recursive language $\mathcal{L}$.
+%     Then $T$ is decidable.
+% \end{lemma}
 
-\begin{corollary}
-    For $p = 0$ or $p$ prime, $\mathbf{ACF}_p$ is decidable.
-\end{corollary}
+% \begin{corollary}
+%     For $p = 0$ or $p$ prime, $\mathbf{ACF}_p$ is decidable.
+% \end{corollary}
 
 \begin{corollary}
     Let $\phi$ be a sentence in the language of rings.
@@ -431,7 +438,7 @@ where $p$ is either $0$ or a prime number.
 \begin{theorem}[Upward L\"owenheim--Skolem Theorem]
     Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and 
     $\kappa$ be an infinite cardinal $\kappa \ge |\mathcal{M}| + |\mathcal{L}|$.
-    Then, there is $\mathcal{N}$ an $\mathcal{L}$-structure of cardinality $\kappa$ and $j; \mathcal{M} \to \mathcal{N}$ is elementary.
+    Then, there is $\mathcal{N}$ an $\mathcal{L}$-structure of cardinality $\kappa$ and $j: \mathcal{M} \to \mathcal{N}$ is elementary.
 \end{theorem}
 
 \begin{proposition}[Tarski--Vaught Test]
@@ -493,13 +500,13 @@ In other words, there are enough function symbols in the language to witness all
 \end{proposition}
 
 \begin{definition}
-    A theory $T$ has a $\forall\exists$-axiomatization if it can be axiomatized by sentences of
+    A theory $T$ has a \emph{$\forall\exists$-axiomatization} if it can be axiomatized by sentences of
     the form $\forall v_1\dots\forall v_n \exists w_1\dots \exists w_m \phi(\overline{v},\overline{w})$
     where $\phi$ is a quantifier-free formula.
 \end{definition}
 
 \begin{definition}
-    $\mathcal{M} \models T$is existentially closed
+    $\mathcal{M} \models T$ is \emph{existentially closed}
     if whenever $\mathcal{N} \models T$, $\mathcal{N} \supseteq \mathcal{M}$,
     and $\mathcal{N} \models \exists \overline{v}\, \phi(\overline{v},\overline{a})$,
     where $\overline{a} \in M$ and $\phi$ is quantifier-free,
@@ -726,6 +733,8 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
     Let $F$ be an ordered field.
     $X \subset F^n$ is \emph{semialgebraic} if it is a Boolean combination of sets of the form $\{\overline{x}:p(\overline{x})>0\}$,
     where $p(\overline{X}) \in F[X_1,\dots,X_n]$.
+
+    A function is semialgebraic if its graph is semialgebraic.
 \end{definition}
 
 \begin{corollary}[Tarski--Seidenberg Theorem]
@@ -736,8 +745,6 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
     If $F \models \mathbf{RCF}$ and $A \subseteq F^n$ is semialgebraic,
     then the closure (topological) of $F$ is semialgebraic.
 \end{corollary}
-
-A function is semialgebraic if its graph is semialgebraic.
 
 \begin{definition}
     Let $F$ be a real closed field and
@@ -1171,13 +1178,13 @@ TODO
   Then $A$ is an algebraic set over $\mathbf{K}$.
 \end{theorem}
 
-\begin{theorem}[The dimension Theorem]
+\begin{theorem}[The Dimension Theorem]
   Let $M$ be an $n$-dimensional $\mathbf{K}$-manifold,
   $X$, $Y$ definable, irreducible $\mathbf{K}$-analytic subsets of $M$.
   Then every irreducible component of $X \cap Y$ has $\mathbf{K}$-dimension not less than $\dim_{\mathbf{K}}X + \dim_{\mathbf{K}}Y - n$.
 \end{theorem}
 
-\begin{theorem}[Remmert'd proper mapping theorem]
+\begin{theorem}[Remmert's Proper Mapping Theorem]
   Let $f: M \to N$ be a $\mathbf{K}$-holomorphic map between $\mathbf{K}$-manifolds.
   Let $A \subseteq M$ be a $\mathbf{K}$-analytic subset.
   Assume that $f(A)$ is a closed subset of $N$.
@@ -1218,7 +1225,7 @@ The following materials follow from \cite{zbMATH07662555}.
 Identify $\mathbb{C} = \mathbb{R}^2$ using the real and imaginary parts,
 and give $\mathbb{C}$ the definable structure coming from the identification $\mathbb{C}^n = \mathbb{R}^{2n}$.
 For a definable open $U \subset \mathbb{C}^n$,
-let $\mathcal{O}_{\mathbb{C}^n}(U)$ be the definable holomorphic functions on $U$,
+let $\mathcal{O}_{\mathbb{C}^n}(U)$ be the \emph{definable holomorphic} functions on $U$,
 that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
 
 \begin{definition}[Definition 2.19]
@@ -1314,7 +1321,8 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 \end{proposition}
 
 \subsection{Definable GAGA Theorem}
-
+\hfill
+\begin{tcolorbox}[title = {\Large Goal}]
 \begin{theorem}[Theorem 3.1]
     \label{def GAGA}
     Let $X$ be an algebraic space and
@@ -1325,7 +1333,8 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
         \item $(-)^{\definable}$ is fully faithful and exact.
         \item The essential image of $(-)^{\definable}$ is closed under taking subobjects and quotients.
     \end{enumerate}
-\end{theorem}
+\end{theorem}    
+\end{tcolorbox}
 
 \begin{theorem}[{Definable Chow theorem, Theorem 3.3, Peterzil--Strarchenko \cite[Corollary 4.5]{zbMATH05364146}}]
     Let $Y$ be a reduced algebraic space and 
@@ -1362,7 +1371,8 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
     By Lemma \ref{Lemma 3.5} we must show that $\mathcal{E}$
     is the definabilization of an algebraic coherent subsheaf $E \subset F$.
 
-    \begin{enumerate}[label = {Step \arabic*.}]
+    \begin{enumerate}[label = {\textit{Step \arabic*.}},
+        itemsep = 2ex]
         \item
         \begin{lemma}[Lemma 3.7]
             Any exact sequence 
@@ -1427,10 +1437,10 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
 \subsection{Definable Images}
 
 \begin{definition}
-    A morphism $f:X \to Y$ of algebraic spaces is dominant if $\mathcal{O}_Y \to f_*\mathcal{O}_X$ is injective.
+    A morphism $f:X \to Y$ of algebraic spaces is \emph{dominant} if $\mathcal{O}_Y \to f_*\mathcal{O}_X$ is injective.
 \end{definition}
 
-Goal:
+\begin{tcolorbox}[title = {\Large Goal}]
 \begin{theorem}
     Let $X$ be an algebraic space,
     $\mathcal{S}$ a definable complex analytic space,
@@ -1443,6 +1453,7 @@ Goal:
     where $f: X \to Y$ is dominant algebraic and $\iota$ is a definable closed immersion.
     Moreover, $\iota^{\analytic}(Y^{\analytic})$ coincides with the image $\varphi^{\analytic}(X^{\analytic})$.
 \end{theorem}
+\end{tcolorbox}
 
 The proof involves two main steps:
 the case that $X$ is reduced and the reduction to this case.
