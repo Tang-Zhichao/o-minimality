@@ -13,6 +13,8 @@
 \usepackage{tikz}
 \usetikzlibrary{cd}
 
+\usepackage{tcolorbox}
+
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -362,12 +364,15 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
     $T$ is \emph{$\kappa$-categorical} if any two models of $T$ of cardinal $\kappa$ are isomorphic.
 \end{definition}
 
-Some abbreviation for common theories:
+\begin{tcolorbox}
+Some abbreviation for commonly used theories:
 \begin{enumerate}[label = {}]
     \item \textbf{DLO}: dense linear order;
     \item \textbf{ACF}: algebraic closed field;
-    \item \textbf{RCF}: real closed field.
+    \item \textbf{RCF}: real closed field;
+    \item \textbf{DCF}: differential closed field.
 \end{enumerate}
+\end{tcolorbox}
 
 Let $\mathbf{ACF_p}$ be the theory of algebraically closed fields of characteristic $p$,
 where $p$ is either $0$ or a prime number.
@@ -1000,6 +1005,15 @@ TODO
     $\mathcal{M}$ is \emph{saturated} if it is $|M|$-saturated.
 \end{definition}
 
+TODO
+
+\begin{proposition}
+    Let $\mathcal{M}$ be saturated.
+    Let $A \subset M$ with $|A| < |M|$.
+    Let $X \subset M^n$ be definable with parameters from $M$.
+    Then, $X$ is $A$-definable if and only if every automorphism of $\mathcal{M}$ that fixes $A$ pointwise fixes the $X$ setwise.
+\end{proposition}
+
 \subsection{Definable Spaces and Quotients}
 \subsubsection{Definable spaces}
 Let a covering $S = \bigcup_i U_i$ of a set $S$ by subsets $U_i$ ($i\in I$) be given,
@@ -1175,10 +1189,7 @@ O-minimal GAGA theorems are from \cite{zbMATH07662555},
 which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
 to adapt to the non-algebraic period domains from moduli spaces of abelian varieties.
 
-\vspace{1em}
-
-{\noindent\Large\bfseries Main results:}
-
+\begin{tcolorbox}[title = {\bfseries\Large Main results}]
 \begin{theorem}[{Definable GAGA, \cite[Theorem 2.1]{arXiv:2508.19215},\cite[Theorem 1.4]{zbMATH07662555}}]
     Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
     The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and 
@@ -1198,6 +1209,7 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
     $\iota: Y^{\definable} \to \mathcal{Z}$ is a closed embedding of definable analytic spaces.
     Moreover, $f$ is uniquely determined as a morphism with fixed source.
 \end{theorem}
+\end{tcolorbox}
 
 The following materials follow from \cite{zbMATH07662555}.
 
