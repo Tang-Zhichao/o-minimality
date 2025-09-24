@@ -5,12 +5,12 @@
 % \setsansfont{Libertinus Sans}
 % \setmonofont{Liberation Mono}
 
-\usepackage[style=alphabetic,backref, giveninits, maxbibnames=10]{biblatex}
+\usepackage[style=alphabetic, backref, giveninits, maxbibnames=10]{biblatex}
 \addbibresource{o-minimal.bib}
 
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
+\usepackage{amsmath, amsfonts, amssymb, mathtools, amsthm}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xurl}
@@ -446,7 +446,7 @@ where $p$ is either $0$ or a prime number.
   Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure.
   Let $\mathcal{L}_M$ be the language where we add to $\mathcal{L}$ constant symbols $m$ for each element of $M$.
   The \emph{atomic diagram} of $\mathcal{M}$ is 
-  $\{\phi(m_1,\dots,m_n):\phi\text{ is either an atomic $\mathcal{L}$-formula or the nagation of an atomic $\mathcal{L}$-formula and $\mathcal{M} \models \phi(m_1,\dots,m_n)$}\}$.
+  $\{\phi(m_1,\dots,m_n):\phi$ is either an atomic $\mathcal{L}$-formula or the negation of an atomic $\mathcal{L}$-formula and $\mathcal{M} \models \phi(m_1,\dots,m_n)\}$.
   The \emph{elementary diagram} of $\mathcal{M}$ is
   \[
     \phi(m_1,\dots,m_n): \mathcal{M} \models \phi(m_1,\dots,m_n),\text{$\phi$ is an $\mathcal{L}$-formula}.
@@ -1014,8 +1014,8 @@ Let $\mathrm{Th}_A(\mathcal{M})$ be the set of all $\mathcal{L}_A$-sentences tru
     $p$ is a \emph{complete $n$-type} if $\phi\in p$ or $\neg\phi\in p$ for all $\mathcal{L}_A$-formulas $\phi$ with free variables from $v_1,\dots,v_n$.
     Let $S^{\mathcal{M}}_n(A)$ be the set of all complete $n$-types.
 
-    Icomplete types are refered to as \emph{partial types}.
-    We often write $p(v_1,\dots,v_n)$ to stree that $p$ is an $n$-type.
+    Incomplete types are referred to as \emph{partial types}.
+    We often write $p(v_1,\dots,v_n)$ to stress that $p$ is an $n$-type.
 
     If $\mathcal{M}$ is any $\mathcal{L}$-structure,
     $A \subset M$, and $(a_1,\dots,a_n)\in M^n$,
@@ -1030,11 +1030,18 @@ Let $\mathrm{Th}_A(\mathcal{M})$ be the set of all $\mathcal{L}_A$-sentences tru
 \end{definition}
 
 \begin{definition}
+    Let $T$ be a complete theory in a countable language,
+    and let $\kappa$ be an infinite cardinal.
+    $T$ is \emph{$\kappa$-stable} if whenever $\mathcal{M}\models T$,
+    $A \subseteq M$, and $|A| = \kappa$, then $|S^{\mathcal{M}}_n(A)| = \kappa$.
+\end{definition}
+
+\begin{definition}
   Let $\phi(v_1,\dots,v_n)$ be an $\mathcal{L}$-formula such that $T \cup \{\phi(\overline{v})\}$ is satisfiable,
   and let $p$ be an $n$-type.
   \emph{$\phi$ isolates $p$} if
   \[
-    T \models \forall\overline{v}(\phi(\overline{v} \to \psi(\overline{v})))
+    T \models \forall\overline{v}(\phi(\overline{v}) \to \psi(\overline{v}))
   \]
   for all $\psi \in p$.
 \end{definition}
@@ -1042,14 +1049,14 @@ Note that if $p$ is a complete type and $\phi(\overline{v})$ isolates $p$, then
 \[
   T \models \phi(\overline{v}) \to \psi(\overline{{v}}) \iff \psi(\overline{v})\in p
 \]
-for all formulas $\psi(\overline{v}$.
+for all formulas $\psi(\overline{v})$.
 In particular, for all formulas $\psi(\overline{v})$,
 exactly one of $T + \phi(\overline{v}) \land \psi(\overline{v})$ and $T + \phi(\overline{v}) \land \neg\psi(\overline{v})$ is satisfiable.
 
 \begin{theorem}[Omitting Types Theorem]
   Let $\mathcal{L}$ be a countable language,
   $T$ an $\mathcal{L}$-theory,
-  and $p$ a (possibly incomplete) nonisolated $n$-type over $\emptyset$.
+  and $p$ a (possibly incomplete) non-isolated $n$-type over $\emptyset$.
   Then, there is a countable $\mathcal{M} \models T$ omitting $p$.
 \end{theorem}
 
@@ -1080,8 +1087,6 @@ exactly one of $T + \phi(\overline{v}) \land \psi(\overline{v})$ and $T + \phi(\
   $\mathcal{M}$ is $\kappa$-stable if $\mathrm{Th}(\mathcal{M})$ is $\kappa$-stable.
 \end{definition}
 
-TODO
-
 \begin{definition}
     Let $\kappa$ be an infinite cardinal.
     $\mathcal{M} \models T$ is $\kappa$-saturated if,
@@ -1096,13 +1101,58 @@ TODO
   then $\mathcal{M}$ is $\kappa$-homogeneous.
 \end{proposition}
 
-TODO
+\begin{definition}
+    $\mathcal{M} \models T$ is \emph{$\kappa$-universal} if for all $\mathcal{N}\models T$ with $|N| < \kappa$ there is an elementary embedding of $\mathcal{N}$ into $\mathcal{M}$.
+
+    $\mathcal{M}$ is \emph{universal} if it is $|M|^+$-universal.
+\end{definition}
+
+\begin{theorem}
+    Let $\kappa \ge \aleph_0$.
+    The following are equivalent.
+    \begin{enumerate}[label = {\roman*)}]
+        \item $\mathcal{M}$ is $\kappa$-saturated.
+        \item $\mathcal{M}$ is $\kappa$-homogeneous and $\kappa^+$-universal.
+    \end{enumerate}
+    If $\kappa \ge \aleph_1$, i) and ii) are also equivalent to:
+    \begin{enumerate}[resume, label = {\roman*)}]
+        \item $\mathcal{M}$ is $\kappa$-homogeneous and $\kappa$-universal.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    $\mathcal{M}$ is saturated if and only if it is homogeneous and universal.
+\end{corollary}
+
+\begin{theorem}
+    If $\mathcal{M}$ and $\mathcal{N}$ are saturated models of $T$ of cardinality of $\kappa$,
+    then $\mathcal{M}\cong\mathcal{N}$.
+\end{theorem}
 
 \begin{proposition}
     Let $\mathcal{M}$ be saturated.
     Let $A \subset M$ with $|A| < |M|$.
     Let $X \subset M^n$ be definable with parameters from $M$.
     Then, $X$ is $A$-definable if and only if every automorphism of $\mathcal{M}$ that fixes $A$ pointwise fixes the $X$ setwise.
+\end{proposition}
+
+$b \in M$ is \emph{definable from $A$} if $\{b\}$ is $A$-definable.
+\begin{corollary}
+    Let $\mathcal{M}$ be saturated,
+    and let $A \subset M$ with $|A| < |M|$.
+    Then, $b$ is definable from $A$ if and only if $b$ is fixed by all automorphisms of $\mathcal{M}$ that fix $A$ pointwise.
+\end{corollary}
+
+$b$ is \emph{algebraic} over $A$ if there is a finite $A$-definable set $X$ such that $b\in X$.
+\begin{proposition}
+    Let $\mathcal{M}$ be saturated.
+    Let $A \subset M$ with $|A| < |M|$ and $b \in M$.
+    The following are equivalent:
+    \begin{enumerate}[label = {\roman*)}]
+        \item $b$ is algebraic over $A$;
+        \item $b$ has only finitely many images under automorphisms of $\mathcal{M}$ fixing $A$ pointwise;
+        \item $\mathrm{tp}^{\mathcal{M}}(b/A)$ has finitely many realization.
+    \end{enumerate}
 \end{proposition}
 
 \subsection{Definable Spaces and Quotients}
@@ -1175,6 +1225,8 @@ Materials follow from \cite{MR2441378}.
 
 Let $\mathbf{R}$ be a real closed field and $\mathbf{K}$ its algebraic closure,
 identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
+
+\subsection{Topological aspects}
 
 \begin{definition}
     A \emph{definable $C^0$ $\mathbf{R}$-manifold of dimension $n$, with respect to $\mathbf{R}$} is a set $X$,
@@ -1257,13 +1309,48 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
 
 TODO
 
+\subsection{Analytic aspects}
+For $U \subseteq \mathbf{K}$ a definable open set and $z_0 \in U$,
+a definable function $f: U \to \mathbf{K}$ is \emph{$\mathbf{K}$-differentiable at $z_0$} if $\lim_{h\to 0}(f(z_0+h) - f(z_0))/h$ exists in $\mathbf{K}$.
+If $f$ is $\mathbf{K}$-differentiable at every point on $U$ then
+$f$ is \emph{$\mathbf{K}$-holomorphic in $U$}.
+
+\begin{definition}
+    A \emph{$d$-dimensional $\mathbf{K}$-manifold} is a set $X$,
+    together with a finite cover $X = \bigcup_{i=1}^r U_i$,
+    and for each $i = 1,\dots,r$ a set-theoretic bijection $\phi_i: U_i \to V_i$,
+    with $V_i$ a definable subset open of $\mathbf{K}^d$,
+    such that for each $i$, $j$,
+    the set $\phi_i(U_i \cap U_j)$ is a definable open subset of $V_i$ and the transition maps $\phi_j \phi_i^{-1}$ are $\mathbf{K}$-holomorphic.
+    Moreover, the naturally induced topology is Hausdorff.
+\end{definition}
+
+TODO
+
+\begin{definition}
+   If $A$ is a definable subset of a $\mathbf{K}$-manifold $M$,
+   then $A$ is a \emph{locally $\mathbf{A}$-analytic subset} of $M$ 
+   if for every $a\in A$ there is a definable open $V \subseteq M$ containing $a$ and a $\mathbf{K}$-holomorphic map $f : V\to→ \mathbf{K}^m$, 
+   for some $m$, such that $A\cap V= f^{-1}(0)$.
+   A is called a \emph{$\mathbf{K}$-analytic subset} of $M$ if in addition to the above $A$ is closed in $M$.
+
+   A definable closed $A \subseteq M$ is \emph{finitely $\mathbf{K}$-analytic subset} of $M$ if it can be covered by finitely many definable open subsets of $M$, 
+   on each of which $A$ is the zero set of some $\mathbf{K}$-holomorphic map.
+   A $\mathbf{K}$-analytic subset $A $of $M$ is called \emph{reducible} if it can be written as $A= A_1 \cup A_2$,
+   where $A_1$ and $A_2$ are $\mathbf{K}$-analytic in $M$ and none of the $A_i$'s is contained in the other.
+   When $A$ is not reducible it is called \emph{irreducible}. 
+\end{definition}
+
+TODO
+
 \begin{theorem}[Definable Chow's Theorem]
   Let $A$ be a definable $\mathbf{K}$-algebraic subset of $\mathbf{K}^n$.
   Then $A$ is an algebraic set over $\mathbf{K}$.
 \end{theorem}
 
 \begin{theorem}[The Dimension Theorem]
-  Let $M$ be an $n$-dimensional $\mathbf{K}$-manifold,
+  Let $M$ be an $n$-dimensional \hspace{0em}
+  $\mathbf{K}$-manifold,
   $X$, $Y$ definable, irreducible $\mathbf{K}$-analytic subsets of $M$.
   Then every irreducible component of $X \cap Y$ has $\mathbf{K}$-dimension not less than $\dim_{\mathbf{K}}X + \dim_{\mathbf{K}}Y - n$.
 \end{theorem}
