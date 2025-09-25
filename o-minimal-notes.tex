@@ -16,7 +16,15 @@
 \usepackage{xurl}
 
 \usepackage{tikz}
-\usetikzlibrary{cd}
+\usetikzlibrary{shapes.geometric,arrows,cd}
+
+\tikzstyle{notions} = [rectangle, rounded corners,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black,
+fill=teal!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \usepackage{tcolorbox}
 
@@ -601,6 +609,26 @@ where $p$ is either $0$ or a prime number.
 \end{theorem}
 
 \subsection{Algebraic Examples and Quantifiers}
+
+\begin{center}
+\begin{tcolorbox}[title = Properties of theories]
+\begin{center}
+\begin{tikzpicture}
+\node[notions] (q-e) at (-2,0) {quantifier elimination};
+\node[notions] (m-c) at (-2,-2) {model-complete};
+\node[notions] (a-p-m) at (2,-2) {algebraically prime model};
+\node (cc) at (0,-3.5) {+};
+\node[notions] (c) at (0,-5) {complete};
+
+\draw[arrow] (q-e) -- (m-c);
+\draw[thick] (m-c) -- (cc);
+\draw[thick] (a-p-m) -- (cc);
+\draw[arrow] (cc) -- (c);
+\end{tikzpicture}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
 The study of definable sets is often made quite complicated by quantifiers.
 
 \begin{definition}
