@@ -136,7 +136,7 @@ A formula is a \emph{sentence} if it has no free variables.
   $\overline{a} = (a_{i_1},\dots,a_{i_m})\in M^m$.
   Inductively define \emph{$\mathcal{M} \models \phi(\overline{a})$} as follows.
   \begin{enumerate}[label = {\roman*)}]
-    \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
+    \item If $\phi$ is $t_1 = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
       if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
     \item If $\phi$ is $R(t_1,\dots,t_{n_R})$, then $\mathcal{M} \models \phi(\overline{a})$
       if $(t^{\mathcal{M}}_1(\overline{a}),\dots,t^{\mathcal{M}}_{n_R}(\overline{a})) \in R^{\mathcal{M}}$.
@@ -353,25 +353,25 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
   then there is a maximal finitely satisfiable $\mathcal{L}$-theory $T' \supseteq T$.
 \end{corollary}
 
-\begin{theorem}
-  If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
-  then there is a model of $T$ of cardinality at most $\kappa$.
-\end{theorem}
+% \begin{theorem}
+%   If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
+%   then there is a model of $T$ of cardinality at most $\kappa$.
+% \end{theorem}
 
-\begin{lemma}
-  If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
-\end{lemma}
+% \begin{lemma}
+%   If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
+% \end{lemma}
 
 \begin{definition}
   An $\mathcal{L}$-theory $T$ is called \emph{complete} if for any $\mathcal{L}$-sentence $\phi$,
   either $T \models \phi$ or $T \models \neg\phi$.
 \end{definition}
 
-\begin{proposition}
-  Let $T$ be an $\mathcal{L}$-theory with infinite models.
-  If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
-  then there is a model of $T$ of cardinality $\kappa$.
-\end{proposition}
+% \begin{proposition}
+%   Let $T$ be an $\mathcal{L}$-theory with infinite models.
+%   If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
+%   then there is a model of $T$ of cardinality $\kappa$.
+% \end{proposition}
 
 \begin{definition}
   Let $\kappa$ be an infinite cardinal and let $T$ be a theory with models of size $\kappa$.
@@ -468,21 +468,21 @@ where $p$ is either $0$ or a prime number.
   there is $c \in M$ such that $\mathcal{N} \models \phi(c,\overline{a})$.
 \end{proposition}
 
-An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
-if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$
-such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
-In other words, there are enough function symbols in the language to witness all existential statements.
+% An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
+% if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$
+% such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
+% In other words, there are enough function symbols in the language to witness all existential statements.
 
-\begin{lemma}
-  Let $T$ be an $\mathcal{L}$-theory.
-  There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory
-  such that $T^*$ has built-in Skolem functions,
-  and if $\mathcal{M} \models T$,
-  then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$.
-  $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
+% \begin{lemma}
+%   Let $T$ be an $\mathcal{L}$-theory.
+%   There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory
+%   such that $T^*$ has built-in Skolem functions,
+%   and if $\mathcal{M} \models T$,
+%   then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$.
+%   $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
 
-  We call $T^*$ a skolemization of $T$.
-\end{lemma}
+%   We call $T^*$ a skolemization of $T$.
+% \end{lemma}
 
 \begin{theorem}[L\"owenheim--Skolem Theorem]
   Suppose $\mathcal{M}$ is an $\mathcal{L}$-structure and
@@ -671,14 +671,14 @@ The study of definable sets is often made quite complicated by quantifiers.
   $\mathbf{ACF}$ is model-complete and $\mathbf{ACF}_p$ is complete where $p = 0$ or $p$ is prime.
 \end{corollary}
 
-Let $K$ be a field.
-$X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
+% Let $K$ be a field.
+% $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
 
-\begin{lemma}
-  Let $K$ be a field.
-  The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
-  A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
-\end{lemma}
+% \begin{lemma}
+%   Let $K$ be a field.
+%   The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
+%   A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
+% \end{lemma}
 
 \begin{corollary}
   Let $K$ be an algebraically closed field.
@@ -729,11 +729,11 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
 \end{definition}
 
-\begin{theorem}
-  If $(F,<)$ is an ordered field,
-  and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
-  then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
-\end{theorem}
+% \begin{theorem}
+%   If $(F,<)$ is an ordered field,
+%   and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
+%   then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
+% \end{theorem}
 
 \begin{corollary}
   $\mathbf{RCF}$ has algebraically prime models.
@@ -793,13 +793,13 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   such that $f$ is continuous on each $I_j$.
 \end{corollary}
 
-\begin{corollary}[Curve Selection]
-  Let $F$ be a real closed field.
-  Let $X \subseteq F^n$ be semialgebraic and $\overline{a}$
-  be a point in the closure of $X$.
-  There is a continuous semialgebraic function $f:(0,r) \to F^n$
-  such that for all $\epsilon\in(0,r)$, $f(x) \in X$ and $\lim_{\epsilon\to 0} f(\epsilon) = \overline{a}$.
-\end{corollary}
+% \begin{corollary}[Curve Selection]
+%   Let $F$ be a real closed field.
+%   Let $X \subseteq F^n$ be semialgebraic and $\overline{a}$
+%   be a point in the closure of $X$.
+%   There is a continuous semialgebraic function $f:(0,r) \to F^n$
+%   such that for all $\epsilon\in(0,r)$, $f(x) \in X$ and $\lim_{\epsilon\to 0} f(\epsilon) = \overline{a}$.
+% \end{corollary}
 
 \begin{corollary}
   Let $F$ be a real closed field.
@@ -828,12 +828,12 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   \end{enumerate}
 \end{definition}
 
-\begin{lemma}
-  Let $X \subseteq F^{n+1}$ be semialgebraic.
-  There is a natural number $N$ such that if $\overline{a}\in F^n$
-  and $X_{\overline{a}} = \{y: (\overline{a},y)\in X\}$ is finite,
-  then $|X_{\overline{a}}| < N$.
-\end{lemma}
+% \begin{lemma}
+%   Let $X \subseteq F^{n+1}$ be semialgebraic.
+%   There is a natural number $N$ such that if $\overline{a}\in F^n$
+%   and $X_{\overline{a}} = \{y: (\overline{a},y)\in X\}$ is finite,
+%   then $|X_{\overline{a}}| < N$.
+% \end{lemma}
 
 \begin{theorem}[Cell Decomposition]
   Let $X \subseteq F^m$ be semialgebraic.
