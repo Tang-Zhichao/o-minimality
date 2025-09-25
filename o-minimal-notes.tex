@@ -1311,12 +1311,39 @@ Assume that the structure is $\omega_1$-saturated if generic points are mentione
 
 \begin{definition}
   Let $H \subseteq \mathbf{K}^n$ be a $d$-dimensional $\mathbf{K}$-subspace of $\mathbf{K}^n$.
-  $H$ is generic over a set $C \subseteq \mathbf{R}$ if the following holds:
+  $H$ is \emph{generic over a set $C \subseteq \mathbf{R}$} if the following holds:
   Let $\{H_s: s \in S\}$ be some $C$-definable parametrization of all $d$-dimensional $\mathbf{K}$-linear subspaces of $\mathbf{K}^n$.
   Then $H = H_s$ for some $s$ generic in $S$ over $C$.
 \end{definition}
 
-TODO
+For $H$ a $d$-dimensional $\mathbf{K}$-subspace of $\mathbf{K}^n$,
+an orthogonal projection $\pi:\mathbf{K}^n \to H$ is \emph{generic over $C$} if $H$ is generic over $C$.
+
+\begin{definition}
+  A definable subset $A$ of $\mathbf{R}^k$ is called an $m$-dimensional $C^p$ $\mathbf{R}$-submanifold of $\mathbf{R}^k$
+  if for every $x\in A$ there is a definable open neighborhood $U$ of $x$ and definable $C^p$ (with respect to $\mathbf{R}$) map 
+  $f: U \to \mathbf{R}^{n-m}$ such that $A \cap U = f^{-1}(0)$ and the rank of the $\mathbf{R}$-differential $df_x$ of $f$ at $x$ equals $n-m$.
+\end{definition}
+
+In classical complex analytic geometry, 
+given a complex analytic set $A$ and $p \in A$,
+one moves to a local coordinates system,
+chosen properly, in order to ensure that the projection map from $A$ onto (some of) the coordinates is a proper map in this neighborhood. 
+The following theorem is probably the most significant advantage of the o-minimal setting in comparison with the general classical setting.
+It allows us to work “globally” rather than “locally”.
+
+\begin{theorem}[The main covering theorem]
+  Let $A$ be a definable, locally closed subset of $\mathbf{K}^n$,
+  such that $\dim_{\mathbf{R}}A = 2d < 2n$.
+
+  Then there are definable open sets $U_1,\dots,U_k \subseteq \mathbf{K}^n$ and $d$-dimensional $\mathbf{K}$-linear subspaces $L_1,\dots,L_k$ such that 
+  \begin{enumerate}[label = {(\arabic*)}]
+    \item $\bigcup_{i=1}^k U_i = \mathbf{K}^n\backslash Fr_{\mathbf{K}^n}(A)$ (in partition $A$ is contained in the union of the $U_i$'s).
+    \item For each $i = 1,\dots,k$, if $\pi_i:\mathbf{K}^n \to L_i$ is the orthogonal projection, then $\pi_i|U_i\cap A$ is definably proper over $\pi_i(U_i)$.
+    \item If furthermore $A$ is a $C^1$ $\mathbf{R}$-submanifold of $\mathbf{K}^n$ then the $U_i$'s and $L_i$'s can be chosen to satisfy also:
+    For every $i=1,\dots,k$ the map $\pi_1|A\cap U_i$ is local diffeomorphism and there is $m = m_i$ such that every $y \in \pi_i(U_i)$ has exactly $m$ pre-images under $\pi_i$ in $A \cap U_i$.
+  \end{enumerate}
+\end{theorem}
 
 \subsection{Analytic aspects}
 For $U \subseteq \mathbf{K}$ a definable open set and $z_0 \in U$,
@@ -1334,7 +1361,11 @@ $f$ is \emph{$\mathbf{K}$-holomorphic in $U$}.
   Moreover, the naturally induced topology is Hausdorff.
 \end{definition}
 
-TODO
+\begin{definition}
+  Let $N$ be a $\mathbf{K}$-manifold.
+  A definable $M \subseteq N$ is called a \emph{$d$-dimensional $\mathbf{K}$-submanifold of $N$} if for every $a\in M$ there is a definable open set $U \subseteq N$ containing $a$ and a $\mathbf{K}$-holomorphic $f: U \to \mathbf{K}^{n-d}$ such that $M \cup U = f^{-1}(0)$ and $\mathrm{rank}_{\mathbf{K}}(Df_a) = n-d$,
+  where $Df_x$ is the $\mathbf{K}$-differential of $f$ at $x$.
+\end{definition}
 
 \begin{definition}
   If $A$ is a definable subset of a $\mathbf{K}$-manifold $M$,
@@ -1350,11 +1381,54 @@ TODO
   When $A$ is not reducible it is called \emph{irreducible}. 
 \end{definition}
 
-TODO
+\begin{theorem}
+  Let $G \subseteq \mathbb{C}^n$ be an open set and let $X$ be a $\mathbb{C}$-analytic subset of $G$ such that both $X$ and $G$ are definable in $\mathbb{R}_{\exp}$.
+  Then there is a complex algebraic set $A \subseteq \mathbb{C}^n$ such that $X$ is the union of several irreducible components of $A\cap G$.
+\end{theorem}
+
+\begin{definition}
+  Let $N$ be a $\mathbf{K}$-manifold.
+  If $A \subseteq N$ is an arbitrary definable set then $\mathrm{Reg}_{\mathbf{K}}A$ is the set of all points $z \in A$ such that in some neighborhood of $a$,
+  the set $A$ is a $\mathbf{K}$-submanifold of $N$.
+  We let $\mathrm{Sing}_{\mathbf{K}}A = A \backslash \mathrm{Reg}_{\mathbf{K}}A$.
+\end{definition}
+
+\begin{theorem}
+  Let $M$ ba $\mathbf{K}$-manifold and $A$ a definable closed subset of $M$.
+  Assume that for every open $U \subseteq M$,
+  $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}(A\cap U)) \le \dim_{\mathbf{R}}(A\cap U) -2$.
+  Then $A$ is a finitely $\mathbf{K}$-analytic subset of $M$.
+
+  In particular, every $\mathbf{K}$-analytic subset of $M$ is finitely $\mathbf{K}$-analytic.
+\end{theorem}
+
+\begin{corollary}
+If $M$ is a $\mathbf{K}$-manifold and $A$ a closed definable subset of $M$ then the following are equivalent:
+\begin{enumerate}[label = (\roman*)]
+  \item For every open $W \subseteq \mathbf{K}^n$, $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}(A\cap W)) \le \dim_{\mathbf{R}}(A\cap W) -2$.
+  \item $A$ is $\mathbf{K}$-analytic subset of $M$.
+  \item $A$ is finitely $\mathbf{K}$-analytic subset of $M$.
+\end{enumerate}
+Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which carve $A$ in each of them can be chosen be definable in the structure $(R,<,+,\cdot,A)$.
+\end{corollary}
 
 \begin{theorem}[Definable Chow's Theorem]
   Let $A$ be a definable $\mathbf{K}$-algebraic subset of $\mathbf{K}^n$.
   Then $A$ is an algebraic set over $\mathbf{K}$.
+\end{theorem}
+
+\begin{corollary}
+  Every bounded $\mathbf{K}$-analytic subset of $\mathbf{K}^n$ is finite.
+\end{corollary}
+
+\begin{theorem}
+  Let $M$ be a $\mathbf{K}$-manifold and let $A$ be a $\mathbf{K}$-analytic subset of $M$.
+  Then $\mathrm{Sing}_{\mathbf{K}}(A)$ is a $\mathbf{K}$-analytic subset of $M$.
+\end{theorem}
+
+\begin{theorem}
+  Assume that $A \subseteq U \subseteq \mathbf{K}^n$ is a $\mathbf{K}$-analytic set and $f: U \to \mathbf{K}^d$ is $\mathbf{K}$-holomorphic.
+  Then the map $x\mapsto \dim_{\mathbf{K}}(A\cap f^{-1}(f(x)))_x$ is upper semi-continuous on $A$. 
 \end{theorem}
 
 \begin{theorem}[The Dimension Theorem]
@@ -1370,6 +1444,8 @@ TODO
   Assume that $f(A)$ is a closed subset of $N$.
   Then $f(A)$ is a $\mathbf{K}$-analytic subset of $N$.
 \end{theorem}
+
+TODO
 
 \section{O-minimal GAGA Results}
 O-minimal GAGA theorems are from \cite{zbMATH07662555},
