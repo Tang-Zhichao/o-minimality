@@ -16,7 +16,15 @@
 \usepackage{xurl}
 
 \usepackage{tikz}
-\usetikzlibrary{cd}
+\usetikzlibrary{shapes.geometric,arrows,cd}
+
+\tikzstyle{notions} = [rectangle, rounded corners,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black,
+fill=white!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \usepackage{tcolorbox}
 
@@ -99,7 +107,7 @@ We then choose a language where we can talk about the distinguished functions, r
 
 The \emph{cardinality} of $\mathcal{M}$ is $|M|$,
 the cardinality of the universe of $\mathcal{M}$.
-If $\eta: \mathcal{M} \to \mathcal{N}$ is an embedding then 
+If $\eta: \mathcal{M} \to \mathcal{N}$ is an embedding then
 the cardinality of $\mathcal{N}$ is at least the cardinality of $\mathcal{M}$.
 
 \begin{definition}
@@ -117,10 +125,10 @@ the cardinality of $\mathcal{N}$ is at least the cardinality of $\mathcal{M}$.
     \item $t_1 = t_2$, where $t_1$ and $t_2$ are terms, or
     \item $R(t_1,\dots,t_{n_R})$, where $R \in \mathcal{R}$ and $t_1,\dots,t_{n_R}$ are terms.
   \end{enumerate}
-  The set of \emph{$\mathcal{L}$-formulas} is the smallest set $\mathcal{W}$ containing the atomic formulas such that 
+  The set of \emph{$\mathcal{L}$-formulas} is the smallest set $\mathcal{W}$ containing the atomic formulas such that
   \begin{enumerate}[label= {\roman*)}]
     \item if $\phi$ is in $\mathcal{W}$, then $\neg\phi$ is in $\mathcal{W}$,
-    \item if $\phi$ and $\psi$ are in $\mathcal{W}$, then $(\phi \land \psi)$ and $(\phi \lor \psi)$ are in $\mathcal{W}$, and 
+    \item if $\phi$ and $\psi$ are in $\mathcal{W}$, then $(\phi \land \psi)$ and $(\phi \lor \psi)$ are in $\mathcal{W}$, and
     \item if $\phi$ is in $\mathcal{W}$, then $\exists v_i\, \phi$ and $\forall v_i\, \phi$ are in $\mathcal{W}$.
   \end{enumerate}
 \end{definition}
@@ -131,12 +139,12 @@ otherwise, it is \emph{bound}.
 A formula is a \emph{sentence} if it has no free variables.
 
 \begin{definition}
-  Let $\phi$ be a formula with free variables from 
+  Let $\phi$ be a formula with free variables from
   $\overline{v} = (v_{i_1},\dots,v_{i_m})$, and let
   $\overline{a} = (a_{i_1},\dots,a_{i_m})\in M^m$.
   Inductively define \emph{$\mathcal{M} \models \phi(\overline{a})$} as follows.
   \begin{enumerate}[label = {\roman*)}]
-    \item If $\phi$ is $t_1. = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
+    \item If $\phi$ is $t_1 = t_2$, then $\mathcal{M} \models \phi(\overline{a})$
       if $t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})$.
     \item If $\phi$ is $R(t_1,\dots,t_{n_R})$, then $\mathcal{M} \models \phi(\overline{a})$
       if $(t^{\mathcal{M}}_1(\overline{a}),\dots,t^{\mathcal{M}}_{n_R}(\overline{a})) \in R^{\mathcal{M}}$.
@@ -240,7 +248,7 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
 \end{proposition}
 
 \begin{definition}
-  An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$ 
+  An $\mathcal{L}_0$-structure $\mathcal{N}$ is \emph{definably interpreted} in an $\mathcal{L}$-structure $\mathcal{M}$
   if and only if one can find a definable $X \subseteq M^n$ for some $n$ and can interpret the symbols of $\mathcal{L}_0$
   as definable subsets and functions on $X$ (definable using $\mathcal{L}$)
   so that the resulting $\mathcal{L}_0$-structure is isomorphic to $\mathcal{N}$.
@@ -252,7 +260,7 @@ The sentences in $T$ are called \emph{axioms} for the elementary class.
 \end{definition}
 
 Let $S$ be a set.
-The universe of a \emph{many-sorted structure} $\mathcal{N}$ with sorts $S$ is 
+The universe of a \emph{many-sorted structure} $\mathcal{N}$ with sorts $S$ is
 a set $N$ that is partitioned into disjoint sets $\{N_i : i \in S\}$.
 For each $n$-ary relation symbol $R$,
 there are $s_1,\dots,s_n \in S$ such that $R^{\mathcal{N}} \subset N^{s_1} \times \dots \times N^{s_n}$.
@@ -283,7 +291,7 @@ we have in $\mathcal{M}^{\mathrm{eq}}$ an $n$-ary function $f_E: M^n \to S_E$ gi
 \subsubsection{Completeness and Compactness}
 Let $T$ be an $\mathcal{L}$-theory and $\phi$ an $\mathcal{L}$-sentence.
 A proof of $\phi$ from $T$ is a finite sequence of $\mathcal{L}$-formulas
-$\psi_1,\dots,\psi_m$ such that $\psi_m = \phi$ and $\psi_i \in T$ or 
+$\psi_1,\dots,\psi_m$ such that $\psi_m = \phi$ and $\psi_i \in T$ or
 $\psi_i$ follows from $\psi_1,\dots,\psi_{i-1}$ by a simple logical rule for each $i$.
 
 Denote $T \vdash \phi$ if there is a proof of $\phi$ from $T$.
@@ -307,7 +315,7 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
 \end{theorem}
 
 \begin{definition}
-  An $\mathcal{L}$-theory $T$ is \emph{inconsistent} 
+  An $\mathcal{L}$-theory $T$ is \emph{inconsistent}
   if $T \vdash (\phi \land\neg\phi)$ for some sentence $\phi$;
   otherwise $T$ is \emph{consistent}.
 \end{definition}
@@ -321,14 +329,14 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
 \end{definition}
 
 % \begin{definition}
-%     An $\mathcal{L}$-theory $T$ has the \emph{witness property} if 
+%     An $\mathcal{L}$-theory $T$ has the \emph{witness property} if
 %     whenever $\phi(v)$ is an $\mathcal{L}$-formula with one free variable $v$,
-%     then there is a constant symbol $c \in \mathcal{L}$ such that 
+%     then there is a constant symbol $c \in \mathcal{L}$ such that
 %     $T \models (\exists v\, \phi(v) \to \phi(c))$.
 % \end{definition}
 
 \begin{definition}
-  An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$. 
+  An $\mathcal{L}$-theory $T$ is \emph{maximal} if for all $\phi$ either $\phi \in T$ or $\neg \phi \in T$.
 \end{definition}
 
 % \begin{lemma}
@@ -353,25 +361,25 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
   then there is a maximal finitely satisfiable $\mathcal{L}$-theory $T' \supseteq T$.
 \end{corollary}
 
-\begin{theorem}
-  If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
-  then there is a model of $T$ of cardinality at most $\kappa$. 
-\end{theorem}
+% \begin{theorem}
+%   If $T$ is a finitely satisfiable $\mathcal{L}$-theory and $\kappa$ is an infinite cardinal with $\kappa \ge |\mathcal{L}|$,
+%   then there is a model of $T$ of cardinality at most $\kappa$.
+% \end{theorem}
 
-\begin{lemma}
-  If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
-\end{lemma}
+% \begin{lemma}
+%   If $T \models \phi$, then $\Delta \models \phi$ for some finite $\Delta \subseteq T$.
+% \end{lemma}
 
 \begin{definition}
   An $\mathcal{L}$-theory $T$ is called \emph{complete} if for any $\mathcal{L}$-sentence $\phi$,
   either $T \models \phi$ or $T \models \neg\phi$.
 \end{definition}
 
-\begin{proposition}
-  Let $T$ be an $\mathcal{L}$-theory with infinite models.
-  If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
-  then there is a model of $T$ of cardinality $\kappa$.
-\end{proposition}
+% \begin{proposition}
+%   Let $T$ be an $\mathcal{L}$-theory with infinite models.
+%   If $\kappa$ is an infinite cardinal and $\kappa \ge |\mathcal{L}|$,
+%   then there is a model of $T$ of cardinality $\kappa$.
+% \end{proposition}
 
 \begin{definition}
   Let $\kappa$ be an infinite cardinal and let $T$ be a theory with models of size $\kappa$.
@@ -391,12 +399,12 @@ when given an $\mathcal{L}$-sentence $\phi$ as input, decides whether $\phi \in 
 Let $\mathbf{ACF_p}$ be the theory of algebraically closed fields of characteristic $p$,
 where $p$ is either $0$ or a prime number.
 
-\begin{proposition} 
+\begin{proposition}
   $\mathbf{ACF}_p$ is $\kappa$-categorical for all uncountable cardinals $\kappa$.
 \end{proposition}
 
 \begin{theorem}[Vaught's Test]
-  Let $T$ be a satisfiable theory with no finite models that is 
+  Let $T$ be a satisfiable theory with no finite models that is
   $\kappa$-categorical for some infinite cardinal $\kappa \ge |\mathcal{L}|$.
   Then $T$ is complete.
 \end{theorem}
@@ -433,11 +441,11 @@ where $p$ is either $0$ or a prime number.
   then an $\mathcal{L}$-embedding $j: \mathcal{M} \to \mathcal{N}$ is called an \emph{elementary embedding} if
   \[
     \mathcal{M} \models \phi(a_1,\dots,a_n) \iff \mathcal{N} \models \phi(j(a_1),\dots,j(a_n))
-  \] 
+  \]
   for all $\mathcal{L}$-formulas $\phi(v_1,\dots,v_n)$ and all $a_1,\dots,a_n \in M$.
 
-  If $\mathcal{M}$ is a substructure of $\mathcal{N}$, 
-  it is called an \emph{elementary substructure} and 
+  If $\mathcal{M}$ is a substructure of $\mathcal{N}$,
+  it is called an \emph{elementary substructure} and
   denote $\mathcal{M} \prec \mathcal{N}$ if the inclusion map is elementary,
   equivalently, $\mathcal{N}$ is an \emph{elementary extension} of $\mathcal{M}$.
 \end{definition}
@@ -445,7 +453,7 @@ where $p$ is either $0$ or a prime number.
 \begin{definition}
   Suppose that $\mathcal{M}$ is an $\mathcal{L}$-structure.
   Let $\mathcal{L}_M$ be the language where we add to $\mathcal{L}$ constant symbols $m$ for each element of $M$.
-  The \emph{atomic diagram} of $\mathcal{M}$ is 
+  The \emph{atomic diagram} of $\mathcal{M}$ is
   $\{\phi(m_1,\dots,m_n):\phi$ is either an atomic $\mathcal{L}$-formula or the negation of an atomic $\mathcal{L}$-formula and $\mathcal{M} \models \phi(m_1,\dots,m_n)\}$.
   The \emph{elementary diagram} of $\mathcal{M}$ is
   \[
@@ -455,7 +463,7 @@ where $p$ is either $0$ or a prime number.
 \end{definition}
 
 \begin{theorem}[Upward L\"owenheim--Skolem Theorem]
-  Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and 
+  Let $\mathcal{M}$ be an infinite $\mathcal{L}$-structure and
   $\kappa$ be an infinite cardinal $\kappa \ge |\mathcal{M}| + |\mathcal{L}|$.
   Then, there is $\mathcal{N}$ an $\mathcal{L}$-structure of cardinality $\kappa$ and $j: \mathcal{M} \to \mathcal{N}$ is elementary.
 \end{theorem}
@@ -468,21 +476,21 @@ where $p$ is either $0$ or a prime number.
   there is $c \in M$ such that $\mathcal{N} \models \phi(c,\overline{a})$.
 \end{proposition}
 
-An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
-if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$
-such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
-In other words, there are enough function symbols in the language to witness all existential statements.
+% An $\mathcal{L}$-theory $T$ has \emph{built-in Skolem functions}
+% if for all $\mathcal{L}$-formulas $\phi(v,w_1,\dots,w_n)$ there is a function symbol $f$
+% such that $T \models \forall \overline{w} ((\exists v \phi(v,\overline{w})) \to \phi(f(\overline{w}),\overline{w}))$.
+% In other words, there are enough function symbols in the language to witness all existential statements.
 
-\begin{lemma}
-  Let $T$ be an $\mathcal{L}$-theory.
-  There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory
-  such that $T^*$ has built-in Skolem functions,
-  and if $\mathcal{M} \models T$,
-  then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$.
-  $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
+% \begin{lemma}
+%   Let $T$ be an $\mathcal{L}$-theory.
+%   There are $\mathcal{L}^* \supseteq \mathcal{L}$and $T^* \supseteq T$ an $\mathcal{L}^*$-theory
+%   such that $T^*$ has built-in Skolem functions,
+%   and if $\mathcal{M} \models T$,
+%   then $\mathcal{M}$ can be expanded to $\mathcal{M}^* \models T^*$.
+%   $\mathcal{L}^*$ can be chosen such that $|\mathcal{L}^*|= |\mathcal{L}|+\aleph_0$.
 
-  We call $T^*$ a skolemization of $T$.
-\end{lemma}
+%   We call $T^*$ a skolemization of $T$.
+% \end{lemma}
 
 \begin{theorem}[L\"owenheim--Skolem Theorem]
   Suppose $\mathcal{M}$ is an $\mathcal{L}$-structure and
@@ -543,7 +551,7 @@ In other words, there are enough function symbols in the language to witness all
   \end{enumerate}
   Examples:
   \begin{enumerate}
-    \item Let $\kappa$ be an infinite cardinal with $\kappa \le |I|$. 
+    \item Let $\kappa$ be an infinite cardinal with $\kappa \le |I|$.
       $D = \{ X \subseteq I : |I \backslash X| < \kappa\}$ is a filter.
       If $\kappa = \aleph_0$, $D$ is called the \emph{Fr\'echet filter}.
     \item For $x \in I$, $D = \{X\subseteq I: x\in X\}$ is a filter on $I$, called the \emph{principal filter}.
@@ -558,7 +566,7 @@ In other words, there are enough function symbols in the language to witness all
   Let $D$ be an ultrafilter on $I$.
   Define a new structure $\mathcal{M} = \prod \mathcal{M}_i / D$,
   which is called the \emph{ultraproduct} of the $\mathcal{M}_i$ using $D$.
-  Define a relation $\sim$ on 
+  Define a relation $\sim$ on
   \[
     X = \prod_{i\in I}M_i = \Bigl\{ f: I \to \bigcup_{i\in I}M_i : f(i)\in M_i \text{ for all $i$} \Bigr\}
   \]
@@ -567,12 +575,12 @@ In other words, there are enough function symbols in the language to witness all
   The universe of $\mathcal{M}$ will be $M = X / \sim$.
 
   If $c$ is a constant symbol of $\mathcal{L}$,
-  let $c^{\mathcal{M}}$ be the $\sim$ class of $f_c \in X$ where $f_c(i) = c^{\mathcal{M}_i}$ for all $i\in I$. 
+  let $c^{\mathcal{M}}$ be the $\sim$ class of $f_c \in X$ where $f_c(i) = c^{\mathcal{M}_i}$ for all $i\in I$.
 
   If $f$ is an $n$-ary function symbol of $\mathcal{L}$.
   Suppose that $g_1,\dots,g_n,h_1,\dots,h_n\in X$,
   and $g_i \sim h_i$ for $i = 1, \dots,n$.
-  Define $g_{n+1}(i) = f^{\mathcal{M}_i}(g_1(i),\dots,g_n(i))$ and 
+  Define $g_{n+1}(i) = f^{\mathcal{M}_i}(g_1(i),\dots,g_n(i))$ and
   $h_{n+1}(i) = f^{\mathcal{M}_i}(h_1(i),\dots,h_n(i))$ for $i \in I$.
   Then one can show $g_{n+1} \sim h_{n+1}$.
   Thus $f^{\mathcal{M}}(g_1/\sim,\dots,g_n/\sim) = g_{n+1}/\sim$ determines a well-defined function on $\mathcal{M}$.
@@ -601,6 +609,26 @@ In other words, there are enough function symbols in the language to witness all
 \end{theorem}
 
 \subsection{Algebraic Examples and Quantifiers}
+
+\begin{center}
+\begin{tcolorbox}[title = Properties of theories]
+\begin{center}
+\begin{tikzpicture}
+\node[notions] (q-e) at (-2,0) {quantifier elimination};
+\node[notions] (m-c) at (-2,-2) {model-complete};
+\node[notions] (a-p-m) at (2,-2) {algebraically prime model};
+\node (cc) at (0,-3.5) {+};
+\node[notions] (c) at (0,-5) {complete};
+
+\draw[arrow] (q-e) -- (m-c);
+\draw[thick] (m-c) -- (cc);
+\draw[thick] (a-p-m) -- (cc);
+\draw[arrow] (cc) -- (c);
+\end{tikzpicture}
+\end{center}
+\end{tcolorbox}
+\end{center}
+
 The study of definable sets is often made quite complicated by quantifiers.
 
 \begin{definition}
@@ -620,7 +648,7 @@ The study of definable sets is often made quite complicated by quantifiers.
   $\mathcal{A} \models T_{\forall}$ if and only if there is $\mathcal{M} \models T$ with $\mathcal{A} \subseteq \mathcal{M}$.
 
   A theory $T$ has \emph{algebraically prime models}
-  if for any $\mathcal{A} \models T_{\forall}$ there is 
+  if for any $\mathcal{A} \models T_{\forall}$ there is
   $\mathcal{M} \models T$ and an embedding $i:\mathcal{A} \to \mathcal{M}$
   such that for all $\mathcal{N} \models T$ and embedding $j: \mathcal{A} \to \mathcal{N}$
   there is $h: \mathcal{M} \to \mathcal{N}$ such that $j = h \circ i$.
@@ -671,14 +699,14 @@ The study of definable sets is often made quite complicated by quantifiers.
   $\mathbf{ACF}$ is model-complete and $\mathbf{ACF}_p$ is complete where $p = 0$ or $p$ is prime.
 \end{corollary}
 
-Let $K$ be a field.
-$X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
+% Let $K$ be a field.
+% $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K[X_1,\dots,X_n]$.
 
-\begin{lemma}
-  Let $K$ be a field.
-  The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
-  A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
-\end{lemma}
+% \begin{lemma}
+%   Let $K$ be a field.
+%   The subsets of $K^n$ defined by atomic formulas are exactly those of the form $V(p)$ for some $p \in K[\overline{X}]$.
+%   A subset of $K^n$ is quantifier-free definable if and only if it is a Boolean combination of Zariski closed sets.
+% \end{lemma}
 
 \begin{corollary}
   Let $K$ be an algebraically closed field.
@@ -718,7 +746,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
 \end{theorem}
 
 \begin{corollary}
-  The class of real closed field is an elementary class of 
+  The class of real closed field is an elementary class of
   $\mathcal{L}_r$-structures.
 \end{corollary}
 
@@ -729,11 +757,11 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   If $F$ is a formally real field, a \emph{real closure} of $F$ is a real closed algebraic extension of $F$.
 \end{definition}
 
-\begin{theorem}
-  If $(F,<)$ is an ordered field,
-  and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
-  then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
-\end{theorem}
+% \begin{theorem}
+%   If $(F,<)$ is an ordered field,
+%   and $R_1$ and $R_2$ are real closures of $F$ where the canonical ordering extends the ordering of $F$,
+%   then there is a unique field isomorphism $\phi: R_1 \to R_2$ that is identity on $F$.
+% \end{theorem}
 
 \begin{corollary}
   $\mathbf{RCF}$ has algebraically prime models.
@@ -793,18 +821,18 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   such that $f$ is continuous on each $I_j$.
 \end{corollary}
 
-\begin{corollary}[Curve Selection]
-  Let $F$ be a real closed field.
-  Let $X \subseteq F^n$ be semialgebraic and $\overline{a}$
-  be a point in the closure of $X$.
-  There is a continuous semialgebraic function $f:(0,r) \to F^n$
-  such that for all $\epsilon\in(0,r)$, $f(x) \in X$ and $\lim_{\epsilon\to 0} f(\epsilon) = \overline{a}$.
-\end{corollary}
+% \begin{corollary}[Curve Selection]
+%   Let $F$ be a real closed field.
+%   Let $X \subseteq F^n$ be semialgebraic and $\overline{a}$
+%   be a point in the closure of $X$.
+%   There is a continuous semialgebraic function $f:(0,r) \to F^n$
+%   such that for all $\epsilon\in(0,r)$, $f(x) \in X$ and $\lim_{\epsilon\to 0} f(\epsilon) = \overline{a}$.
+% \end{corollary}
 
 \begin{corollary}
   Let $F$ be a real closed field.
   Let $E \subseteq F^n \times F^n$ be a definable equivalence relation.
-  There is a definable $X \subset F^n$ such that for all 
+  There is a definable $X \subset F^n$ such that for all
   $a \in F^n$ there is a unique $b\in X$ such that $aEb$.
   Such $X$ is called a definable \emph{transversal} of $E$.
 \end{corollary}
@@ -820,7 +848,7 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
     \item Let $X \subseteq F^n$ be an $n$-cell. Suppose that $f$ is
       either a continuous definable function from $X$ to $F$ or identically $-\infty$ and
       $g$ is either a continuous definable function from $X$ to $F$
-      such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then 
+      such that $f(\overline{x}) < g(\overline{x})$ for all $\overline{x} \in X$ or identically $+infty$, then
       \[
         Y = \{(\overline{x},y): \overline{x} \in X \land f(\overline{x}) < y < g(\overline{x})\}
       \]
@@ -828,23 +856,25 @@ $X \subseteq K^n$ is \emph{Zariski closed} if $X = V(S)$ for some $S \subseteq K
   \end{enumerate}
 \end{definition}
 
-\begin{lemma}
-  Let $X \subseteq F^{n+1}$ be semialgebraic.
-  There is a natural number $N$ such that if $\overline{a}\in F^n$
-  and $X_{\overline{a}} = \{y: (\overline{a},y)\in X\}$ is finite,
-  then $|X_{\overline{a}}| < N$.
-\end{lemma}
+% \begin{lemma}
+%   Let $X \subseteq F^{n+1}$ be semialgebraic.
+%   There is a natural number $N$ such that if $\overline{a}\in F^n$
+%   and $X_{\overline{a}} = \{y: (\overline{a},y)\in X\}$ is finite,
+%   then $|X_{\overline{a}}| < N$.
+% \end{lemma}
 
-\begin{theorem}[Cell Decomposition]
+\begin{tcolorbox}[title = {Cell Decomposition}]
+\begin{theorem}
   Let $X \subseteq F^m$ be semialgebraic.
   There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
 \end{theorem}
+\end{tcolorbox}
 
 \begin{theorem}[Real Nullstellensatz]
   Let $F$ be a real closed field,
   and let $I$ be an ideal in $F[\overline{X}]$.
   Then, $V_F(I)$ is nonempty if and only if whenever $p_1,\dots,p_m\in F[\overline{X}]$ and $\sum p_i^2 \in I$,
-  then all the $p_i \in I$. 
+  then all the $p_i \in I$.
 \end{theorem}
 
 Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
@@ -891,7 +921,7 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 %     \begin{enumerate}[label = {$\mathrm{(\Roman*_{m})}$}]
 %         \item Given any definable sets $A_1,dots,A_k \subset R^m$ there is a decomposition of $R^m$ partitioning each of $A_1,\dots,A_k$.
 %         \item For each definable function $f: A \to R$, $A \subseteq R^m$,
-%         there is a decomposition $\mathcal{D}$ of $R^m$ partitioning $A$ such that 
+%         there is a decomposition $\mathcal{D}$ of $R^m$ partitioning $A$ such that
 %         the restriction $f|B: B \to R$ to each cell $B \in \mathcal{D}$ with $B \subseteq A$ is continuous.
 %     \end{enumerate}
 % \end{theorem}
@@ -902,7 +932,7 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 
 % \subsubsection{}
 % \begin{theorem}
-%   Let $(R,<,\mathcal{S})$ be an o-minimal structure and 
+%   Let $(R,<,\mathcal{S})$ be an o-minimal structure and
 %   $S \subseteq R^{p+q}$ a definable set.
 %   Then there is a positive integer $d = d(S)$ such that
 %   for all sufficiently large $n\in\mathbb{N}$
@@ -923,12 +953,12 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 
 % \begin{theorem}
 %   Either $f_{\mathcal{C}}(n) = 2^n$ for all $n$,
-%   or else there is $d\in \mathbb{N}$ such that 
+%   or else there is $d\in \mathbb{N}$ such that
 %   $f_{\mathcal{C}}(n) = n^d$ for all sufficiently large $n$.
 % \end{theorem}
 
 % \begin{theorem}
-%   Let $\mathcal{R} = (R,\dots)$ be an infinite model-theoretic structure and suppose 
+%   Let $\mathcal{R} = (R,\dots)$ be an infinite model-theoretic structure and suppose
 %   all definable relations $\Phi \subseteq R^p \times R$ for all $p > 0$, and dependent.
 %   Then all definable relations $\Phi \subseteq R^p \times R^q$,
 %   for all $p$, $q > 0$, are dependent.
@@ -936,17 +966,17 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 
 % \begin{theorem}[Ramsey's Theorem]
 %   Given positive integers $M$, $r$ and $k$,
-%   there is a positive integer $N = N(M,r,k)$ so large that 
+%   there is a positive integer $N = N(M,r,k)$ so large that
 %   if $X$ is a set with $|X| \ge N$ and
 %   $X^{(r)} = P_1 \cup P_2 \cup \dots \cup P_k$,
-%   then there is a set $Y \subseteq X$ with $|Y|=M$ such that 
+%   then there is a set $Y \subseteq X$ with $|Y|=M$ such that
 %   $Y^{(r)} \subseteq P_j$ for some $j\in \{1,\dots,k\}$.
 % \end{theorem}
 
 % \begin{definition}
 %   Let $X$ be an infinite set.
 %   Given a relation $A \subseteq X^r$,
-%   a finite sequence $x_1,\dots,x_M$ in $X$ is \emph{$A$-indiscernible} if 
+%   a finite sequence $x_1,\dots,x_M$ in $X$ is \emph{$A$-indiscernible} if
 %   \[
 %     (x_{i(1)},\dots,x_{i(r)})\in A \iff (x_{j(1)},\dots,x_{j(r)}) \in A.
 %   \]
@@ -956,7 +986,7 @@ Let $\mathbb{R}_{\exp} = (\mathbb{R},+,\cdot,\exp,<,0,1)$.
 %   that is, each element of $\mathcal{A}$ is a set $A \subseteq A^r$,
 %   with $r \in\mathbb{N}$ depending on $A$.
 %   Then a sequence $x_1,\dots,x_M$ in $X$ is called \emph{$\mathcal{A}$-indiscernible} if it is $A$-indiscernible for each $A \in \mathcal{A}$.
-%   A \emph{subsequence} of a sequence $x_1,\dots,x_N$ is by definition a sequence $x_{i(1)},\dots,x_{i(M)}$ with 
+%   A \emph{subsequence} of a sequence $x_1,\dots,x_N$ is by definition a sequence $x_{i(1)},\dots,x_{i(M)}$ with
 %   $1\le i(1)< \dots < i(M) \le N$.
 % \end{definition}
 
@@ -1070,7 +1100,7 @@ exactly one of $T + \phi(\overline{v}) \land \psi(\overline{v})$ and $T + \phi(\
 
 \begin{definition}
   Let $\kappa$ be an infinite cardinal.
-  $\mathcal{M}\models T$ is \emph{$\kappa$-homogeneous} 
+  $\mathcal{M}\models T$ is \emph{$\kappa$-homogeneous}
   if whenever $A \subset M$ with $|A| < \kappa$,
   $f: A \to M$ is a partial elementary map,
   and $a \in M$, there is $f^*\supseteq f$ such that $f^*: A\cup \{a\} \to M$ is partial elementary.
@@ -1169,7 +1199,7 @@ is definable and $g_{ij}: g_i(U_i\cap U_j) \to g_j(U_j\cap U_i)$ is definable.
 
 Let $X \subseteq S$ and $f : X \to R$;
 call $X$ \emph{definable} if $g_i(X\cup U_i) \subseteq I'_i$ is definable for each $i$,
-and call $f$ \emph{definable} if $X$ is definable and 
+and call $f$ \emph{definable} if $X$ is definable and
 $f_i : g_i(X \cap U_i) \to R$ given by $f_i(x) = f(g_i^{-1}(x))$ is definable for each $i$.
 If $X = X_1\cup \cdots \cup X_n$,
 where all $X_k$ are definable,
@@ -1203,7 +1233,7 @@ Then we call the set $S$ equipped with the sheaf $(\mathbf{DC}(U))_{U \in \mathb
 Let $E \subseteq X\times X$ be a definable equivalence relation on a definable set $X \subseteq R^m$.
 
 \begin{definition}
-  A \emph{definable quotient of $X$ be $E$} is a pair $(p,Y)$ consisting of a definable set $Y \subseteq R^n$ and definable continuous surjective map $p: X\to Y$ such that 
+  A \emph{definable quotient of $X$ be $E$} is a pair $(p,Y)$ consisting of a definable set $Y \subseteq R^n$ and definable continuous surjective map $p: X\to Y$ such that
   \begin{enumerate}[label = {(\roman*)}]
     \item $E = E_p$, i.e., $(x_1,x_2) \in E \iff p(x_1) = p(x_2)$ for all $x_1$, $x_2 \in X$;
     \item $p$ is definably identifying, i.e., for all definable $K \subseteq Y$, if $p^{-1}(K)$ is closed in $X$, then $K$ is closed in $Y$.
@@ -1259,7 +1289,7 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
   For $X \subseteq U$,
   the \emph{frontier of $X$ in $U$} is defined as $Fr_U(X) = Cl_U(X)\backslash X$,
   where $Cl_U(X)$ is the closure of $X$ in $U$.
-  If $U = \mathbf{R}^n$ then we write $Fr(X)$ instead of $Fr_{\mathbf{R}^n}$.  
+  If $U = \mathbf{R}^n$ then we write $Fr(X)$ instead of $Fr_{\mathbf{R}^n}$.
 \end{definition}
 
 \begin{lemma}
@@ -1278,36 +1308,74 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
   For $b \in Y$, $f$ is \emph{definably proper over $b$} if for every definable curve $\gamma:(0,1) \to X$ such that $\lim_{t\to 0} f(\gamma(t)) = b$,
   $\gamma(t)$ tends to some limit in $X$ as $t$ tends to $0$.
   If $f: X \to Y$ is definably proper over every $b\in Y$ then
-  we say that $f$ is \emph{definably proper over $Y$} or just 
+  we say that $f$ is \emph{definably proper over $Y$} or just
   $f$ is \emph{definably proper}.
 
   For $A \subseteq X$, we say that $f|A$ is \emph{definably proper over its image} if $f|A : A \to f(A)$ is definably proper over $f(A)$.
 
-  We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighborhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$. 
+  We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighborhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$.
 \end{definition}
 
-\begin{lemma}
-  For $f: X \to Y$ a definable continuous map,
-  $X \subseteq \mathbf{R}^n$,
-  and $y\in Y$, the following are equivalent:
-  \begin{enumerate}[label = {(\roman*)}]
-    \item $f$ is definably proper over $y$.
-    \item $f$ is bounded over $y$ and the intersection of the closure of the graph of $f$ 
-      in $\mathbf{R}^n\times Y$ with $Fr(X)\times \{y\}$ is empty.
-  \end{enumerate}
-\end{lemma}
+% \begin{lemma}
+%   For $f: X \to Y$ a definable continuous map,
+%   $X \subseteq \mathbf{R}^n$,
+%   and $y\in Y$, the following are equivalent:
+%   \begin{enumerate}[label = {(\roman*)}]
+%     \item $f$ is definably proper over $y$.
+%     \item $f$ is bounded over $y$ and the intersection of the closure of the graph of $f$
+%       in $\mathbf{R}^n\times Y$ with $Fr(X)\times \{y\}$ is empty.
+%   \end{enumerate}
+% \end{lemma}
 
-\begin{lemma}
-  Let $X \subseteq \mathbf{R}^n$ be a definable,
-  locally closed set, $f: X \to \mathbf{R}^k$ a definable
-  continuous map. Then,
-  \begin{enumerate}[label = {(\roman*)}]
-    \item The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
-    \item If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
-  \end{enumerate}
-\end{lemma}
+% \begin{lemma}
+%   Let $X \subseteq \mathbf{R}^n$ be a definable,
+%   locally closed set, $f: X \to \mathbf{R}^k$ a definable
+%   continuous map. Then,
+%   \begin{enumerate}[label = {(\roman*)}]
+%     \item The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
+%     \item If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
+%   \end{enumerate}
+% \end{lemma}
 
-TODO
+Assume that the structure is $\omega_1$-saturated if generic points are mentioned.
+
+\begin{definition}
+  Let $H \subseteq \mathbf{K}^n$ be a $d$-dimensional $\mathbf{K}$-subspace of $\mathbf{K}^n$.
+  $H$ is \emph{generic over a set $C \subseteq \mathbf{R}$} if the following holds:
+  Let $\{H_s: s \in S\}$ be some $C$-definable parametrization of all $d$-dimensional $\mathbf{K}$-linear subspaces of $\mathbf{K}^n$.
+  Then $H = H_s$ for some $s$ generic in $S$ over $C$.
+\end{definition}
+
+For $H$ a $d$-dimensional $\mathbf{K}$-subspace of $\mathbf{K}^n$,
+an orthogonal projection $\pi:\mathbf{K}^n \to H$ is \emph{generic over $C$} if $H$ is generic over $C$.
+
+\begin{definition}
+  A definable subset $A$ of $\mathbf{R}^k$ is called an $m$-dimensional $C^p$ $\mathbf{R}$-submanifold of $\mathbf{R}^k$
+  if for every $x\in A$ there is a definable open neighborhood $U$ of $x$ and definable $C^p$ (with respect to $\mathbf{R}$) map
+  $f: U \to \mathbf{R}^{n-m}$ such that $A \cap U = f^{-1}(0)$ and the rank of the $\mathbf{R}$-differential $df_x$ of $f$ at $x$ equals $n-m$.
+\end{definition}
+
+In classical complex analytic geometry,
+given a complex analytic set $A$ and $p \in A$,
+one moves to a local coordinates system,
+chosen properly, in order to ensure that the projection map from $A$ onto (some of) the coordinates is a proper map in this neighborhood.
+The following theorem is probably the most significant advantage of the o-minimal setting in comparison with the general classical setting.
+It allows us to work “globally” rather than “locally”.
+
+\begin{tcolorbox}[title = {The main covering theorem}]
+\begin{theorem}
+  Let $A$ be a definable, locally closed subset of $\mathbf{K}^n$,
+  such that $\dim_{\mathbf{R}}A = 2d < 2n$.
+
+  Then there are definable open sets $U_1,\dots,U_k \subseteq \mathbf{K}^n$ and $d$-dimensional $\mathbf{K}$-linear subspaces $L_1,\dots,L_k$ such that
+  \begin{enumerate}[label = {(\arabic*)}]
+    \item $\bigcup_{i=1}^k U_i = \mathbf{K}^n\backslash Fr_{\mathbf{K}^n}(A)$ (in partition $A$ is contained in the union of the $U_i$'s).
+    \item For each $i = 1,\dots,k$, if $\pi_i:\mathbf{K}^n \to L_i$ is the orthogonal projection, then $\pi_i|U_i\cap A$ is definably proper over $\pi_i(U_i)$.
+    \item If furthermore $A$ is a $C^1$ $\mathbf{R}$-submanifold of $\mathbf{K}^n$ then the $U_i$'s and $L_i$'s can be chosen to satisfy also:
+    For every $i=1,\dots,k$ the map $\pi_1|A\cap U_i$ is local diffeomorphism and there is $m = m_i$ such that every $y \in \pi_i(U_i)$ has exactly $m$ pre-images under $\pi_i$ in $A \cap U_i$.
+  \end{enumerate}
+\end{theorem}
+\end{tcolorbox}
 
 \subsection{Analytic aspects}
 For $U \subseteq \mathbf{K}$ a definable open set and $z_0 \in U$,
@@ -1325,27 +1393,101 @@ $f$ is \emph{$\mathbf{K}$-holomorphic in $U$}.
   Moreover, the naturally induced topology is Hausdorff.
 \end{definition}
 
-TODO
+\begin{definition}
+  Let $N$ be a $\mathbf{K}$-manifold.
+  A definable $M \subseteq N$ is called a \emph{$d$-dimensional $\mathbf{K}$-submanifold of $N$} if for every $a\in M$ there is a definable open set $U \subseteq N$ containing $a$ and a $\mathbf{K}$-holomorphic $f: U \to \mathbf{K}^{n-d}$ such that $M \cup U = f^{-1}(0)$ and $\mathrm{rank}_{\mathbf{K}}(Df_a) = n-d$,
+  where $Df_x$ is the $\mathbf{K}$-differential of $f$ at $x$.
+\end{definition}
 
 \begin{definition}
   If $A$ is a definable subset of a $\mathbf{K}$-manifold $M$,
-  then $A$ is a \emph{locally $\mathbf{A}$-analytic subset} of $M$ 
-  if for every $a\in A$ there is a definable open $V \subseteq M$ containing $a$ and a $\mathbf{K}$-holomorphic map $f : V \to \mathbf{K}^m$, 
+  then $A$ is a \emph{locally $\mathbf{K}$-analytic subset} of $M$
+  if for every $a\in A$ there is a definable open $V \subseteq M$ containing $a$ and a $\mathbf{K}$-holomorphic map $f : V \to \mathbf{K}^m$,
   for some $m$, such that $A\cap V= f^{-1}(0)$.
   A is called a \emph{$\mathbf{K}$-analytic subset} of $M$ if in addition to the above $A$ is closed in $M$.
 
-  A definable closed $A \subseteq M$ is \emph{finitely $\mathbf{K}$-analytic subset} of $M$ if it can be covered by finitely many definable open subsets of $M$, 
+  A definable closed $A \subseteq M$ is \emph{finitely $\mathbf{K}$-analytic subset} of $M$ if it can be covered by finitely many definable open subsets of $M$,
   on each of which $A$ is the zero set of some $\mathbf{K}$-holomorphic map.
   A $\mathbf{K}$-analytic subset $A $of $M$ is called \emph{reducible} if it can be written as $A= A_1 \cup A_2$,
   where $A_1$ and $A_2$ are $\mathbf{K}$-analytic in $M$ and none of the $A_i$'s is contained in the other.
-  When $A$ is not reducible it is called \emph{irreducible}. 
+  When $A$ is not reducible it is called \emph{irreducible}.
 \end{definition}
 
-TODO
+\begin{theorem}
+  Let $G \subseteq \mathbb{C}^n$ be an open set and let $X$ be a $\mathbb{C}$-analytic subset of $G$ such that both $X$ and $G$ are definable in $\mathbb{R}_{\exp}$.
+  Then there is a complex algebraic set $A \subseteq \mathbb{C}^n$ such that $X$ is the union of several irreducible components of $A\cap G$.
+\end{theorem}
 
-\begin{theorem}[Definable Chow's Theorem]
+\begin{definition}
+  Let $N$ be a $\mathbf{K}$-manifold.
+  If $A \subseteq N$ is an arbitrary definable set then $\mathrm{Reg}_{\mathbf{K}}A$ is the set of all points $z \in A$ such that in some neighborhood of $a$,
+  the set $A$ is a $\mathbf{K}$-submanifold of $N$.
+  We let $\mathrm{Sing}_{\mathbf{K}}A = A \backslash \mathrm{Reg}_{\mathbf{K}}A$.
+\end{definition}
+
+\begin{lemma}
+  If $A$ is a $\mathbf{K}$-analytic subset of a $\mathbf{K}$-manifold $N$ and $\mathrm{Reg}_{\mathbf{K}}A$ is definably connected then $A$ is irreducible.
+  In particular, the number of irreducible components of $A$ is finite.
+\end{lemma}
+
+\begin{lemma}
+  Let $U$ be a definable open subset of $\mathbf{K}^n$,
+  $A$ a definable relatively closed subset of $U$
+  whose $\mathbf{R}$-dimension is $2d$.
+  Assume that $\mathrm{Reg}_{\mathbf{K}}A$ is definably connected,
+  dense in $A$, and that $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}A) \le 2d-2$.
+  Assume also that the projection map onto the first $d$ coordinates,
+  $\pi : A \to \mathbf{K}^d$,
+  is finite-to-one and definably proper over its image.
+
+  Then, $\pi(A)$ is open in $\mathbf{K}^d$ and there is an $r\in \mathbb{N}$ and a $\mathbf{K}$-holomorphic map
+  $\Psi: \pi(A) \times \mathbf{K}^{n-d} \to \mathbf{K}^d$ such that $A$ is the zero set of $\Psi$.
+
+  Moreover, the map $\Psi$ can be definably recovered in the structure $(\mathbf{R},<,+,\cdot,A)$.
+\end{lemma}
+
+\begin{tcolorbox}
+\begin{theorem}
+  Let $M$ ba $\mathbf{K}$-manifold and $A$ a definable closed subset of $M$.
+  Assume that for every open $U \subseteq M$,
+  $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}(A\cap U)) \le \dim_{\mathbf{R}}(A\cap U) -2$.
+  Then $A$ is a finitely $\mathbf{K}$-analytic subset of $M$.
+
+  In particular, every $\mathbf{K}$-analytic subset of $M$ is finitely $\mathbf{K}$-analytic.
+\end{theorem}
+\end{tcolorbox}
+
+\begin{corollary}
+If $M$ is a $\mathbf{K}$-manifold and $A$ a closed definable subset of $M$ then the following are equivalent:
+\begin{enumerate}[label = (\roman*)]
+  \item For every open $W \subseteq \mathbf{K}^n$, $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}(A\cap W)) \le \dim_{\mathbf{R}}(A\cap W) -2$.
+  \item $A$ is $\mathbf{K}$-analytic subset of $M$.
+  \item $A$ is finitely $\mathbf{K}$-analytic subset of $M$.
+\end{enumerate}
+Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which carve $A$ in each of them can be chosen be definable in the structure $(R,<,+,\cdot,A)$.
+\end{corollary}
+
+\begin{tcolorbox}[title = {Definable Chow's Theorem}]
+\begin{theorem}
   Let $A$ be a definable $\mathbf{K}$-algebraic subset of $\mathbf{K}^n$.
   Then $A$ is an algebraic set over $\mathbf{K}$.
+\end{theorem}
+\end{tcolorbox}
+
+\begin{corollary}
+  Every bounded $\mathbf{K}$-analytic subset of $\mathbf{K}^n$ is finite.
+\end{corollary}
+
+\begin{tcolorbox}
+  \begin{theorem}
+    Let $M$ be a $\mathbf{K}$-manifold and let $A$ be a $\mathbf{K}$-analytic subset of $M$.
+    Then $\mathrm{Sing}_{\mathbf{K}}(A)$ is a $\mathbf{K}$-analytic subset of $M$.
+  \end{theorem}
+\end{tcolorbox}
+
+\begin{theorem}
+  Assume that $A \subseteq U \subseteq \mathbf{K}^n$ is a $\mathbf{K}$-analytic set and $f: U \to \mathbf{K}^d$ is $\mathbf{K}$-holomorphic.
+  Then the map $x\mapsto \dim_{\mathbf{K}}(A\cap f^{-1}(f(x)))_x$ is upper semi-continuous on $A$.
 \end{theorem}
 
 \begin{theorem}[The Dimension Theorem]
@@ -1362,6 +1504,127 @@ TODO
   Then $f(A)$ is a $\mathbf{K}$-analytic subset of $N$.
 \end{theorem}
 
+\subsubsection{Zariski structures}
+
+Classical complex manifold version:
+\begin{theorem}[{\cite{zbMATH00554994}}]
+  Consider the structure whose universe is a compact complex manifold,
+  and whose atomic relations are all the complex analytic subsets of $M$ and of its Cartesian products.
+  Then the structure eliminates quantifiers,
+  it is stable of finite Morley Rank and moreover,
+  it is a Zariski structure
+  (with the closed sets taken as the K-analytic ones).
+\end{theorem}
+
+Model theoretic version:
+\begin{theorem}
+  Let $M$ be a definably compact $\mathbf{K}$-manifold,
+  equipped with all $\mathbf{K}$-analytic subsets of Cartesian prodcuts of $M$.
+  Then $M$ eleminates quantifiers,
+  it is stable of finite Morley rank and a (complete) Zariski structure
+  (with the closed sets taken as the $\mathbf{K}$-analytic ones).
+\end{theorem}
+
+\subsection{Applications}
+\subsubsection{Meromorphic}
+Let $M$, $N$ be $\mathbf{K}$-manifolds,
+$U$ a definable open subset of $M$
+whose complement is a $\mathbf{K}$-analytic subset of $M$.
+A $\mathbf{K}$-holomorphic map $f: U \to N$ is
+\emph{$\mathbf{K}$-meromorphic} if the closure of its graph in $M \times N$
+is a $\mathbf{K}$-analytic subset of $M \times N$.
+
+\begin{corollary}
+  Let $M$, $N$ be $\mathbf{K}$-manifolds,
+  $S \subseteq M$ an irreducible $\mathbf{K}$-analytic subset of $M$,
+  and assume that $L$ is a closed definable subset of $S$ which contains $\mathrm{Sing}_{\mathbf{K}}S$.
+  If $f: S \backslash L \to N$ is a $\mathbf{K}$-holomorphic map and
+  $\dim_{\mathbf{R}}L \ge \dim_{\mathbf{R}}S -2$ then
+  the closure of the graph of $f$ in $M \times N$ is a $\mathbf{K}$-analytic subset of $M \times N$.
+\end{corollary}
+
+\subsubsection{Campana--Fujiki}
+\begin{definition}
+  Let $M$ be a $\mathbf{K}$-manifold,
+  a \emph{$\mathbf{K}$-holomorphic-vector-bundle over $M$,
+  of dimension $d$} consists of a $\mathbf{K}$-manifold,
+  a $\mathbf{K}$-holomorphic map $\rho: X \to M$,
+  such that :
+
+  There is finite cover of $M$ by definable open sets $M = \bigcup_{i=1}^k V_i$,
+  and for each $i = 1,\dots,k$ there is a $\mathbf{K}$-biholomorphism
+  $\phi_i: V \times \mathbf{K}^d \to \rho^{-1}(V_i)$ such that $\rho\phi_i(x,y) = x$.
+  Furthermore, if $x \in V_i\cap V_j \neq\emptyset$ then $\phi_i^{-1}\phi_j$ induces
+  a $\mathbf{K}$-linear automorphism $g_{i,j}(x)$ of the vector space $\mathbf{K}^d$,
+  in the fiber above $x$.
+  The map $x\mapsto g_{i,j}(x)$ is $\mathbf{K}$-holomorphic from $V_i\cap V_j$ into $\mathrm{GL}(d_i,\mathbf{K})$.
+\end{definition}
+
+\begin{tcolorbox}
+  \begin{theorem}
+    Assume that $N$, $M$ are $\mathbf{K}$-manifolds,
+    and $S$ is an irreducible $\mathbf{K}$-analytic subset of $N \times M$.
+    Then there is a $\mathbf{K}$-holomorphic vector-bundle
+    $\pi: V \to M$, a $\mathbf{K}$-meromorphic map $\sigma: S \to \mathbb{P}(V)$,
+    and a Zariski open subset $S^0$ of $S$ such that for all
+    $(b,a)$, $(b',a)\in S^0$, $\sigma(b,a) = \sigma(b',a)$ if and only if
+    $S_b = S_{b'}$ near $a$, and the following diagram of $\mathbf{K}$-meromorphic
+    maps is commutative
+    \[
+      \begin{tikzcd}
+        S^0 \ar[rr,"\sigma"]\ar[dr,"\pi_M"'] & & \mathbb{P}(V)\ar[dl,"\pi"] \\
+        & M &
+      \end{tikzcd}
+      \]
+  \end{theorem}
+\end{tcolorbox}
+
+\subsubsection{Fnite version of the Coherence Theorem}
+
+Let $M$ be a $\mathbf{K}$-manifold of dimension $n$.
+For $U \subseteq M$ a definable open set,
+let $\mathcal{O}(U)$ denote the ring of $\mathbf{K}$-holomorphic functions on $U$.
+
+For $p\in M$, denote by $\mathcal{O}_p$ the ring of germs at $p$ of $\mathbf{K}$-holomorphic functions.
+When $M = \mathbf{K}^n$, sometimes write $\mathcal{O}_{n,p}$.
+If $A$ is a $\mathbf{K}$-analytic subset of $M$,
+and $p \in M$ then denote by $\mathcal{I}(A)_p$ the ideal in $\mathcal{O}_p$ of all germs at $p$ which vanish on $A$ in some neighborhood of $p$.
+For a definable open $V \subseteq M$,
+let $\mathcal{I}_V(A)$ be the set of all $\mathbf{K}$-holomorphic functions on $V$ which vanish on $A \cap V$;
+this is a module over $\mathcal{O}(V)$.
+When $A$ is a $\mathbf{K}$-analytic subset of $V$,
+just write $\mathcal{I}(A)$ for $\mathcal{I}(A)_V$.
+
+A function $f: A \to \mathbf{K}$ is called $\mathbf{K}$-holomorphic if there is an open definable set $V$, $A \subseteq V \subseteq U$,
+and a $\mathbf{K}$-holomorphic function on $V$ which extends $f$.
+For $p \in A$, denote $\mathcal{O}(A)_p$ the ring of germs at $p$ of $\mathbf{K}$-holomorphic functions on $A \cap W$ for some open neighborhood $W$ of $p$.
+The ring $\mathcal{O}(A)_p$ can be identified with the quotient ring $\mathcal{O}_p/\mathcal{I}(A)_p$.
+
+\begin{tcolorbox}[title = {Coherence Theorem}]
+\begin{theorem}
+  Let $M$ be a $\mathbf{K}$-manifold and $A \subseteq M$ a $\mathbf{K}$-analytic subset of $M$.
+  Then there are finitely many open sets $V_1,\dots,V_k$ whose union covers $M$ and for each $i = 1,\dots,k$
+  there are finitely many $\mathbf{K}$-holomorphic functions $f_{i,1},\dots,f_{i,m_i}$ in $\mathcal{I}_{V_i} (A)$,
+  such that for every $p \in V_i$ the functions $f_{i,1},\dots,f_{i,m_i}$ generate the ideal $\mathcal{I}(A)_p$ in $\mathcal{O}_p$.
+
+  Moreover, the $V_i$'s and the $f_{i,j}$'s are all definable over the same parameters defining $M$ and $A$.
+\end{theorem}
+\end{tcolorbox}
+
+\subsubsection{Definable structures on complex number}
+\begin{theorem}
+  Assume that $M$ is an o-minimal structure expanding the field of real numbers such that every definable holomorphic function of $1$-variable is locally semialgebraic.
+
+  Let $G \subseteq \mathbb{C}^n$ be a definable open set and $X$ a definable irreducible complex analytic subset of $G$.
+  Then there is a complex algebraic set $A \subseteq \mathbb{C}^n$ such that $X$ is one of the irreducible components of $A \cap G$.
+\end{theorem}
+
+\begin{corollary}
+  Let $X$ be an analytic subset of an open set $G\subseteq \mathbb{C}^n$.
+  Assume that $G$ and $X$ are definable in $\mathbb{R}_{\exp}$.
+  Then there is a complex algebraic set $A\subseteq \mathbb{C}^n$ such that $X $is an irreducible component of $A\cap G$.
+\end{corollary}
+
 \section{O-minimal GAGA Results}
 O-minimal GAGA theorems are from \cite{zbMATH07662555},
 which are used in the proof of the boundedness in \cite{arXiv:2507.00973,arXiv:2508.19215}
@@ -1370,13 +1633,13 @@ to adapt to the non-algebraic period domains from moduli spaces of abelian varie
 \begin{tcolorbox}[title = {\bfseries\Large Main results}]
   \begin{theorem}[{Definable GAGA, \cite[Theorem 2.1]{arXiv:2508.19215},\cite[Theorem 1.4]{zbMATH07662555}}]
     Le $X$ be an algebraic space and $X^{\definable}$ the associated definable analytic space.
-    The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and 
+    The definabilization functor $\mathrm{Coh}(X) \to \mathrm{Coh}(X^{\definable})$ is fully faithful, exact and
     its essential image if closed under subobjects and quotients.
   \end{theorem}
 
   \begin{theorem}[{Definable images, \cite[Theorem 2.2]{arXiv:2508.19215},\cite[Theorem 1.3]{zbMATH07662555}}]
     \label{def image}
-    Let $X$ be an algebraic space and 
+    Let $X$ be an algebraic space and
     $\phi: X^{\definable} \to \mathcal{Z}$ a proper morphism of definable analytic spaces.
     Then there is a factorization
     \[\begin{tikzcd}
@@ -1400,7 +1663,7 @@ let $\mathcal{O}_{\mathbb{C}^n}(U)$ be the \emph{definable holomorphic} function
 that is, the maps $U \to \mathbb{C}$ that are both definable and holomorphic.
 
 \begin{definition}[Definition 2.19]
-  Given an open definable subset $U \subset \mathbb{C}^n$ and 
+  Given an open definable subset $U \subset \mathbb{C}^n$ and
   a finitely generated ideal $I$ of $\mathcal{O}_{\mathbb{C}^n}(U)$,
   the vanishing locus $X = |V(I)|$ is naturally a definable topological space.
   We call the data of $U \subset \mathbb{C}^n$ and $I$ a \emph{basic definable complex analytic space}.
@@ -1450,7 +1713,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 
 \begin{theorem}[Theorem 2.39]
   Let $X$ be a definable complex analytic space.
-  Then the analytification functor 
+  Then the analytification functor
   $(-)^{\analytic}: \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\analytic})$ is exact and faithful.
 \end{theorem}
 
@@ -1462,14 +1725,14 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 
 \subsubsection{Reduced case}
 \begin{proposition}[Proposition 2.45]
-  Let $X$ be a definable complex analytic space and 
+  Let $X$ be a definable complex analytic space and
   $\mathcal{Y} \subset X$ a closed definable complex analytic subset.
   Then $\mathcal{Y}$ canonically has the structure of a reduced closed definable complex analytic subspace $Y \subset X$.
 \end{proposition}
 
 \subsubsection{Induction method}
 \begin{proposition}[Definable Noetherian induction, Proposition 2.46]
-  Let $X$ be a definable complex analytic space and $F$ a coherent sheaf on $X$. 
+  Let $X$ be a definable complex analytic space and $F$ a coherent sheaf on $X$.
   Any increasing chain of coherent subsheaves of $F$ must stabilize.
 \end{proposition}
 
@@ -1479,7 +1742,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
   suppose we have (solid) diagrams
   \[
     \begin{tikzcd}
-      X \ar[r,"h"] \ar[d,"g"'] & Y\ar[dl,"f",dotted] \\ Z 
+      X \ar[r,"h"] \ar[d,"g"'] & Y\ar[dl,"f",dotted] \\ Z
     \end{tikzcd}
     \hspace*{30pt}
     \begin{tikzcd}
@@ -1499,7 +1762,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
     Let $X$ be an algebraic space and
     \[(-)^{\definable} : \mathbf{Coh}(X) \to \mathbf{Coh}(X^{\definable})\]
     the definabilization functor.
-    Then 
+    Then
     \begin{enumerate}[label = {(\arabic*)}]
       \item $(-)^{\definable}$ is fully faithful and exact.
       \item The essential image of $(-)^{\definable}$ is closed under taking subobjects and quotients.
@@ -1508,7 +1771,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 \end{tcolorbox}
 
 \begin{theorem}[{Definable Chow theorem, Theorem 3.3, Peterzil--Strarchenko \cite[Corollary 4.5]{zbMATH05364146}}]
-  Let $Y$ be a reduced algebraic space and 
+  Let $Y$ be a reduced algebraic space and
   $\mathcal{X} \subset Y^{\definable}$ a closed definable complex analytic subset.
   Then $\mathcal{X}$ is algebraic.
 \end{theorem}
@@ -1520,7 +1783,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 \begin{lemma}[Lemma 3.5]
   \label{Lemma 3.5}
   Let $X$ be an algebraic space.
-  Then Definable GAGA Theorem \ref{def GAGA} holds for $X$ if and only if 
+  Then Definable GAGA Theorem \ref{def GAGA} holds for $X$ if and only if
   for every algebraic coherent sheaf $F$ on $X$,
   any definable coherent subsheaf $\mathcal{E} \subset F^{\definable}$ is the definabilization of
   an algebraic coherent subsheaf $E \subset F$.
@@ -1546,7 +1809,7 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
     itemsep = 2ex]
     \item
       \begin{lemma}[Lemma 3.7]
-        Any exact sequence 
+        Any exact sequence
         \[
           0 \to \mathcal{E} \to F^{\definable} \to \mathcal{G} \to 0
         \]
@@ -1564,10 +1827,10 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
       \end{lemma}
 
     \item
-      With the notation above, 
+      With the notation above,
       let $E_U$ be the algebraic sheaf on $U$ for which $(E_U)^{\definable} \cong \mathcal{E}_{|U}$.
       Let $\widetilde{E}$ be the "closure" of $E_U$ in $F$, i.e.,
-      the pullback 
+      the pullback
       \[\begin{tikzcd}
         F \ar[r] & j_*j^*F \\
         \widetilde{E} \ar[u]\ar[r] & j_*E_U \ar[u]
@@ -1619,7 +1882,7 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
     Then there exists a (unique) factorization
     \[\begin{tikzcd}
       X^{\definable}\ar[dr,"f^{\definable}"']\ar[rr,"\varphi"] & & \mathcal{S} \\
-                                                               & Y^{\definable} \ar[ur,"\iota",hook] & 
+                                                               & Y^{\definable} \ar[ur,"\iota",hook] &
     \end{tikzcd}\]
     where $f: X \to Y$ is dominant algebraic and $\iota$ is a definable closed immersion.
     Moreover, $\iota^{\analytic}(Y^{\analytic})$ coincides with the image $\varphi^{\analytic}(X^{\analytic})$.
@@ -1734,7 +1997,7 @@ the case that $X$ is reduced and the reduction to this case.
 \begin{lemma}[Lemma 4.11]
   Suppose $Z$ is an algebraic space,
   and $J$ is a coherent sheaf on $Z$.
-  Let $R$ be a sheaf of rings on the {\'e}tale site $Z^{\text{\' et}}$ of $Z$ such that 
+  Let $R$ be a sheaf of rings on the {\'e}tale site $Z^{\text{\' et}}$ of $Z$ such that
   \[
     0 \to J \to R \to \mathcal{O}_Z \to 0
   \]
