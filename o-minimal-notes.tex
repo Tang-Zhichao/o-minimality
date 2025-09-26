@@ -1474,7 +1474,7 @@ a natural identification $\mathcal{O}_X^{\analytic} \cong \mathcal{O}_{X^{\analy
 \end{proposition}
 
 \subsubsection{Analytic factorization}
-\begin{proposition}[Proposition 2.55]
+\begin{proposition}[Proposition 2.55] \label{analytic factorization}
   Let $X$, $Y$, $Z$ be definable complex analytic spaces and
   suppose we have (solid) diagrams
   \[
@@ -1599,7 +1599,7 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
   Then $\mathcal{X}$ is (uniquely) the definabilization of an algebraic subspace.
 \end{corollary}
 
-\begin{corollary}[Corollary 3.11]
+\begin{corollary}[Corollary 3.11] \label{uniqueness of definabilization}
   Let $X$, $Y$ be algebraic spaces.
   Then any morphism $X^{\definable} \to Y^{\definable}$ of definable complex analytic space is (uniquely)
   the definabilization of an algebraic morphism.
@@ -1612,7 +1612,7 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
 \end{definition}
 
 \begin{tcolorbox}[title = {\Large Goal}]
-  \begin{theorem}
+  \begin{theorem} \label{proper factorization}
     Let $X$ be an algebraic space,
     $\mathcal{S}$ a definable complex analytic space,
     and $\varphi: X^{\definable} \to \mathcal{S}$ a proper definable complex analytic morphism.
@@ -1629,7 +1629,7 @@ if and only if it holds on the reduction $X^{\mathrm{red}}$:
 The proof involves two main steps:
 the case that $X$ is reduced and the reduction to this case.
 
-\begin{proposition}[Proposition 4.5]
+\begin{proposition}[Proposition 4.5] \label{thickening}
   Let $f: W \to Z$ be a proper dominant morphism of algebraic spaces.
   Suppose we have an algebraic square-zero thickening
   $W \to W'$, a definable closed immersion $Z^{\definable} \to \mathcal{Z}'$,
@@ -1658,13 +1658,78 @@ the case that $X$ is reduced and the reduction to this case.
   \]
 \end{proposition}
 
-\begin{proposition}[Proposition 4.6]
+\begin{proposition}[Proposition 4.6] \label{embedding into Hilb}
   Let $X$ be a smooth algebraic space,
   $\mathcal{U}$ a smooth definable complex analytic space,
   and $\varphi: X^{\definable} \to \mathcal{U}$ a smooth proper definable analytic morphism.
   Then $\varphi: X^{\definable} \to \mathcal{U}$ is the definabilization of an algebraic morphism $f: X \to U$ and
   the associated morphism $U \to \mathrm{Hilb}(X)$ is a closed embedding.
 \end{proposition}
+
+\begin{proof}[Proof of Theorem \ref{proper factorization}]
+  The uniqueness property follows immediately from Proposition \ref{analytic factorization}, Corollary \ref{uniqueness of definabilization},
+  and the corresponding uniqueness property of the analytic image, so we need only prove the existence of such a factorization.
+
+  Proceed by induction on dimension, the base case being trivial.
+  \begin{enumerate}
+    \item 
+    Propostion \ref{thickening} reduces to the case $X$ reduced.
+    By Corollary \ref{uniqueness of definabilization} it suffices to algebrize $\mathcal{S}$.
+    
+    \item
+    Reduce to the case that the analytification of $\varphi$ is a proper modification, that is, 
+    $\varphi^\analytic: X^\analytic \to \mathcal{S}^\analytic$ is proper and induces an isomorphism 
+    $(\phi^{\analytic})^{-1}(\mathcal{U})\to\mathcal{U}$ for a dense analytic Zariski open subset $\mathcal{U} \subset \mathcal{S}^{\analytic}$.
+
+    Observe that $\varphi$ is smooth over a dense smooth definable Zariski open subset $\mathcal{U} \subset \mathcal{S}$.
+    Apply Proposition \ref{embedding into Hilb}, we conclude that $\varphi_{\mathcal{U}} : X_{\mathcal{U}}^\definable \to \mathcal{U}$
+    is the definabilization of $f_U: X \to U$ and that $U \to \mathrm{Hilb}(X_{\mathcal{U}})$ is a closed embedding.
+    Evidently $f_U$ is the restriction of the universal family.
+
+    Obviously $\mathrm{Hilb}(X_{\mathcal{U}})$ is an open subset of $\mathrm{Hilb}(X)$.
+    Let $B$ be the closure of the image of $U$ in $\mathrm{Hilb}(X)$,
+    $V_B \to B$ the restriction of the universal family,
+    $\widetilde{B} \to B$ the normalization,
+    and $V_{\widetilde{B}}\to B$ the base-change of the universal family. We then have solid diagrams
+    \[\begin{tikzcd}
+      &                           & V_{\widetilde{B}} \arrow[ld] \arrow[rd] &                          &  &                         & (V_{\widetilde{B}})^\definable \arrow[ld] \arrow[rd] \arrow[dd] &                                                     \\
+      & V_B \arrow[rd] \arrow[ld] &                                         & \widetilde{B} \arrow[ld] &  & X^\definable \arrow[rd] &                                                                 & \widetilde{B}^\definable \arrow[ld, "\psi", dashed] \\
+    X &                           & B                                       &                          &  &                         & \mathcal{S}                                                     &                                                    
+    \end{tikzcd}\]
+    The resulting morphism $\psi$ is a proper modification, as it is proper
+    ($(V_{\widetilde{B}})^\definable \to \mathcal{S}$ is proper and $V_{\widetilde{B}}\to \widetilde{B}$ is surjective)
+    and an isomorphism over $\mathcal{U}$.
+
+    \item
+    By the inductive hypothesis and definable Chow, the center of $X^\definable \to S$ can be algebraized.
+
+    Let $Z^\definable \subset \mathcal{S}$ be the reduced center, and $W^\definable = \varphi^{-1}(Z^\definable)$
+    equipped with its reduced induced structure.
+    For every positive integer $k$, let $W_k$ be the $k$-th order thickening of $W$,
+    and $\mathcal{Z}_k$ the $k$-th order thickening of $Z^\definable$ in $\mathcal{S}$.
+    Induction gives the factorization of $\varphi_k: W_k^\definable \to \mathcal{S}$, namely
+    \[
+      W_k^\definable  \xlongrightarrow{f_k^\definable} \to \mathcal{S}.
+    \]
+    Let $\bar{W}$ be the completion of $X$ along $W$ and $\bar{Z} = \mathrm{colim} Z_k$,
+    both of which are formal algebraic spaces; we then have a morphism $\bar{f}: \bar{W} \to \bar{Z}$. 
+    
+    \begin{lemma}[Lemma 4.7]
+      $\bar{f}: \bar{W} \to \bar{Z}$ is a formal modification (see \cite[Definition (1.7)]{zbMATH03283964} for definition).
+    \end{lemma}
+    
+    \begin{theorem}[Theorem 4.9, Artin, {\cite[Theorem (3.1)]{zbMATH03283964}}]
+      Let $X$ be an algebraic space of finite type over a field, and $W\subset X$ be a closed subspace.
+      Let $\bar{W}$ denote the formal completion of $X$ along $W$,
+      and suppose that $\bar{f}: \bar{W} \to \bar{Z}$ is a formal modification.
+      Then there is a modification $f:X \to S$ which is an isomorphism on the complement of $W$
+      and such that the completion of $f$ along $W$ is isomorphic to $\bar{f}$.
+    \end{theorem}
+    
+    We then conclude that $\varphi:X^\analytic \to \mathcal{S}^\analytic$ is algebraized by $f: X \to S$,
+    and by Proposition \ref{analytic factorization} we have $S^\definable \cong \mathcal{S}$.
+  \end{enumerate}
+\end{proof}
 
 \begin{lemma}[Lemma 4.11]
   Suppose $Z$ is an algebraic space,
@@ -1676,10 +1741,6 @@ the case that $X$ is reduced and the reduction to this case.
   is a first order thickening.
   Then $(Z^{\text{\'et}},R)$ is an algebraic space.
 \end{lemma}
-
-\begin{proof}
-Test
-\end{proof}
 
 \emergencystretch = 1em
 \printbibliography
