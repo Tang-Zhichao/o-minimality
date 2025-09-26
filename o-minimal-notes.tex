@@ -863,10 +863,12 @@ The study of definable sets is often made quite complicated by quantifiers.
 %   then $|X_{\overline{a}}| < N$.
 % \end{lemma}
 
-\begin{theorem}[Cell Decomposition]
+\begin{tcolorbox}[title = {Cell Decomposition}]
+\begin{theorem}
   Let $X \subseteq F^m$ be semialgebraic.
   There are finitely many pairwise disjoint cells $C_1,\dots,C_n$ such that $X = C_1 \cup \dots \cup C_n$.
 \end{theorem}
+\end{tcolorbox}
 
 \begin{theorem}[Real Nullstellensatz]
   Let $F$ be a real closed field,
@@ -1314,26 +1316,26 @@ identified with $\mathbf{R}^2$ (after fixing a square-root of $-1$).
   We say that $f$ is \emph{bounded over $b\in Y$} if there is a neighborhood $W \subseteq Y$ of $b$ such that $f^{-1}(W)$ is bounded subset of $\mathbf{R}^n$.
 \end{definition}
 
-\begin{lemma}
-  For $f: X \to Y$ a definable continuous map,
-  $X \subseteq \mathbf{R}^n$,
-  and $y\in Y$, the following are equivalent:
-  \begin{enumerate}[label = {(\roman*)}]
-    \item $f$ is definably proper over $y$.
-    \item $f$ is bounded over $y$ and the intersection of the closure of the graph of $f$
-      in $\mathbf{R}^n\times Y$ with $Fr(X)\times \{y\}$ is empty.
-  \end{enumerate}
-\end{lemma}
+% \begin{lemma}
+%   For $f: X \to Y$ a definable continuous map,
+%   $X \subseteq \mathbf{R}^n$,
+%   and $y\in Y$, the following are equivalent:
+%   \begin{enumerate}[label = {(\roman*)}]
+%     \item $f$ is definably proper over $y$.
+%     \item $f$ is bounded over $y$ and the intersection of the closure of the graph of $f$
+%       in $\mathbf{R}^n\times Y$ with $Fr(X)\times \{y\}$ is empty.
+%   \end{enumerate}
+% \end{lemma}
 
-\begin{lemma}
-  Let $X \subseteq \mathbf{R}^n$ be a definable,
-  locally closed set, $f: X \to \mathbf{R}^k$ a definable
-  continuous map. Then,
-  \begin{enumerate}[label = {(\roman*)}]
-    \item The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
-    \item If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
-  \end{enumerate}
-\end{lemma}
+% \begin{lemma}
+%   Let $X \subseteq \mathbf{R}^n$ be a definable,
+%   locally closed set, $f: X \to \mathbf{R}^k$ a definable
+%   continuous map. Then,
+%   \begin{enumerate}[label = {(\roman*)}]
+%     \item The set of all $y \in \mathbf{R}^k$ such that $f$ is definably proper over $y$ is open in $\mathbf{R}^k$.
+%     \item If $f$ is definably proper over $f(X)$, then $f(X)$ is locally closed set.
+%   \end{enumerate}
+% \end{lemma}
 
 Assume that the structure is $\omega_1$-saturated if generic points are mentioned.
 
@@ -1360,7 +1362,8 @@ chosen properly, in order to ensure that the projection map from $A$ onto (some 
 The following theorem is probably the most significant advantage of the o-minimal setting in comparison with the general classical setting.
 It allows us to work “globally” rather than “locally”.
 
-\begin{theorem}[The main covering theorem]
+\begin{tcolorbox}[title = {The main covering theorem}]
+\begin{theorem}
   Let $A$ be a definable, locally closed subset of $\mathbf{K}^n$,
   such that $\dim_{\mathbf{R}}A = 2d < 2n$.
 
@@ -1372,6 +1375,7 @@ It allows us to work “globally” rather than “locally”.
     For every $i=1,\dots,k$ the map $\pi_1|A\cap U_i$ is local diffeomorphism and there is $m = m_i$ such that every $y \in \pi_i(U_i)$ has exactly $m$ pre-images under $\pi_i$ in $A \cap U_i$.
   \end{enumerate}
 \end{theorem}
+\end{tcolorbox}
 
 \subsection{Analytic aspects}
 For $U \subseteq \mathbf{K}$ a definable open set and $z_0 \in U$,
@@ -1421,6 +1425,28 @@ $f$ is \emph{$\mathbf{K}$-holomorphic in $U$}.
   We let $\mathrm{Sing}_{\mathbf{K}}A = A \backslash \mathrm{Reg}_{\mathbf{K}}A$.
 \end{definition}
 
+\begin{lemma}
+  If $A$ is a $\mathbf{K}$-analytic subset of a $\mathbf{K}$-manifold $N$ and $\mathrm{Reg}_{\mathbf{K}}A$ is definably connected then $A$ is irreducible.
+  In particular, the number of irreducible components of $A$ is finite.
+\end{lemma}
+
+\begin{lemma}
+  Let $U$ be a definable open subset of $\mathbf{K}^n$,
+  $A$ a definable relatively closed subset of $U$
+  whose $\mathbf{R}$-dimension is $2d$.
+  Assume that $\mathrm{Reg}_{\mathbf{K}}A$ is definably connected,
+  dense in $A$, and that $\dim_{\mathbf{R}}(\mathrm{Sing}_{\mathbf{K}}A) \le 2d-2$.
+  Assume also that the projection map onto the first $d$ coordinates,
+  $\pi : A \to \mathbf{K}^d$,
+  is finite-to-one and definably proper over its image.
+
+  Then, $\pi(A)$ is open in $\mathbf{K}^d$ and there is an $r\in \mathbb{N}$ and a $\mathbf{K}$-holomorphic map
+  $\Psi: \pi(A) \times \mathbf{K}^{n-d} \to \mathbf{K}^d$ such that $A$ is the zero set of $\Psi$.
+
+  Moreover, the map $\Psi$ can be definably recovered in the structure $(\mathbf{R},<,+,\cdot,A)$.
+\end{lemma}
+
+\begin{tcolorbox}
 \begin{theorem}
   Let $M$ ba $\mathbf{K}$-manifold and $A$ a definable closed subset of $M$.
   Assume that for every open $U \subseteq M$,
@@ -1429,6 +1455,7 @@ $f$ is \emph{$\mathbf{K}$-holomorphic in $U$}.
 
   In particular, every $\mathbf{K}$-analytic subset of $M$ is finitely $\mathbf{K}$-analytic.
 \end{theorem}
+\end{tcolorbox}
 
 \begin{corollary}
 If $M$ is a $\mathbf{K}$-manifold and $A$ a closed definable subset of $M$ then the following are equivalent:
@@ -1440,19 +1467,23 @@ If $M$ is a $\mathbf{K}$-manifold and $A$ a closed definable subset of $M$ then 
 Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which carve $A$ in each of them can be chosen be definable in the structure $(R,<,+,\cdot,A)$.
 \end{corollary}
 
-\begin{theorem}[Definable Chow's Theorem]
+\begin{tcolorbox}[title = {Definable Chow's Theorem}]
+\begin{theorem}
   Let $A$ be a definable $\mathbf{K}$-algebraic subset of $\mathbf{K}^n$.
   Then $A$ is an algebraic set over $\mathbf{K}$.
 \end{theorem}
+\end{tcolorbox}
 
 \begin{corollary}
   Every bounded $\mathbf{K}$-analytic subset of $\mathbf{K}^n$ is finite.
 \end{corollary}
 
-\begin{theorem}
-  Let $M$ be a $\mathbf{K}$-manifold and let $A$ be a $\mathbf{K}$-analytic subset of $M$.
-  Then $\mathrm{Sing}_{\mathbf{K}}(A)$ is a $\mathbf{K}$-analytic subset of $M$.
-\end{theorem}
+\begin{tcolorbox}
+  \begin{theorem}
+    Let $M$ be a $\mathbf{K}$-manifold and let $A$ be a $\mathbf{K}$-analytic subset of $M$.
+    Then $\mathrm{Sing}_{\mathbf{K}}(A)$ is a $\mathbf{K}$-analytic subset of $M$.
+  \end{theorem}
+\end{tcolorbox}
 
 \begin{theorem}
   Assume that $A \subseteq U \subseteq \mathbf{K}^n$ is a $\mathbf{K}$-analytic set and $f: U \to \mathbf{K}^d$ is $\mathbf{K}$-holomorphic.
@@ -1473,6 +1504,9 @@ Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which ca
   Then $f(A)$ is a $\mathbf{K}$-analytic subset of $N$.
 \end{theorem}
 
+\subsubsection{Zariski structures}
+
+Classical complex manifold version:
 \begin{theorem}[{\cite{zbMATH00554994}}]
   Consider the structure whose universe is a compact complex manifold,
   and whose atomic relations are all the complex analytic subsets of $M$ and of its Cartesian products.
@@ -1482,6 +1516,7 @@ Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which ca
   (with the closed sets taken as the K-analytic ones).
 \end{theorem}
 
+Model theoretic version:
 \begin{theorem}
   Let $M$ be a definably compact $\mathbf{K}$-manifold,
   equipped with all $\mathbf{K}$-analytic subsets of Cartesian prodcuts of $M$.
@@ -1525,27 +1560,47 @@ is a $\mathbf{K}$-analytic subset of $M \times N$.
   The map $x\mapsto g_{i,j}(x)$ is $\mathbf{K}$-holomorphic from $V_i\cap V_j$ into $\mathrm{GL}(d_i,\mathbf{K})$.
 \end{definition}
 
-\begin{theorem}
-  Assume that $N$, $M$ are $\mathbf{K}$-manifolds,
-  and $S$ is an irreducible $\mathbf{K}$-analytic subset of $N \times M$.
-  Then there is a $\mathbf{K}$-holomorphic vector-bundle
-  $\pi: V \to M$, a $\mathbf{K}$-meromorphic map $\sigma: S \to \mathbb{P}(V)$,
-  and a Zariski open subset $S^0$ of $S$ such that for all
-  $(b,a)$, $(b',a)\in S^0$, $\sigma(b,a) = \sigma(b',a)$ if and only if
-  $S_b = S_{b'}$ near $a$, and the following diagram of $\mathbf{K}$-meromorphic
-  maps is commutative
-  \[
-  \begin{tikzcd}
-    S^0 \ar[rr,"\sigma"]\ar[dr,"\pi_M"] & & \mathbb{P}(V)\ar[dl,"\pi"] \\
-    & M &
-  \end{tikzcd}
-  \]
-\end{theorem}
+\begin{tcolorbox}
+  \begin{theorem}
+    Assume that $N$, $M$ are $\mathbf{K}$-manifolds,
+    and $S$ is an irreducible $\mathbf{K}$-analytic subset of $N \times M$.
+    Then there is a $\mathbf{K}$-holomorphic vector-bundle
+    $\pi: V \to M$, a $\mathbf{K}$-meromorphic map $\sigma: S \to \mathbb{P}(V)$,
+    and a Zariski open subset $S^0$ of $S$ such that for all
+    $(b,a)$, $(b',a)\in S^0$, $\sigma(b,a) = \sigma(b',a)$ if and only if
+    $S_b = S_{b'}$ near $a$, and the following diagram of $\mathbf{K}$-meromorphic
+    maps is commutative
+    \[
+      \begin{tikzcd}
+        S^0 \ar[rr,"\sigma"]\ar[dr,"\pi_M"'] & & \mathbb{P}(V)\ar[dl,"\pi"] \\
+        & M &
+      \end{tikzcd}
+      \]
+  \end{theorem}
+\end{tcolorbox}
 
-\subsubsection{Fnite version of the Cohrence Theorem}
+\subsubsection{Fnite version of the Coherence Theorem}
 
-TODO
+Let $M$ be a $\mathbf{K}$-manifold of dimension $n$.
+For $U \subseteq M$ a definable open set,
+let $\mathcal{O}(U)$ denote the ring of $\mathbf{K}$-holomorphic functions on $U$.
 
+For $p\in M$, denote by $\mathcal{O}_p$ the ring of germs at $p$ of $\mathbf{K}$-holomorphic functions.
+When $M = \mathbf{K}^n$, sometimes write $\mathcal{O}_{n,p}$.
+If $A$ is a $\mathbf{K}$-analytic subset of $M$,
+and $p \in M$ then denote by $\mathcal{I}(A)_p$ the ideal in $\mathcal{O}_p$ of all germs at $p$ which vanish on $A$ in some neighborhood of $p$.
+For a definable open $V \subseteq M$,
+let $\mathcal{I}_V(A)$ be the set of all $\mathbf{K}$-holomorphic functions on $V$ which vanish on $A \cap V$;
+this is a module over $\mathcal{O}(V)$.
+When $A$ is a $\mathbf{K}$-analytic subset of $V$,
+just write $\mathcal{I}(A)$ for $\mathcal{I}(A)_V$.
+
+A function $f: A \to \mathbf{K}$ is called $\mathbf{K}$-holomorphic if there is an open definable set $V$, $A \subseteq V \subseteq U$,
+and a $\mathbf{K}$-holomorphic function on $V$ which extends $f$.
+For $p \in A$, denote $\mathcal{O}(A)_p$ the ring of germs at $p$ of $\mathbf{K}$-holomorphic functions on $A \cap W$ for some open neighborhood $W$ of $p$.
+The ring $\mathcal{O}(A)_p$ can be identified with the quotient ring $\mathcal{O}_p/\mathcal{I}(A)_p$.
+
+\begin{tcolorbox}[title = {Coherence Theorem}]
 \begin{theorem}
   Let $M$ be a $\mathbf{K}$-manifold and $A \subseteq M$ a $\mathbf{K}$-analytic subset of $M$.
   Then there are finitely many open sets $V_1,\dots,V_k$ whose union covers $M$ and for each $i = 1,\dots,k$
@@ -1554,8 +1609,7 @@ TODO
 
   Moreover, the $V_i$'s and the $f_{i,j}$'s are all definable over the same parameters defining $M$ and $A$.
 \end{theorem}
-
-TODO
+\end{tcolorbox}
 
 \subsubsection{Definable structures on complex number}
 \begin{theorem}
