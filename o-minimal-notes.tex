@@ -23,7 +23,7 @@ minimum width=3cm,
 minimum height=1cm,
 text centered,
 draw=black,
-fill=teal!30]
+fill=white!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \usepackage{tcolorbox}
@@ -1490,7 +1490,86 @@ Moreover, in (iii) the open sets and $\mathbf{K}$-holomorphic functions which ca
   (with the closed sets taken as the $\mathbf{K}$-analytic ones).
 \end{theorem}
 
+\subsection{Applications}
+\subsubsection{Meromorphic}
+Let $M$, $N$ be $\mathbf{K}$-manifolds,
+$U$ a definable open subset of $M$
+whose complement is a $\mathbf{K}$-analytic subset of $M$.
+A $\mathbf{K}$-holomorphic map $f: U \to N$ is
+\emph{$\mathbf{K}$-meromorphic} if the closure of its graph in $M \times N$
+is a $\mathbf{K}$-analytic subset of $M \times N$.
+
+\begin{corollary}
+  Let $M$, $N$ be $\mathbf{K}$-manifolds,
+  $S \subseteq M$ an irreducible $\mathbf{K}$-analytic subset of $M$,
+  and assume that $L$ is a closed definable subset of $S$ which contains $\mathrm{Sing}_{\mathbf{K}}S$.
+  If $f: S \backslash L \to N$ is a $\mathbf{K}$-holomorphic map and
+  $\dim_{\mathbf{R}}L \ge \dim_{\mathbf{R}}S -2$ then
+  the closure of the graph of $f$ in $M \times N$ is a $\mathbf{K}$-analytic subset of $M \times N$.
+\end{corollary}
+
+\subsubsection{Campana--Fujiki}
+\begin{definition}
+  Let $M$ be a $\mathbf{K}$-manifold,
+  a \emph{$\mathbf{K}$-holomorphic-vector-bundle over $M$,
+  of dimension $d$} consists of a $\mathbf{K}$-manifold,
+  a $\mathbf{K}$-holomorphic map $\rho: X \to M$,
+  such that :
+
+  There is finite cover of $M$ by definable open sets $M = \bigcup_{i=1}^k V_i$,
+  and for each $i = 1,\dots,k$ there is a $\mathbf{K}$-biholomorphism
+  $\phi_i: V \times \mathbf{K}^d \to \rho^{-1}(V_i)$ such that $\rho\phi_i(x,y) = x$.
+  Furthermore, if $x \in V_i\cap V_j \neq\emptyset$ then $\phi_i^{-1}\phi_j$ induces
+  a $\mathbf{K}$-linear automorphism $g_{i,j}(x)$ of the vector space $\mathbf{K}^d$,
+  in the fiber above $x$.
+  The map $x\mapsto g_{i,j}(x)$ is $\mathbf{K}$-holomorphic from $V_i\cap V_j$ into $\mathrm{GL}(d_i,\mathbf{K})$.
+\end{definition}
+
+\begin{theorem}
+  Assume that $N$, $M$ are $\mathbf{K}$-manifolds,
+  and $S$ is an irreducible $\mathbf{K}$-analytic subset of $N \times M$.
+  Then there is a $\mathbf{K}$-holomorphic vector-bundle
+  $\pi: V \to M$, a $\mathbf{K}$-meromorphic map $\sigma: S \to \mathbb{P}(V)$,
+  and a Zariski open subset $S^0$ of $S$ such that for all
+  $(b,a)$, $(b',a)\in S^0$, $\sigma(b,a) = \sigma(b',a)$ if and only if
+  $S_b = S_{b'}$ near $a$, and the following diagram of $\mathbf{K}$-meromorphic
+  maps is commutative
+  \[
+  \begin{tikzcd}
+    S^0 \ar[rr,"\sigma"]\ar[dr,"\pi_M"] & & \mathbb{P}(V)\ar[dl,"\pi"] \\
+    & M &
+  \end{tikzcd}
+  \]
+\end{theorem}
+
+\subsubsection{Fnite version of the Cohrence Theorem}
+
 TODO
+
+\begin{theorem}
+  Let $M$ be a $\mathbf{K}$-manifold and $A \subseteq M$ a $\mathbf{K}$-analytic subset of $M$.
+  Then there are finitely many open sets $V_1,\dots,V_k$ whose union covers $M$ and for each $i = 1,\dots,k$
+  there are finitely many $\mathbf{K}$-holomorphic functions $f_{i,1},\dots,f_{i,m_i}$ in $\mathcal{I}_{V_i} (A)$,
+  such that for every $p \in V_i$ the functions $f_{i,1},\dots,f_{i,m_i}$ generate the ideal $\mathcal{I}(A)_p$ in $\mathcal{O}_p$.
+
+  Moreover, the $V_i$'s and the $f_{i,j}$'s are all definable over the same parameters defining $M$ and $A$.
+\end{theorem}
+
+TODO
+
+\subsubsection{Definable structures on complex number}
+\begin{theorem}
+  Assume that $M$ is an o-minimal structure expanding the field of real numbers such that every definable holomorphic function of $1$-variable is locally semialgebraic.
+
+  Let $G \subseteq \mathbb{C}^n$ be a definable open set and $X$ a definable irreducible complex analytic subset of $G$.
+  Then there is a complex algebraic set $A \subseteq \mathbb{C}^n$ such that $X$ is one of the irreducible components of $A \cap G$.
+\end{theorem}
+
+\begin{corollary}
+  Let $X$ be an analytic subset of an open set $G\subseteq \mathbb{C}^n$.
+  Assume that $G$ and $X$ are definable in $\mathbb{R}_{\exp}$.
+  Then there is a complex algebraic set $A\subseteq \mathbb{C}^n$ such that $X $is an irreducible component of $A\cap G$.
+\end{corollary}
 
 \section{O-minimal GAGA Results}
 O-minimal GAGA theorems are from \cite{zbMATH07662555},
