@@ -1977,7 +1977,7 @@ the case that $X$ is reduced and the reduction to this case.
 		      and $\mathcal{Z}_k$ the $k$-th order thickening of $Z^\definable$ in $\mathcal{S}$.
 		      Induction gives the factorization of $\varphi_k: W_k^\definable \to \mathcal{S}$, namely
 		      \[
-			      W_k^\definable  \xlongrightarrow{f_k^\definable} \to \mathcal{S}.
+			      W_k^\definable  \xlongrightarrow{f_k^\definable} Z_k^\definable \to \mathcal{S}.
 		      \]
 		      Let $\bar{W}$ be the completion of $X$ along $W$ and $\bar{Z} = \mathrm{colim} Z_k$,
 		      both of which are formal algebraic spaces; we then have a morphism $\bar{f}: \bar{W} \to \bar{Z}$.
@@ -2029,6 +2029,7 @@ the pull-back of the resolution $L_Z$ extends as a nef and big line bundle $L_{\
 and this extension is functorial with respect to morphisms of log-resolutions of $Z$.
 
 \begin{definition}
+	Assume the setting as above.
 	Given a closed subscheme $Z \hookrightarrow Y$,
 	a section $s$ of $L^m_Z$ \emph{vanishes at the boundary}
 	if for some log-resolution $(\overline{X},D)$ of $Z$
@@ -2043,6 +2044,56 @@ and this extension is functorial with respect to morphisms of log-resolutions of
 	Moreover, for every $n \gg 1$,
 	the natural morphism $Y \to \mathbb{P}(\Gamma_{van}(Y,L^n)^{\vee})$ is defined everywhere and is an immersion.
 \end{theorem}
+
+\subsection{Algebraicity and quasi-projectivity of period maps}~
+
+\begin{tcolorbox}[title = {\Large Goal}]
+	\begin{theorem}[Theorem 1.1]
+		Let $X$ be a reduced separated algebraic space of finite type over $\mathbb{C}$
+		and $\varphi: X^\analytic \to \Gamma \backslash \Omega$ a period map. Then
+		\begin{enumerate}
+			\item 
+			$\varphi$ factors (uniquely up to unique isomorphism) as
+			$\varphi = \iota \circ f^\analytic$
+			where $f: X \to Y$ is a dominant map of (reduced) finite-type algebraic spaces
+			and $\iota: Y^\analytic \to \Gamma \backslash \Omega$ is a closed immersion of analytic spaces;
+			\item
+			the Griffith $\mathbb{Q}$-bundle $L$ restricted to $Y$ 
+			is the analytification of an ample algebraic $\mathbb{Q}$-bundle,
+			and in particular $Y$ is a quasi-projective variety.
+		\end{enumerate}
+	\end{theorem}
+\end{tcolorbox}
+
+Let $\Omega$ be a pure polarized period domain with generic Mumford–Tate group $\mathbf{G}$
+and $\Gamma \subset \mathbf{G}(\mathbb{Q})$ an arithmetic lattice.
+The Hodge filtration $F^{\bullet}$ and the Griffiths line bundle $L := \otimes \det F^i$
+exist universally on $\Omega$.
+Moreover, $L$ descends to $\Gamma \backslash \Omega$, but only as a $\mathbb{Q}$-bundle in general
+due to the possible torsion in $\Gamma$.
+For any algebraic space $Y$ with a definable map $Y^\definable \to \Gamma \backslash \Omega$
+we denote by $L_{Y^\definable}$ the pullback of the Griffiths $\mathbb{Q}$-bundle.
+
+\textit{Crash sketch of proof.}
+\begin{enumerate}
+	\item Period Images. Essentially use the factorization of definable images.
+	\begin{enumerate}
+		\item Corollary 6.1: For reduced bases, period maps factor through algebraic varieties;
+		\item Theorem 6.4: General version allowing non-reduced bases (one needs definability condition for generalization).
+	\end{enumerate}
+	\item Algebraicity of Hodge Filtration. Essentially use the definable GAGA.
+	\begin{enumerate}
+		\item Theorem 6.8: The Hodge filtration $F^{\bullet}$ is algebraic.
+		\item Uses unipotent monodromy and the Schmid extension from Hodge theory.
+	\end{enumerate}
+	\item The Griffiths Bundle.
+	\begin{enumerate}
+		\item Lemma 6.12: The Griffiths $\mathbb{Q}$-bundle is algebraic;
+		\item Theorem 6.14: The Griffiths bundle is ample, giving quasi-projectivity. Essentially use the quasi-projectivity criterion.
+	\end{enumerate}
+\end{enumerate}
+
+
 
 \emergencystretch = 1em
 \printbibliography
